@@ -11,7 +11,7 @@ require_once 'authController.php';
     <link rel="stylesheet" type="text/css" href="styles.css">
     <div class="header">
         <h1 style="font-family: 'Galada';font-size: 40px;"class="top-title text-center">Sistem Penilaian Kuiz Matematik</h1>
-        <a href="login.php" class="top-title text-center navbar-btn-logout" onclick="destroysession()">Log Out</a>
+        <button type="text" class="top-title text-center navbar-btn-logout" onclick="destroysession()">Log Out</button>
         <button class="top-title text-center navbar-btn" onclick="quizpage()">Kuiz</button>
         <button class="top-title text-center navbar-btn" onclick="resultpage()">Keputusan</button>
     </div>
@@ -32,7 +32,7 @@ require_once 'authController.php';
         <?php 
         // session_destroy();
         ?>
-        window.location.reload = "./logKeluar.php";
+        window.location.href = "./logKeluar.php";
     }
     </script>   
 </head>
