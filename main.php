@@ -1,5 +1,8 @@
-<?php 
-require_once 'authController.php';
+<?php require_once 'authController.php';
+if (!isset($_SESSION['username'])) {
+    header ("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
