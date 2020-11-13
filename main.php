@@ -23,10 +23,10 @@ if (!isset($_SESSION['username'])) {
     crossorigin="anonymous"></script>
     <script>
     function quizpage() {
-        $("#main-content").load("studenthome.php")
+        $("#main-content").load("studentquiz.php")
     }
     function resultpage() {
-        $("#main-content").load("studenthome.php")
+        $("#main-content").load("studentresult.php")
     }
     function kuiztitle() {
         $("#title").load("kuiztitle.php")

@@ -1,12 +1,20 @@
-<?php require_once 'authController.php';?>
+<?php require_once 'authController.php';
+if (isset($_SESSION['username'])) {
+    header("Location: main.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="styles.css">
-    <h1 class="top-title text-center header">Sistem Penilaian Kuiz Matematik</h1>
+    <div class="header">
+    <h1 style="font-family: 'Galada';font-size: 40px;"class="top-title text-center">Sistem Penilaian Kuiz Matematik</h1>
+    </div>
 </head> 
 <body>
     <div class="container">

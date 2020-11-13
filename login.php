@@ -12,7 +12,9 @@ if (isset($_SESSION['username'])) {
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <div class="header">
     <h1 style="font-family: 'Galada';font-size: 40px;"class="top-title text-center">Sistem Penilaian Kuiz Matematik</h1>
+    </div>
 </head>
 <body>
     <div class="container">
