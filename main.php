@@ -30,8 +30,9 @@ require_once 'authController.php';
     }
     function destroysession() {
         <?php 
-        session_destroy();
+        // session_destroy();
         ?>
+        window.location.reload = "./logKeluar.php";
     }
     </script>   
 </head>
