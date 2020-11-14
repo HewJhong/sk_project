@@ -1,3 +1,7 @@
+h1 {
+  margin-left: 20px;
+}
+
 .form-div {
     margin: 50px auto 50px;
     padding: 25px 15px 10px 15px;
@@ -77,6 +81,10 @@ li a:hover {
   color: white;
 }
 
+.navbar-btn:focus {
+  outline: none;
+}
+
 .header .navbar-btn-logout {
   float: right;
   color: black;
@@ -91,6 +99,19 @@ li a:hover {
 }
 .navbar-btn-logout:hover {
   background-color: orange;
-  color: white;
+  color: black;
 }
 
+.navbar-btn-logout:focus {
+  outline: none;
+} 
+
+.navbar-home {
+  outline: none;
+  border: none;
+  color: black;
+}
+
+.navbar-home:focus {
+  outline: none;
+}

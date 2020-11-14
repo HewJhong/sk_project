@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <div class="header">
-        <h1 style="font-family: 'Galada';font-size: 40px;"class="top-title text-center">Sistem Penilaian Kuiz Matematik</h1>
+        <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
         <button type="text" class="top-title text-center navbar-btn-logout" onclick="destroysession()">Log Out</button>
         <button class="top-title text-center navbar-btn" onclick="quizpage()">Kuiz</button>
         <button class="top-title text-center navbar-btn" onclick="resultpage()">Keputusan</button>
@@ -22,6 +22,12 @@ if (!isset($_SESSION['username'])) {
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
     <script>
+    $(document).ready(function(){
+        homepage();
+    })
+    function homepage() {
+        $("#main-content").load("studenthome.php")
+    }
     function quizpage() {
         $("#main-content").load("studentquiz.php")
     }
