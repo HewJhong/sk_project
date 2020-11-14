@@ -81,9 +81,15 @@ li a:hover {
   color: white;
 }
 
+.active {
+  background-color: gray;
+  color: white;
+}
+
 .navbar-btn:focus {
   outline: none;
 }
+
 
 .header .navbar-btn-logout {
   float: right;

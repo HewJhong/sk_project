@@ -72,13 +72,14 @@ if (isset($_POST['login-btn'])) {
         $result = mysqli_query($conn, "select * from pengguna where username ='$username' AND password = '$password'") 
         or die("Failed to query database" .mysql_error());
         $row = mysqli_fetch_array($result);
+        $admin = "admin";
+        $murid = "murid";
         if($row['username'] == $username && $row['password'] == $password) {
             $_SESSION['username'] = $username;
-            echo "Login Success";
+            $_SESSION['role'] = $row['role'];
             header("Location: main.php");
-        } else {
+        }  else {
             $errors['loginfail'] = "Login Failed";
-            echo "Login Failed";
         }
     }
 }

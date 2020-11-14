@@ -1,1 +1,1 @@
-<h1>Laman Keputusan. Success!</h1>
+<h1>Laman Keputusan</h1>

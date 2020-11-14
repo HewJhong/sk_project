@@ -1,7 +1,11 @@
 <?php require_once 'authController.php';
 if (isset($_SESSION['username'])) {
-    header("Location: main.php");
-    exit();
+    if ($_SESSION['role'] == "murid") {
+        header("Location: studentmain.php");
+        exit();
+    } else {
+        header ("Location: adminmain.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -13,7 +17,7 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="styles.css">
     <div class="header">
-    <h1 style="font-family: 'Galada';font-size: 40px;"class="top-title text-center">Sistem Penilaian Kuiz Matematik</h1>
+    <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
     </div>
 </head> 
 <body>
