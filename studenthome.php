@@ -4,7 +4,16 @@
 <head>
 </head>
 <style>
-    .collapsible {
+  .container {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  .content-title {
+    font-size: 30px;
+  }
+
+  .collapsible {
   background-color: #777;
   color: white;
   cursor: pointer;
@@ -45,8 +54,8 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 <body>
-<div id="container" class="container" style="margin: 20px">
-<p>Collapsible Set:</p>
+<div id="container" class="container" >
+<p class="content-title text-center">User Information</p>
     <button class="collapsible">Check username</button>
     <div class="content">
     <p><?php echo $_SESSION['username']?></p>
@@ -60,9 +69,30 @@ for (i = 0; i < coll.length; i++) {
     <p><?php echo $_SESSION['notel']?></p>
     </div>
     <script>
-    var btn = document.createElement("BUTTON");   // Create a <button> element
-    btn.innerHTML = "CLICK ME";                   // Insert text
-    document.getElementById("container").appendChild(btn);               // Append <button> to <body>
+    // var btn = document.createElement("BUTTON"); //create button
+    // btn.classList.add("collapsible");  //add class - collapsible
+    // var btn_div = document.createElement("div") // create div
+    // btn_div.classList.add("content");  //add class - content
+    // var text_content = document.createElement("p") // create p
+    // var text = document.createTextNode("Hello World"); // create text node for p
+    // text_content.appendChild(text)  //append text_content with text
+    // btn_div.appendChild(text_content);  // append btn_div with text_content
+    // btn.appendChild(btn_div);  //append btn with btn_div
+    // var container = document.getElementById("container");  //get container
+    // container.appendChild(btn); // append btn to container
+    // btn.innerHTML = "CLICK ME";    // add text to btn
+    var btn = document.createElement("BUTTON");
+    btn.classList.add("collapsible");
+    var div = document.createElement("div");
+    div.classList.add("content");
+    var text_container = document.createElement("P");
+    var text = document.createTextNode("Hello World");
+    text_container.appendChild(text);
+    div.appendChild(text_container)
+    var container = document.getElementById("container");   
+    container.appendChild(btn);
+    container.appendChild(div);
+    btn.innerHMTL = "Click Me";
     </script>
 </div>
 </body>
