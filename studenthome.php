@@ -37,22 +37,6 @@
   background-color: #f1f1f1;
 }
 </style>
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-</script>
 <body>
 <div id="container" class="container" >
 <p class="content-title text-center">User Information</p>
@@ -83,6 +67,7 @@ for (i = 0; i < coll.length; i++) {
     // btn.innerHTML = "CLICK ME";    // add text to btn
     var btn = document.createElement("BUTTON");
     btn.classList.add("collapsible");
+    btn.textContent = "Click Me";
     var div = document.createElement("div");
     div.classList.add("content");
     var text_container = document.createElement("P");
@@ -92,9 +77,25 @@ for (i = 0; i < coll.length; i++) {
     var container = document.getElementById("container");   
     container.appendChild(btn);
     container.appendChild(div);
-    btn.innerHMTL = "Click Me";
+    // btn.innerHMTL = "Click Me";
     </script>
 </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
 </body>
 </html>
 <!-- <h1>This is student home. Success! <?php echo $_SESSION['role']?> <?php echo $_SESSION['username'];?></h1> -->
