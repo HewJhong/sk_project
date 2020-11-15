@@ -16,22 +16,26 @@ if ($conn->connect_error) {
 }
 
 $username = '';
-$email = '';
+$notel = '';
 $errors = array();
 
 
 // if user clicks on the sign up button
 if (isset($_POST['signup-btn'])) {
     $username = $_POST['username'];
+    $notel = $_POST['notel'];
     $password = $_POST['password'];
     $passwordConf = $_POST['passwordConf'];
-    // $sql = "INSERT INTO pengguna (username, email, password) VALUES ('hew', 'test@email.com', 'testpass')";
     //validation
     if (empty($username)) {
         $errors['username'] = "Username required";
     }
-    if (empty($username)) {
-        $errors['username'] = "Username required";
+    if (empty($notel)) {
+        $errors['telefonnumber'] = "Telefon Number required";
+    }
+    if(preg_match("/^[0]{1}[1]{1}[0-9]{1}-[0-9]{7}$/", $notel) || preg_match("/^[0]{1}[1]{1}[0-9]{1}-[0-9]{8}$/", $notel)) {
+    } else {
+        $errors['telefonnumber'] = "Wrong Telefon Number format";
     }
     if (empty($password)) {
         $errors['password'] = "Password required";
@@ -44,8 +48,7 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        // $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO pengguna (username, role, password) VALUES ('$username', 'murid', '$password')";
+        $sql = "INSERT INTO pengguna (username, notel, role, password) VALUES ('$username', '$notel', 'murid', '$password')";
         if ($conn->query($sql) === TRUE) {
             header("Location: login.php");
           } else {
@@ -59,6 +62,7 @@ if (isset($_POST['signup-btn'])) {
 if (isset($_POST['login-btn'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $notel = $_POST['username'];
     
     //validation
     if (empty($username)) {
@@ -69,18 +73,19 @@ if (isset($_POST['login-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $result = mysqli_query($conn, "select * from pengguna where username ='$username' AND password = '$password'") 
+        $result = mysqli_query($conn, "select * from pengguna where (username ='$username' AND password = '$password') OR (notel ='$notel' AND password = '$password')") 
         or die("Failed to query database" .mysql_error());
         $row = mysqli_fetch_array($result);
         $admin = "admin";
         $murid = "murid";
-        if($row['username'] == $username && $row['password'] == $password) {
-            $_SESSION['username'] = $username;
+        if(($row['notel'] == $notel  && $row['password'] == $password) ||  ($row['username'] == $username && $row['password'] == $password)) {
+            $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
+            $_SESSION['notel'] = $row['notel'];
             header("Location: main.php");
         }  else {
             $errors['loginfail'] = "Login Failed";
-        }
+        }         
     }
 }
 

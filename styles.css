@@ -30,14 +30,6 @@ ul {
   float: left;
 }
 
-.navbar-list a {
-  display: block;
-  color: red;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
@@ -57,11 +49,12 @@ li a:hover {
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
+  align-items: center;
 }
 
 .header h1 {
-  float: left;
-  margin-left: 20px;
+  margin-top: 8px;
+  margin-left: 6px;
 }
 
 .header .navbar-btn {
@@ -77,12 +70,12 @@ li a:hover {
 }
 
 .navbar-btn:hover {
-  background-color: gray;
-  color: white;
+  background-color: lightgray;
+  color: black;
 }
 
 .active {
-  background-color: gray;
+  background-color: #1386FC;
   color: white;
 }
 
@@ -120,4 +113,12 @@ li a:hover {
 
 .navbar-home:focus {
   outline: none;
+}
+
+.account-status {
+  position: absolute;
+  top: 68px;
+  left: 20px;
+  font-weight: bold;
+  color: black;
 }

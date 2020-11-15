@@ -17,7 +17,8 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="styles.css">
     <div class="header">
-    <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
+    <h1 style="font-family: 'Galada';font-size: 40px;" class="text-center navbar-home">Selamat Datang ke</h1>
+    <h1 style="font-family: 'Galada';font-size: 50px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</h1>
     </div>
 </head> 
 <body>
@@ -38,6 +39,10 @@ if (isset($_SESSION['username'])) {
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" name="username" value="<?php echo $username; ?>"class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="notel">Nombor Telefon</label>
+                        <input type="text" name="notel" value="<?php echo $notel; ?>"class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>

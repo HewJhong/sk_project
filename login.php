@@ -1,5 +1,5 @@
 <?php require_once 'authController.php';
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
     if ($_SESSION['role'] == "murid") {
         header("Location: studentmain.php");
         exit();
@@ -17,7 +17,8 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <div class="header">
-    <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
+    <h1 style="font-family: 'Galada';font-size: 40px;" class="text-center navbar-home">Selamat Datang ke</h1>
+    <h1 style="font-family: 'Galada';font-size: 50px;"class="text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</>
     </div>
 </head>
 <body>
@@ -36,7 +37,7 @@ if (isset($_SESSION['username'])) {
                     <?php endif ?>
 
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username">Username or Telefon Number</label>
                         <input type="text" name="username" value="<?php echo $username; ?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
