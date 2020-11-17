@@ -8,7 +8,7 @@
 <p class="content-title text-center">User Information</p>
     <button class="collapsible">Check username</button>
     <div class="content">
-    <p><?php echo $_SESSION['username']?></p>
+    <p><?php echo $_SESSION['nop']?></p>
     </div>
     <button class="collapsible">Check role</button>
     <div class="content">

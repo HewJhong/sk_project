@@ -38,15 +38,15 @@ if (isset($_SESSION['username'])) {
 
                     <div class="form-group">
                         <label for="username">No. Pengguna</label>
-                        <input type="text" name="username" value="<?php echo $username; ?>"class="form-control form-control-lg">
+                        <input type="text" name="nop" value="<?php echo $nop;?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="name" value="<?php echo $name; ?>"class="form-control form-control-lg">
+                        <input type="text" name="name" value="<?php echo $name;?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <label for="notel">Nombor Telefon</label>
-                        <input type="text" name="notel" value="<?php echo $notel; ?>"class="form-control form-control-lg">
+                        <input type="text" name="notel" value="<?php echo $notel;?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <label for="password">Kata Laluan</label>

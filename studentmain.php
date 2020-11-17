@@ -1,5 +1,5 @@
 <?php require_once 'authController.php';
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['nop'])) {
     header ("Location: login.php");
     exit();
 }

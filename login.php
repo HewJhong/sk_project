@@ -1,5 +1,5 @@
 <?php require_once 'authController.php';
-if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
+if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
     if ($_SESSION['peranan'] == "murid") {
         header("Location: studentmain.php");
         exit();
@@ -36,7 +36,7 @@ if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
 
                     <div class="form-group">
                         <label for="username">No. Pengguna atau No. Telefon</label>
-                        <input type="text" name="username" value="<?php echo $username; ?>" class="form-control form-control-lg">
+                        <input type="text" name="nop" value="<?php echo $nop; ?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <label for="password">Kata Laluan</label>
