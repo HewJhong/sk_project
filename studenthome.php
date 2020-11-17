@@ -53,18 +53,6 @@
     <p><?php echo $_SESSION['notel']?></p>
     </div>
     <script>
-    // var btn = document.createElement("BUTTON"); //create button
-    // btn.classList.add("collapsible");  //add class - collapsible
-    // var btn_div = document.createElement("div") // create div
-    // btn_div.classList.add("content");  //add class - content
-    // var text_content = document.createElement("p") // create p
-    // var text = document.createTextNode("Hello World"); // create text node for p
-    // text_content.appendChild(text)  //append text_content with text
-    // btn_div.appendChild(text_content);  // append btn_div with text_content
-    // btn.appendChild(btn_div);  //append btn with btn_div
-    // var container = document.getElementById("container");  //get container
-    // container.appendChild(btn); // append btn to container
-    // btn.innerHTML = "CLICK ME";    // add text to btn
     var btn = document.createElement("BUTTON");
     btn.classList.add("collapsible");
     btn.textContent = "Click Me";
