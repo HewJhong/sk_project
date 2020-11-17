@@ -1,6 +1,19 @@
 <body>
+<?php 
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "spkm";
+
+// Create connection
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("Database error: " . $conn->connect_error);
+}
+
+?>
 <div id="container" class="collapsible_container" >
-<p class="content-title text-center">User Information</p>
+<p class="content-title text-center">Kuiz</p>
     <button class="collapsible">Check username</button>
     <div class="content">
     <p><?php echo $_SESSION['username']?></p>
@@ -26,7 +39,6 @@
     var container = document.getElementById("container");   
     container.appendChild(btn);
     container.appendChild(div);
-    // btn.innerHMTL = "Click Me";
     </script>
 </div>
 <script>

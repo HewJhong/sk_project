@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
     <div id="navbar" class="header">
         <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
         <button type="text" class="top-title text-center navbar-btn-logout" onclick="destroysession()">Log Out</button>
-        <a class="text-center account-status">Akaun <?php echo $_SESSION['role'];?></a>
+        <a class="text-center account-status">Akaun <?php echo $_SESSION['peranan'];?></a>
         <button class="top-title text-center navbar-btn" onclick="quizpage()">Kuiz</button>
         <button class="top-title text-center navbar-btn" onclick="resultpage()">Keputusan</button>
         <button class="top-title text-center navbar-btn active" onclick="homepage()">Home</button>

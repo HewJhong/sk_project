@@ -53,8 +53,8 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $sql = "INSERT INTO pengguna (username, name, notel, role, password) VALUES ('$username', '$name', '$notel', 'murid', '$password')";
-        if ($conn->query($sql) === TRUE) {
+        $sql = "INSERT INTO pengguna (nop, notel, peranan, password) VALUES ('$username', '$notel', 'murid', '$password'); INSERT INTO telefon (notel, name) VALUES ('$notel', '$name') ";
+        if ($conn->multi_query($sql) === TRUE) {
             header("Location: login.php");
           } else {
             $errors['duplicate'] = "Your have already signed up or your username has been taken";
@@ -65,7 +65,7 @@ if (isset($_POST['signup-btn'])) {
 
 // if user clicks on the login button
 if (isset($_POST['login-btn'])) {
-    $username = $_POST['username'];
+    $username = $_POST['nop'];
     $password = $_POST['password'];
     $notel = $_POST['username'];
     
@@ -78,15 +78,18 @@ if (isset($_POST['login-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $result = mysqli_query($conn, "select * from pengguna where (username ='$username' AND password = '$password') OR (notel ='$notel' AND password = '$password')") 
+        $result = mysqli_query($conn, "select * from pengguna where (nop ='$username' AND password = '$password') OR (notel ='$notel' AND password = '$password')") 
         or die("Failed to query database" .mysql_error());
+        $nameresult = mysqli_query($conn, "select * from telefon where notel = '$notel'");
+        $namerow = mysqli_fetch_array($nameresult);
         $row = mysqli_fetch_array($result);
         $admin = "admin";
         $murid = "murid";
-        if(($row['notel'] == $notel  && $row['password'] == $password) ||  ($row['username'] == $username && $row['password'] == $password)) {
+        if(($row['notel'] == $notel  && $row['password'] == $password) ||  ($row['nop'] == $username && $row['password'] == $password)) {
             $_SESSION['username'] = $row['username'];
-            $_SESSION['role'] = $row['role'];
+            $_SESSION['peranan'] = $row['peranan'];
             $_SESSION['notel'] = $row['notel'];
+            $_SESSION['name'] = $namerow['name'];
             header("Location: main.php");
         }  else {
             $errors['loginfail'] = "Login Failed";

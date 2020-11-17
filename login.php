@@ -1,6 +1,6 @@
 <?php require_once 'authController.php';
 if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
-    if ($_SESSION['role'] == "murid") {
+    if ($_SESSION['peranan'] == "murid") {
         header("Location: studentmain.php");
         exit();
     } else {

@@ -12,11 +12,15 @@
     </div>
     <button class="collapsible">Check role</button>
     <div class="content">
-    <p><?php echo $_SESSION['role']?></p>
+    <p><?php echo $_SESSION['peranan']?></p>
     </div>
     <button class="collapsible">Check Telephone Number</button>
     <div class="content">
     <p><?php echo $_SESSION['notel']?></p>
+    </div>
+    <button class="collapsible">Check Name</button>
+    <div class="content">
+    <p><?php echo $_SESSION['name']?></p>
     </div>
     <script>
     var btn = document.createElement("BUTTON");
@@ -31,7 +35,6 @@
     var container = document.getElementById("container");   
     container.appendChild(btn);
     container.appendChild(div);
-    // btn.innerHMTL = "Click Me";
     </script>
 </div>
 <script>
