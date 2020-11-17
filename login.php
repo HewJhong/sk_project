@@ -24,7 +24,7 @@ if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
         <div class="row">
             <div class="col-md-4 offset-md-4 form-div">
                 <form action="login.php" method="post">
-                    <h3 class="text-center">Login</h3>
+                    <h3 class="text-center">Log Masuk</h3>
 
                     <?php if(count($errors) > 0): ?>
                     <div class="alert alert-danger">
@@ -35,17 +35,17 @@ if (isset($_SESSION['username']) || isset($_SESSION['notel'])) {
                     <?php endif ?>
 
                     <div class="form-group">
-                        <label for="username">Username or Telefon Number</label>
+                        <label for="username">No. Pengguna atau No. Telefon</label>
                         <input type="text" name="username" value="<?php echo $username; ?>" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password">Kata Laluan</label>
                         <input type="password" name="password" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="login-btn" class="btn btn-primary btn-block btn-lg">Login</button>
+                        <button type="submit" name="login-btn" class="btn btn-primary btn-block btn-lg">Log Masuk</button>
                     </div>
-                    <p class="text-center">Not yet a member?<a href="signup.php"> Sign Up </a></p>
+                    <p class="text-center">Belum daftar? Daftar di <a href="signup.php">sini</a></p>
                 </form>
             </div>
         </div>
