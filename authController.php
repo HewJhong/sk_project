@@ -17,18 +17,23 @@ if ($conn->connect_error) {
 
 $username = '';
 $notel = '';
+$name = '';
 $errors = array();
 
 
 // if user clicks on the sign up button
 if (isset($_POST['signup-btn'])) {
     $username = $_POST['username'];
+    $name = $_POST['name'];
     $notel = $_POST['notel'];
     $password = $_POST['password'];
     $passwordConf = $_POST['passwordConf'];
     //validation
     if (empty($username)) {
         $errors['username'] = "Username required";
+    }
+    if (empty($name)) {
+        $errors['name'] = "Name required";
     }
     if (empty($notel)) {
         $errors['telefonnumber'] = "Telefon Number required";
@@ -48,7 +53,7 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $sql = "INSERT INTO pengguna (username, notel, role, password) VALUES ('$username', '$notel', 'murid', '$password')";
+        $sql = "INSERT INTO pengguna (username, name, notel, role, password) VALUES ('$username', '$name', '$notel', 'murid', '$password')";
         if ($conn->query($sql) === TRUE) {
             header("Location: login.php");
           } else {

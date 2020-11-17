@@ -3,42 +3,8 @@
 <html>
 <head>
 </head>
-<style>
-  .container {
-    width: 100%;
-    margin-top: 50px;
-  }
-
-  .content-title {
-    font-size: 30px;
-  }
-
-  .collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
-
-.active, .collapsible:hover {
-  background-color: #1386FC;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
-</style>
 <body>
-<div id="container" class="container" >
+<div id="container" class="collapsible_container" >
 <p class="content-title text-center">User Information</p>
     <button class="collapsible">Check username</button>
     <div class="content">

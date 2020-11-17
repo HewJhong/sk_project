@@ -41,6 +41,10 @@ if (isset($_SESSION['username'])) {
                         <input type="text" name="username" value="<?php echo $username; ?>"class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" value="<?php echo $name; ?>"class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
                         <label for="notel">Nombor Telefon</label>
                         <input type="text" name="notel" value="<?php echo $notel; ?>"class="form-control form-control-lg">
                     </div>
