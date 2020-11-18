@@ -25,7 +25,8 @@ if (!isset($_SESSION['nop'])) {
     crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
-        homepage();
+        // set default page
+        quizpage();
         var btnContainer = document.getElementById("navbar");
 
         // Get all buttons with class="btn" inside the container
@@ -53,9 +54,6 @@ if (!isset($_SESSION['nop'])) {
         $("#title").load("kuiztitle.php");
     }
     function destroysession() {
-        <?php 
-        // session_destroy();
-        ?>
         window.location.href = "./logKeluar.php";
     }
     </script>   

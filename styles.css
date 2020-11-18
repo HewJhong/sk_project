@@ -193,6 +193,7 @@ li a:hover {
   -webkit-border-radius: 100px;
 }
 
-.quesnumgrid {
-  grid-template-columns: auto auto;
+.nosoal {
+  font-size: 30px;
+  align-items: center;
 }

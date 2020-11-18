@@ -101,6 +101,12 @@ if (isset($_POST['login-btn'])) {
         }         
     }
 }
+
+// For adminquizpage
+$nosoal = 1;
+$topik = "";
+$soal = "";
+
 ?>
 </body>
 </html>
