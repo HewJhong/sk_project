@@ -1,5 +1,5 @@
 <?php require_once 'authController.php';
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['nop'])) {
     header ("Location: login.php");
     exit();
 }
@@ -41,16 +41,16 @@ if (!isset($_SESSION['username'])) {
 }
     })
     function homepage() {
-        $("#main-content").load("adminhome.php")
+        $("#main-content").load("adminhome.php");
     }
     function quizpage() {
-        $("#main-content").load("studentquiz.php")
+        $("#main-content").load("adminkuiz.php");
     }
     function resultpage() {
-        $("#main-content").load("studentresult.php")
+        $("#main-content").load("studentresult.php");
     }
     function kuiztitle() {
-        $("#title").load("kuiztitle.php")
+        $("#title").load("kuiztitle.php");
     }
     function destroysession() {
         <?php 
@@ -60,9 +60,9 @@ if (!isset($_SESSION['username'])) {
     }
     </script>   
 </head>
-<body>
+<body style="overflow-x: hidden">
     <div id="main-content">
-        <p>Welcome <?php echo $_SESSION['username'];?></p>
+        <p>Welcome <?php echo $_SESSION['nop'];?></p>
     </div>
 </body>
 </html>

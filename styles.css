@@ -157,3 +157,14 @@ li a:hover {
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
+
+.quiz-form-div {
+  width: 70%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 15px 10px 15px;
+  border: 1px solid #80ced7;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
