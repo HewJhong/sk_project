@@ -60,9 +60,8 @@ if (!isset($_SESSION['nop'])) {
     }
     </script>   
 </head>
-<body style="overflow-x: hidden">
-    <div id="main-content">
-        <p>Welcome <?php echo $_SESSION['nop'];?></p>
+<body style="overflow: hidden;">
+    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;">
     </div>
 </body>
 </html>

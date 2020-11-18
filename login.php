@@ -5,6 +5,7 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
         exit();
     } else {
         header ("Location: adminmain.php");
+        exit();
     }
 }
 ?>
@@ -36,11 +37,11 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
 
                     <div class="form-group">
                         <label for="username">No. Pengguna atau No. Telefon</label>
-                        <input type="text" name="nop" value="<?php echo $nop; ?>" class="form-control form-control-lg">
+                        <input type="text" name="nop" value="<?php echo $nop; ?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
                         <label for="password">Kata Laluan</label>
-                        <input type="password" name="password" class="form-control form-control-lg">
+                        <input type="password" name="password" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="login-btn" class="btn btn-primary btn-block btn-lg">Log Masuk</button>
