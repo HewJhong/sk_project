@@ -5,7 +5,7 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
         exit();
     } else {
         header ("Location: adminmain.php");
-        exit();
+        exit();     
     }
 }
 ?>
