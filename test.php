@@ -8,59 +8,62 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
 
-<div id="container">
+<div id="container" class="container">
 <p> Title </p>
-<button type="button" onclick="add()" class="btn btn-primary btn-block btn-lg col-1"> + </button>
-<script>
-$('.delete').click(function() {
-   $(this).closest('.list_product').remove()
-});
-</script>
+<button type="button" onclick="add()" class=""> + </button>
+<br>
 </div>
-<div class='list_product'>
+<div class='content'>
     <div class='row'>
         <div class='delete'>x</div>
-        <div class='title'>Standing Fan</div>
+        <div class='title'>Text</div>
      </div>
 </div>
-<div class='list_product'>
+<div class='content'>
     <div class='row'>
         <div class='delete'>x</div>
-        <div class='title'>Standing Fan 2</div>
+        <div class='title'>Text 2</div>
      </div>
 </div>
-<div class='list_product'>
+<div class='content'>
     <div class='row'>
         <div class='delete'>x</div>
-        <div class='title'>Standing Fan 3</div>
+        <div class='title'>Text 3</div>
      </div>
 </div>
-<div class='list_product'>
-    <div class='row'>
-        <div class='delete'>x</div>
-        <div class='title'>Standing Fan 4</div>
-     </div>
-</div>
-<script>
-$(.delete).append("x");
+<!-- <script>
 function add() {
-var btn = document.createElement("BUTTON")
-var textbox = document.createElement("P");
-var text = document.createTextNode("Text");
-textbox.appendChild(text);
 var div = document.createElement("div");
-btn.textContent = "Click";
-div.classList.add("delete");
-$(.delete).append("x");
-var box = document.getElementById("container")
+div.setAttribute("class", "content");
+var btn = document.createElement("BUTTON");
+btn.textContent = "XX"
+var textbox = document.createElement("div");
+textbox.textContent = "Delete";
+textbox.setAttribute( "class", "delete");
 div.appendChild(btn);
 div.appendChild(textbox);
-box.appendChild(div);
+var container = document.getElementById("content")
+container.appendChild(div);
+}
+</script> -->
+<script>
+function add() {
+    var div1 = document.createElement("div");
+    var div2 = document.createElement("div");
+    var br = document.createElement("br");
+    div1.textContent = "Outside Div";
+    div1.classList.add("content");
+    div2.textContent = "Delete";
+    div2.classList.add("delete");
+    div1.appendChild(div2);
+    div1.appendChild(br);
+    var container = document.getElementById("container");
+    container.appendChild(div1);
 }
 </script>
 <script>
 $('.delete').click(function() {
-   $(this).closest('.list_product').remove()
+   $(this).closest('.content').remove()
 });
 </script>
 </body>
