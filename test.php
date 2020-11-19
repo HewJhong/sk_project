@@ -31,21 +31,6 @@
         <div class='title'>Text 3</div>
      </div>
 </div>
-<!-- <script>
-function add() {
-var div = document.createElement("div");
-div.setAttribute("class", "content");
-var btn = document.createElement("BUTTON");
-btn.textContent = "XX"
-var textbox = document.createElement("div");
-textbox.textContent = "Delete";
-textbox.setAttribute( "class", "delete");
-div.appendChild(btn);
-div.appendChild(textbox);
-var container = document.getElementById("content")
-container.appendChild(div);
-}
-</script> -->
 <script>
 function add() {
     var div1 = document.createElement("div");
