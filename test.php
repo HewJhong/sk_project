@@ -62,8 +62,8 @@ function add() {
 }
 </script>
 <script>
-$('.delete').click(function() {
-   $(this).closest('.content').remove()
+$(document).on('click','.delete',function() {
+   $(this).closest('.content').remove();
 });
 </script>
 </body>
