@@ -2,12 +2,14 @@
 
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    </head>
     <body>
     <div class="newquiz-container">
-        <div class="row">
+        <div class="row"></div>
             <div id="quiz-form-div "class="quiz-form-div">
-                <form id="container" action="adminmain.php" method="post">
+                <form action="adminmain.php" method="post">
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <?php if(count($errors) > 0): ?>
@@ -17,6 +19,7 @@
                     <?php endforeach;?>
                     </div>
                     <?php endif ?>
+
                     <div id="container">
                     <div class="form-group">
                         <label for="nosoal">No Soalan</label>
@@ -89,19 +92,14 @@
                         <button onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
                     </div>
                     <script>
-                        function addques() {
-                        var btn = document.createElement("BUTTON");
-                        btn.classList.add("collapsible");
-                        btn.textContent = "Click Me";
-                        var soallabel1 = document.createElement("label");
-                        label.setAttribute("for","nosoal");
-                        label.textContent("text");
-                        var soalinput = document.createElement("input");
-                        var soaldiv = document.createElement("div");
-                        soaldiv.textContent("text");
+                    function addques() {
+                        var p = document.createElement("P");
+                        var label = document.createElement("label")
+                        var div = document.createElement("div");
+                        div.textContent = "Test text..."
                         var container = document.getElementById("container");
-                        container.appendChild(btn)
-                        }
+                        container.appendChild(div);
+                    }
                     </script>
                     <div class="form-group">
                         <button type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg">Submit</button>

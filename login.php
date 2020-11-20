@@ -17,7 +17,7 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
     <link rel="stylesheet" type="text/css" href="styles.css">
     <div class="header">
     <h1 style="font-family: 'Galada';font-size: 40px;" class="text-center navbar-home">Selamat Datang ke</h1>
-    <h1 style="font-family: 'Galada';font-size: 50px;"class="text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</>
+    <h1 style="font-family: 'Galada';font-size: 50px;"class="text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</h1>
     </div>
 </head>
 <body>

@@ -103,7 +103,7 @@ if (isset($_POST['login-btn'])) {
 }
 
 // For adminquizpage
-$nosoal = 1;
+$nosoal = 2;
 $topik = array();
 $soal = array();
 
@@ -111,8 +111,10 @@ if (isset($_POST['quiz-submit-btn'])) {
     $topik = "fixed value";
     $psoal = $_POST['psoal'];
     $ppilih = $_POST['ppilih'];
+    $errors['soal'] = "Please fill in all the blanks";
 
-    for ($i = 0; $i < count($psoal); $i++) {
+
+    for ($i = 0; $i < $nosoal; $i++) {
         $soal = mysqli_escape_string ($conn, $psoal[$i]);
         $pilih = mysqli_escape_string ($conn, $ppilih[$i]);
         $sql = "insert into testsoal(topik, soal, pilih) values('{$topik}', {$soal}, {$pilih})";
