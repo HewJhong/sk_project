@@ -20,8 +20,24 @@ if (!isset($_SESSION['nop'])) {
         <button class="top-title text-center navbar-btn" onclick="resultpage()">Keputusan</button>
         <button class="top-title text-center navbar-btn active" onclick="homepage()">Home</button>
     </div>
+    <!-- errors alert box -->
+    <?php if(count($errors) > 0): ?>
+        <div class="alertmessage">
+            <div class="alert alert-warning alert-dismissible fade show alertbox" role="alert">
+            <?php foreach($errors as $error):?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach;?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            </div>
+    <?php endif ?>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
     crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
@@ -59,7 +75,6 @@ if (!isset($_SESSION['nop'])) {
     </script>   
 </head>
 <body style="overflow: hidden;">
-    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;">
-    </div>
+    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
 </body>
 </html>
