@@ -111,7 +111,11 @@ if (isset($_POST['quiz-submit-btn'])) {
     $topik = "fixed value";
     $psoal = $_POST['psoal'];
     $ppilih = $_POST['ppilih'];
-    $errors['soal'] = "Please fill in all the blanks";
+
+    if (!count("psoal") == $nosoal) {
+        $errors['soal'] = "Please fill in all the blanks";
+    }
+    
 
 
     for ($i = 0; $i < $nosoal; $i++) {

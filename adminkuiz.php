@@ -12,6 +12,7 @@
                 <form action="adminmain.php" method="post">
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
+                    <!-- errors alert box -->
                     <?php if(count($errors) > 0): ?>
                     <div class="alert alert-danger">
                     <?php foreach($errors as $error):?>
