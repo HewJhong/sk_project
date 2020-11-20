@@ -9,7 +9,8 @@
     <div class="newquiz-container">
         <div class="row"></div>
             <div id="quiz-form-div "class="quiz-form-div">
-                <form action="adminmain.php" method="post">
+                <!-- <form action="adminmain.php" method="post"> -->
+                <form method="post">
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <!-- errors alert box -->

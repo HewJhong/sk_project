@@ -111,11 +111,12 @@ if (isset($_POST['quiz-submit-btn'])) {
     $topik = "fixed value";
     $psoal = $_POST['psoal'];
     $ppilih = $_POST['ppilih'];
-
-    if (!count("psoal") == $nosoal) {
-        $errors['soal'] = "Please fill in all the blanks";
-    }
     
+
+    $errors['soal'] = "Please fill in all the blanks";
+    // if (!count("psoal") == $nosoal) {
+    //     $errors['soal'] = "Please fill in all the blanks";
+    // }
 
 
     for ($i = 0; $i < $nosoal; $i++) {
@@ -123,6 +124,10 @@ if (isset($_POST['quiz-submit-btn'])) {
         $pilih = mysqli_escape_string ($conn, $ppilih[$i]);
         $sql = "insert into testsoal(topik, soal, pilih) values('{$topik}', {$soal}, {$pilih})";
         $conn->query($sql);
+    }
+
+    if(count($errors) == 0) {
+        header('location: adminmain.php');
     }
 }
 
