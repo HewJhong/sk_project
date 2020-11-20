@@ -34,7 +34,7 @@
 <script>
 function add() {
     var div1 = document.createElement("div");
-    var div2 = document.createElement("div");
+    var div2 = document.createElement("button");
     var br = document.createElement("br");
     div1.textContent = "Outside Div";
     div1.classList.add("content");

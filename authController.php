@@ -104,8 +104,36 @@ if (isset($_POST['login-btn'])) {
 
 // For adminquizpage
 $nosoal = 1;
-$topik = "";
-$soal = "";
+$topik = array();
+$soal = array();
+
+if (isset($_POST['quiz-submit-btn'])) {
+    $topik = "fixed value";
+    $psoal = $_POST['psoal'];
+    $ppilih = $_POST['ppilih'];
+
+    for ($i = 0; $i < count($psoal); $i++) {
+        $soal = mysqli_escape_string ($conn, $psoal[$i]);
+        $pilih = mysqli_escape_string ($conn, $ppilih[$i]);
+        $sql = "insert into testsoal(topik, soal, pilih) values('{$topik}', {$soal}, {$pilih})";
+        $conn->query($sql);
+    }
+}
+
+// for test2.php
+if (isset($_POST['submit'])) {
+    $pname = $_POST['pname'];
+    $qty = $_POST['qty'];
+    $price = $_POST['price'];
+    for ($i = 0; $i < count($pname); $i++) {
+    $name = mysqli_escape_string ($conn, $pname[$i]);
+    $quantity = intval($qty[$i]);
+    $prc = doubleval($price[$i]);
+    $sql = "insert into testsoal(topik, soal, pilih) values('{$name}', {$quantity}, {$prc})";
+    $conn->query($sql);
+}
+}
+
 
 ?>
 </body>

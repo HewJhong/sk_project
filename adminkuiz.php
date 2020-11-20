@@ -7,7 +7,7 @@
     <div class="newquiz-container">
         <div class="row">
             <div id="quiz-form-div "class="quiz-form-div">
-                <form id="container" action="signup.php" method="post">
+                <form id="container" action="adminmain.php" method="post">
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <?php if(count($errors) > 0): ?>
@@ -17,16 +17,34 @@
                     <?php endforeach;?>
                     </div>
                     <?php endif ?>
-
+                    <div id="container">
                     <div class="form-group">
-                        <label for="topik">Topik</label>
-                        <input type="text" name="topik[]" value="<?php echo $topik;?>" class="form-control form-control-lg" autocomplete="off";>
-                    </div>
-                    <br>
-                    <div class="soal1">
-
+                        <label for="nosoal">No Soalan</label>
+                        <p class="nosoal"><?php echo $nosoal; ?></p>
                     </div>
                     <div class="form-group">
+                        <label for="soal">Soalan</label>
+                        <input type="text" name="psoal[]" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="jaw">Jawapan</label>
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="nosoal">No Soalan</label>
+                        <p class="nosoal"><?php echo $nosoal; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="soal">Soalan</label>
+                        <input type="text" name="psoal[]" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="jaw">Jawapan</label>
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg">
+                    </div>
+                    </div>
+                    <!-- Question Format -->
+                    <!-- <div class="form-group">
                         <label for="nosoal">No Soalan</label>
                         <p class="nosoal"><?php echo $nosoal; ?></p>
                     </div>
@@ -64,27 +82,25 @@
                                 <input type="text" name="pilih[]" class="form-control form-control-lg">
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group addques-btn">
-                        <div class="col-9"></div>
-                            
+                    </div> -->
+                    <!-- click to add question button here -->
+                    <div class="form-group">
+                        <div class="col-19"></div>
+                        <button onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
                     </div>
                     <script>
-                        var counter = 1;
-                        function addQues() {
-                        counter = counter + 1;
+                        function addques() {
                         var btn = document.createElement("BUTTON");
                         btn.classList.add("collapsible");
                         btn.textContent = "Click Me";
-                        var div = document.createElement("div");
-                        div.classList.add("content");
-                        var text_container = document.createElement("P");
-                        var text = document.createTextNode("Hello World");
-                        text_container.appendChild(text);
-                        div.appendChild(text_container)
-                        var container = document.getElementById("container");   
-                        container.appendChild(btn);
-                        container.appendChild(div);
+                        var soallabel1 = document.createElement("label");
+                        label.setAttribute("for","nosoal");
+                        label.textContent("text");
+                        var soalinput = document.createElement("input");
+                        var soaldiv = document.createElement("div");
+                        soaldiv.textContent("text");
+                        var container = document.getElementById("container");
+                        container.appendChild(btn)
                         }
                     </script>
                     <div class="form-group">
