@@ -4,13 +4,34 @@
 <html>
     <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
     </head>
     <body>
+    <script>
+        $(document).ready(function(){
+            $('#addquizform').submit(function(){
+                return false;
+            });
+
+            $('#quizsubmit-btn').click(function(){
+                $.post(
+                    $('#addquizform').attr('action'),
+                    $('#addquizform :input').serializeArray(),
+                    function(result){
+                        $('#result').html(result);
+                    }
+                )
+            })
+        });
+    </script>
     <div class="newquiz-container">
         <div class="row"></div>
-            <div id="quiz-form-div "class="quiz-form-div">
+            <div action="kuizdb.php" id="quiz-form-div "class="quiz-form-div" method="post">
                 <!-- <form action="adminmain.php" method="post"> -->
-                <form method="post">
+                <form method="post" id="addquizform">
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <!-- errors alert box -->
@@ -22,6 +43,8 @@
                     </div>
                     <?php endif ?>
 
+                    <span id="result"></span>
+
                     <div id="container">
                     <div class="form-group">
                         <label for="nosoal">No Soalan</label>
@@ -29,11 +52,11 @@
                     </div>
                     <div class="form-group">
                         <label for="soal">Soalan</label>
-                        <input type="text" name="psoal[]" class="form-control form-control-lg">
+                        <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="jaw">Jawapan</label>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg">
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="nosoal">No Soalan</label>
@@ -41,11 +64,11 @@
                     </div>
                     <div class="form-group">
                         <label for="soal">Soalan</label>
-                        <input type="text" name="psoal[]" class="form-control form-control-lg">
+                        <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="jaw">Jawapan</label>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg">
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off">
                     </div>
                     </div>
                     <!-- Question Format -->
@@ -104,7 +127,7 @@
                     }
                     </script>
                     <div class="form-group">
-                        <button type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg">Submit</button>
+                        <button id ="quizsubmit-btn" type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg">Submit</button>
                     </div>
                 </form>
             </div>
