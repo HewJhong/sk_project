@@ -11,14 +11,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO pengguna (id, username, email, password)
-VALUES ('02', 'Doe', 'john@example.com', 'somepassword')";
+$nop = $_POST['nop'];
+$peranan = $_POST['peranan'];
 
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+if(mysqli_query($conn, "INSERT INTO pengguna (nop, peranan) VALUES ('$nop', '$peranan')")) {
+  echo "Successfully inserted";
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo "Insertion failed";
 }
 
-$conn->close();
-?>
