@@ -143,16 +143,14 @@
                         '</div>'
                         ); 
                     }
-                    document.ready(function() {
-                        $(document).on('click', '#delete', function() {
-                            index--;
-                            $(this).closest('.soalan').remove();
-                            var index2 = 1;
-                            var newelement = $('#container');
-                            $(newelement).each(function() {
-                                $(this).find('.nosoal').text(index2);
-                                index++;
-                            });
+                    $(document).on('click', '#delete', function() {
+                        index--;
+                        $(this).closest('.soalan').remove();
+                        var index2 = 1;
+                        var newelement = $('#container');
+                        $(newelement).each(function() {
+                            $(this).find('.nosoal').text(index2);
+                            index++;
                         });
                     });
                     </script>
