@@ -112,37 +112,29 @@ if (isset($_POST['quiz-submit-btn'])) {
     $psoal = $_POST['psoal'];
     $ppilih = $_POST['ppilih'];
     
-
-    $errors['soal'] = "Please fill in all the blanks";
-    // if (!count("psoal") == $nosoal) {
-    //     $errors['soal'] = "Please fill in all the blanks";
-    // }
-
-
     for ($i = 0; $i < $nosoal; $i++) {
-        $soal = mysqli_escape_string ($conn, $psoal[$i]);
-        $pilih = mysqli_escape_string ($conn, $ppilih[$i]);
-        $sql = "insert into testsoal(topik, soal, pilih) values('{$topik}', {$soal}, {$pilih})";
-        $conn->query($sql);
+        $vsoal = $psoal[$i];
+        if (empty($vsoal)) {
+            $errors['soal'] = "Please fill in all the blank";
+        }
+    }
+    for ($i = 0; $i < $nosoal; $i++) {
+        $vpilih = $ppilih[$i];
+        if (empty($vpilih)) {
+            $errors['soal'] = "Please fill in all the blank";
+        }
     }
 
-    if(count($errors) == 0) {
-        header('location: adminmain.php');
-    }
-}
 
-// for test2.php
-if (isset($_POST['submit'])) {
-    $pname = $_POST['pname'];
-    $qty = $_POST['qty'];
-    $price = $_POST['price'];
-    for ($i = 0; $i < count($pname); $i++) {
-    $name = mysqli_escape_string ($conn, $pname[$i]);
-    $quantity = intval($qty[$i]);
-    $prc = doubleval($price[$i]);
-    $sql = "insert into testsoal(topik, soal, pilih) values('{$name}', {$quantity}, {$prc})";
-    $conn->query($sql);
-}
+    if (count($errors) === 0) {
+        for ($i = 0; $i < $nosoal; $i++) {
+            $soal = $psoal[$i];
+            $pilih = $ppilih[$i];
+            $sql = "insert into testsoal(topik, soal, pilih) values('$topik', '$soal', '$pilih')";
+            $conn->query($sql);
+        }
+    }
+    
 }
 
 

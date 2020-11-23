@@ -10,28 +10,38 @@
     crossorigin="anonymous"></script>
     </head>
     <body>
-    <script>
-        $(document).ready(function(){
-            $('#addquizform').submit(function(){
-                return false;
-            });
 
-            $('#quizsubmit-btn').click(function(){
-                $.post(
-                    $('#addquizform').attr('action'),
-                    $('#addquizform :input').serializeArray(),
-                    function(result){
-                        $('#result').html(result);
-                    }
-                )
-            })
-        });
-    </script>
     <div class="newquiz-container">
         <div class="row"></div>
-            <div action="kuizdb.php" id="quiz-form-div "class="quiz-form-div" method="post">
+            <div id="quiz-form-div "class="quiz-form-div" method="post">
                 <!-- <form action="adminmain.php" method="post"> -->
-                <form method="post" id="addquizform">
+                <form method="post" id="addquizform" action="kuizdb.php">
+                <script>
+                    $(document).ready(function(){
+                        $('#addquizform').submit(function(){
+                            return false;
+                        });
+
+                        $('#quizsubmit-btn').click(function(){
+                            $.post(
+                                $('#addquizform').attr('action'),
+                                $('#addquizform :input').serializeArray(),
+                                function(result){
+                                    if (result === "Sucesss"){
+                                        $('#result').html(
+                                        "<div class='alert alert-success'>Success</div>"
+                                        );
+                                    } else {
+                                        $('#result').html(
+                                        "<div class='alert alert-danger'>Please fill in all the blanks</div>"
+                                        );
+                                    }
+
+                                }
+                            )
+                        })
+                    });
+                </script>
                     <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <!-- errors alert box -->
@@ -46,6 +56,10 @@
                     <span id="result"></span>
 
                     <div id="container">
+                    <div class="form-group">
+                        <label for="topik">Topik</label>
+                        <input type="text" name="topik" class="form-control form-control-lg" autocomplete="off">
+                    </div>
                     <div class="form-group">
                         <label for="nosoal">No Soalan</label>
                         <p class="nosoal"><?php echo $nosoal; ?></p>
@@ -117,13 +131,29 @@
                         <button onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
                     </div>
                     <script>
+                    // function addque() {
+                    //     var input = document.createElement("P");
+                    //     var label = document.createElement("label")
+                    //     var div = document.createElement("div");
+                    //     label.textContent = "Test text..."
+                    //     var container = document.getElementById("container");
+                    //     container.appendChild();
+                    // }
                     function addques() {
-                        var p = document.createElement("P");
-                        var label = document.createElement("label")
-                        var div = document.createElement("div");
-                        div.textContent = "Test text..."
-                        var container = document.getElementById("container");
-                        container.appendChild(div);
+                        $('#container').append(
+                        "<div class='form-group'>"+
+                            "<label for='nosoal'>No Soalan</label>"+
+                            "<p class='nosoal'><?php echo $nosoal; ?></p>"+
+                        "</div>"+
+                        "<div class='form-group'>"+
+                            "<label for='soal'>Soalan</label>"+
+                            "<input type='text' name='psoal[]' class='form-control form-control-lg' autocomplete='off'>"+
+                        "</div>"+
+                        "<div class='form-group'>"+
+                            "<label for='jaw'>Jawapan</label>"+
+                            "<input type='text' name='ppilih[]' class='form-control form-control-lg' autocomplete='off'>"+
+                        "</div>"
+                        );
                     }
                     </script>
                     <div class="form-group">

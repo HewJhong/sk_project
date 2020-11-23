@@ -15,18 +15,34 @@ $nosoal = 2;
 $topik = array();
 $soal = array();
 
-$topik = "fixed value";
+$topik = $_POST['topik'];
 $psoal = $_POST['psoal'];
 $ppilih = $_POST['ppilih'];
 
-
-
 for ($i = 0; $i < $nosoal; $i++) {
-    $soal = $psoal[$i];
-    $pilih = $ppilih[$i];
-    $sql = "insert into testsoal(topik, soal, pilih) values('$topik', '$soal', '$pilih')";
-    $conn->query($sql);
-    echo "Sucess";
+  $vsoal = $psoal[$i];
+  if (empty($vsoal)) {
+      $errors['soal'] = "Please fill in all the blank";
+      echo "Blanks found!";
+  }
+}
+for ($i = 0; $i < $nosoal; $i++) {
+  $vpilih = $ppilih[$i];
+  if (empty($vpilih)) {
+      $errors['soal'] = "Please fill in all the blank";
+      echo "Blanks found!";
+  }
+}
+
+
+if (count($errors) === 0) {
+  for ($i = 0; $i < $nosoal; $i++) {
+      $pilih = $ppilih[$i];
+      $soal = $psoal[$i];
+      $sql = "INSERT INTO testsoal(topik, soal, pilih) VALUES('$topik', '$soal', '$pilih')";
+      $conn->query($sql);
+      echo "Success";
+  }
 }
 
 ?>
