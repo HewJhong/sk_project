@@ -27,16 +27,7 @@
                                 $('#addquizform').attr('action'),
                                 $('#addquizform :input').serializeArray(),
                                 function(result){
-                                    if (result === "Sucesss"){
-                                        $('#result').html(
-                                        "<div class='alert alert-success'>Success</div>"
-                                        );
-                                    } else {
-                                        $('#result').html(
-                                        "<div class='alert alert-danger'>Please fill in all the blanks</div>"
-                                        );
-                                    }
-
+                                    $('#result').html(result);
                                 }
                             )
                         })
@@ -54,35 +45,30 @@
                     <?php endif ?>
 
                     <span id="result"></span>
-
                     <div id="container">
                     <div class="form-group">
                         <label for="topik">Topik</label>
-                        <input type="text" name="topik" class="form-control form-control-lg" autocomplete="off">
+                        <input type="text" name="topik" class="form-control form-control-lg" autocomplete="off" required>
                     </div>
-                    <div class="form-group">
+                    <div class="soalan">
+                    <div class="row">
+                    <div class="form-group col-md-10">
                         <label for="nosoal">No Soalan</label>
-                        <p class="nosoal"><?php echo $nosoal; ?></p>
+                        <p class="nosoal">1</p>
+                    </div>
+                    <div class="form-group col-md-2 delete-btn">
+                        <button id="delete" type="button" name="delete" class="btn btn-danger btn-block btn-lg">Delete</button>
+                    </div>
                     </div>
                     <div class="form-group">
                         <label for="soal">Soalan</label>
-                        <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off">
+                        <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off" required >
                     </div>
                     <div class="form-group">
                         <label for="jaw">Jawapan</label>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off">
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
                     </div>
-                    <div class="form-group">
-                        <label for="nosoal">No Soalan</label>
-                        <p class="nosoal"><?php echo $nosoal; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="soal">Soalan</label>
-                        <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="jaw">Jawapan</label>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off">
                     </div>
                     </div>
                     <!-- Question Format -->
@@ -128,33 +114,47 @@
                     <!-- click to add question button here -->
                     <div class="form-group">
                         <div class="col-19"></div>
-                        <button onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
+                        <button id="add-btn" onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
                     </div>
                     <script>
-                    // function addque() {
-                    //     var input = document.createElement("P");
-                    //     var label = document.createElement("label")
-                    //     var div = document.createElement("div");
-                    //     label.textContent = "Test text..."
-                    //     var container = document.getElementById("container");
-                    //     container.appendChild();
-                    // }
+                    var index = 1;
                     function addques() {
+                        index++;
                         $('#container').append(
-                        "<div class='form-group'>"+
-                            "<label for='nosoal'>No Soalan</label>"+
-                            "<p class='nosoal'><?php echo $nosoal; ?></p>"+
-                        "</div>"+
-                        "<div class='form-group'>"+
-                            "<label for='soal'>Soalan</label>"+
-                            "<input type='text' name='psoal[]' class='form-control form-control-lg' autocomplete='off'>"+
-                        "</div>"+
-                        "<div class='form-group'>"+
-                            "<label for='jaw'>Jawapan</label>"+
-                            "<input type='text' name='ppilih[]' class='form-control form-control-lg' autocomplete='off'>"+
-                        "</div>"
-                        );
+                        '<div class="soalan">'+
+                            '<div class="row">'+
+                                '<div class="form-group col-md-10">'+
+                                    '<label for="nosoal">No Soalan</label>'+
+                                    '<p class="nosoal">'+index+'</p>'+
+                                '</div>'+
+                                '<div class="form-group col-md-2 delete-btn">'+
+                                    '<button id ="delete" type="button" name="delete" class="btn btn-danger btn-block btn-lg">Delete</button>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="soal">Soalan</label>'+
+                                '<input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="jaw">Jawapan</label>'+
+                                '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                            '</div>'+
+                        '</div>'
+                        ); 
                     }
+                    document.ready(function() {
+                        $(document).on('click', '#delete', function() {
+                            index--;
+                            $(this).closest('.soalan').remove();
+                            var index2 = 1;
+                            var newelement = $('#container');
+                            $(newelement).each(function() {
+                                $(this).find('.nosoal').text(index2);
+                                index++;
+                            });
+                        });
+                    });
                     </script>
                     <div class="form-group">
                         <button id ="quizsubmit-btn" type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg">Submit</button>
