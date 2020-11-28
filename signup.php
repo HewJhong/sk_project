@@ -42,7 +42,7 @@ if (isset($_SESSION['nop'])) {
                     </div>
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="name" value="<?php echo $name;?>" class="form-control form-control-lg" autocomplete="off";>
+                        <input type="text" name="nama" value="<?php echo $nama;?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
                         <label for="notel">Nombor Telefon</label>

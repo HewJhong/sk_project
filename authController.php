@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 $nop = '';
 $notel = '';
-$name = '';
+$nama = '';
 $errors = array();
 
 
@@ -25,8 +25,8 @@ $errors = array();
 if (isset($_POST['signup-btn'])) {
     $receivednop = $_POST['nop'];
     $nop = trim($receivednop);
-    $receivedname = $_POST['name'];
-    $name = trim($receivedname);
+    $receivednama = $_POST['nama'];
+    $nama = trim($receivednama);
     $receivednotel = $_POST['notel'];
     $notel = trim($receivednotel);
     $password = $_POST['password'];
@@ -35,7 +35,7 @@ if (isset($_POST['signup-btn'])) {
     if (empty($nop)) {
         $errors['nop'] = "Username required";
     }
-    if (empty($name)) {
+    if (empty($nama)) {
         $errors['name'] = "Name required";
     }
     if (empty($notel)) {
@@ -56,7 +56,7 @@ if (isset($_POST['signup-btn'])) {
     }
 
     if (count($errors) === 0) {
-        $sql = "INSERT INTO pengguna (nop, notel, peranan, password) VALUES ('$nop', '$notel', 'murid', '$password'); INSERT INTO telefon (notel, name) VALUES ('$notel', '$name') ";
+        $sql = "INSERT INTO telefon (notel, nama) VALUES ('$notel', '$nama'); INSERT INTO pengguna (nop, notel, peranan, password) VALUES ('$nop', '$notel', 'murid', '$password');";
         if ($conn->multi_query($sql) === TRUE) {
             header("Location: login.php");
           } else {
@@ -90,11 +90,11 @@ if (isset($_POST['login-btn'])) {
         $row = mysqli_fetch_array($result);
         $admin = "admin";
         $murid = "murid";
-        if(($row['notel'] == $notel  && $row['password'] == $password) ||  ($row['nop'] == $nop && $row['password'] == $password)) {
+        if(($row['notel'] == $notel  && $row['password'] == $password) || ($row['nop'] == $nop && $row['password'] == $password)) {
             $_SESSION['nop'] = $row['nop'];
             $_SESSION['peranan'] = $row['peranan'];
             $_SESSION['notel'] = $row['notel'];
-            $_SESSION['name'] = $namerow['name'];
+            $_SESSION['nama'] = $namerow['nama'];
             header("Location: main.php");
         }  else {
             $errors['loginfail'] = "Login Failed";
@@ -136,8 +136,6 @@ if (isset($_POST['quiz-submit-btn'])) {
     }
     
 }
-
-
 ?>
 </body>
 </html>
