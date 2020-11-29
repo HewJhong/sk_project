@@ -5,14 +5,15 @@ require_once 'authController.php';
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script src="autocom_plugin/dist/bootstrap-4-autocomplete.min.js"></script>
+    <script src="changefile.js"></script>
     </head>
     <body>
-
     <div class="newquiz-container">
         <div class="row"></div>
             <div id="quiz-form-div "class="quiz-form-div" method="post">
@@ -70,7 +71,7 @@ require_once 'authController.php';
                     <div id="container">
                     <div class="form-group">
                         <label for="topik">Topik</label>
-                        <input type="text" name="topik" class="form-control form-control-lg" autocomplete="off" required>
+                        <input type="text" name="topik" id="autoComplete" class="form-control form-control-lg" required>
                     </div>
                     <div class="soalan">
                     <div class="row">
@@ -123,7 +124,7 @@ require_once 'authController.php';
                     <script>
                     var index = 1;
                     function addques() {
-                        index++;
+                        index = index + 1;
                         var radio = "pilihradio"+index;
                         $('#container').append(
                         '<div class="soalan">'+
@@ -171,14 +172,30 @@ require_once 'authController.php';
                         ); 
                     }
                     $(document).on('click', '#delete', function() {
-                        index--;
+                        index = index - 1;
                         $(this).closest('.soalan').remove();
                         var index2 = 1;
                         var newelement = $('.soalan');
                         $(newelement).each(function() {
                             $(this).find('.nosoal').text(index2);
+                            var radio = "pilihradio"+index2;
+                            $(this).find('.form-check-input').attr('name', radio);
                             index2++;
                         });
+                    });
+                    </script>
+                    <script>
+                    var src = {
+                        "jQuery": 1, 
+                        "Script": 2, 
+                        "HTML5": 3, 
+                        "CSS3": 4, 
+                        "Angular": 5, 
+                        "React": 6, 
+                        "VueJS": 7
+                    }
+                    $('#autoComplete').autocomplete({
+                        source: src
                     });
                     </script>
                     <div class="form-group">
