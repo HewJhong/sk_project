@@ -1,5 +1,6 @@
 <html>
 <body>
+<script src="changepage.js"></script>
 <?php
 
 session_start();
@@ -102,40 +103,17 @@ if (isset($_POST['login-btn'])) {
     }
 }
 
-// For adminquizpage
-$nosoal = 2;
-$topik = array();
-$soal = array();
-
-if (isset($_POST['quiz-submit-btn'])) {
-    $topik = "fixed value";
-    $psoal = $_POST['psoal'];
-    $ppilih = $_POST['ppilih'];
-    
-    for ($i = 0; $i < $nosoal; $i++) {
-        $vsoal = $psoal[$i];
-        if (empty($vsoal)) {
-            $errors['soal'] = "Please fill in all the blank";
-        }
-    }
-    for ($i = 0; $i < $nosoal; $i++) {
-        $vpilih = $ppilih[$i];
-        if (empty($vpilih)) {
-            $errors['soal'] = "Please fill in all the blank";
-        }
-    }
-
-
-    if (count($errors) === 0) {
-        for ($i = 0; $i < $nosoal; $i++) {
-            $soal = $psoal[$i];
-            $pilih = $ppilih[$i];
-            $sql = "insert into testsoal(topik, soal, pilih) values('$topik', '$soal', '$pilih')";
-            $conn->query($sql);
-        }
-    }
-    
+/// For adminkuizlist.php delete button
+if (isset($_GET['delete'])) {
+    $nosoal = $_GET['id'];
+    $sqldelete = mysqli_query($conn, "DELETE FROM testsoal WHERE (nosoal='$nosoal')");
+    echo "Success";
+    // echo '<script type="text/javascript">',
+    // 'quizlistpage();',
+    // '</script>';
+    exit();
 }
+
 ?>
 </body>
 </html>
