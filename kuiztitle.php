@@ -1,1 +1,1 @@
-<title>Kuiz</title>
++ Kuiz
