@@ -35,6 +35,7 @@ for ($i = 0; $i < $nosoal; $i++) {
   if (empty($vsoal)) {
       $errors['soal'] = "Please fill in all the blank";
       echo "Sila masukkan semua soalan,";
+      echo $i;
   }
 }
 for ($i = 0; $i < $nopilih; $i++) {
@@ -109,8 +110,8 @@ if (count($errors) === 0) {
           $nosoal = 1;
         } else {
           $getlastidsoal = mysqli_query($conn, "SELECT * FROM testsoal ORDER BY LENGTH (idsoal) DESC, idsoal DESC LIMIT 1");
-          $resultexisting = mysqli_fetch_array($getlastidsoal);
-          $stridsoal = ltrim($resultexisting['idsoal'], $soalprefix);
+          $existingidsoal = mysqli_fetch_array($getlastidsoal);
+          $stridsoal = ltrim($existingidsoal['idsoal'], $soalprefix);
           $intsoal = (int)$stridsoal;
           $intsoal++;
           $int1 = $intsoal;
@@ -152,7 +153,7 @@ if (count($errors) === 0) {
           $conn->query($update4);
         }
       }
-  }
+    }
 }
 
 ?>
