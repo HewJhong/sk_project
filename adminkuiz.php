@@ -1,4 +1,6 @@
-<?php require_once 'authController.php'; ?>
+<?php 
+require_once 'authController.php'; 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +29,26 @@
                                 $('#addquizform').attr('action'),
                                 $('#addquizform :input').serializeArray(),
                                 function(result){
+                                    var results = result.split(',');
+                                    var unique = [];
+                                    $.each(results, function(i, el){
+                                        if($.inArray(el, unique) === -1) unique.push(el);
+                                    });
                                     $('#result').html(result);
+                                    // if (result.includes('Success')) {
+                                    //     $('#result').html("<div class='alert alert-success'>"+"Success"+"</div>");
+                                    // } else if (result.includes('Question existed')) {
+                                    //     $('#result').html("<div class='alert alert-danger'>"+"Question existed"+"</div>");
+                                    // } else if (result.includes('Undefined index') && result.includes("soalan") && result.includes("pilihan")) {
+                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua soalan"+"<br>"+"Sila masukkan semua pilihan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
+                                    // } else if (result.includes('Undefined index') && result.includes("soalan")) {
+                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua soalan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
+                                    // } else if (result.includes('Undefined index') && result.includes("pilihan")) {
+                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua pilihan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
+                                    // } else {
+                                    //     $('#result').html("<div class='alert alert-danger'>"+unique[0]+"<br>"+unique[1]+"</div>");
+
+                                    // }
                                 }
                             )
                         })
@@ -44,7 +65,8 @@
                     </div>
                     <?php endif ?>
 
-                    <span id="result"></span>
+                    <div id="result"></div>
+
                     <div id="container">
                     <div class="form-group">
                         <label for="topik">Topik</label>
@@ -66,51 +88,33 @@
                     </div>
                     <div class="form-group">
                         <label for="jaw">Jawapan</label>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
-                        <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
-                    </div>
-                    </div>
-                    </div>
-                    <!-- Question Format -->
-                    <!-- <div class="form-group">
-                        <label for="nosoal">No Soalan</label>
-                        <p class="nosoal"><?php echo $nosoal; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="soal">Soalan</label>
-                        <input type="text" name="soal[]" class="form-control form-control-lg">
-                    </div>
-                    <div class="form-group">
-                        <label for="jaw">Jawapan</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pilihradio[]" id="pilihradio" value="1">
-                            <label for="pilih1" class="form-check-label"></label>
-                            <div class="form-group">
-                                <input type="text" name="pilih[]" class="form-control form-control-lg">
-                            </div>
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A">
+                                <div class="form-group">
+                                    <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                                </div>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pilihradio[]" id="pilihradio" value="1">
-                            <label for="pilih2" class="form-check-label"></label>
-                            <div class="form-group">
-                                <input type="text" name="pilih[]" class="form-control form-control-lg">
-                            </div>
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="B">
+                                <div class="form-group">
+                                    <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                                </div>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pilihradio[]" id="pilihradio" value="1">
-                            <label for="pilih3" class="form-check-label"></label>
-                            <div class="form-group">
-                                <input type="text" name="pilih[]" class="form-control form-control-lg">
-                            </div>
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="C">
+                                <div class="form-group">
+                                    <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                                </div>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pilihradio[]" id="pilihradio" value="1">
-                            <label for="pilih4" class="form-check-label"></label>
-                            <div class="form-group">
-                                <input type="text" name="pilih[]" class="form-control form-control-lg">
-                            </div>
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="D">
+                                <div class="form-group">
+                                    <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                                </div>
                         </div>
-                    </div> -->
+                    </div>
+                    </div>
+                    </div>
                     <!-- click to add question button here -->
                     <div class="form-group">
                         <div class="col-19"></div>
@@ -120,6 +124,7 @@
                     var index = 1;
                     function addques() {
                         index++;
+                        var radio = "pilihradio"+index;
                         $('#container').append(
                         '<div class="soalan">'+
                             '<div class="row">'+
@@ -137,8 +142,30 @@
                             '</div>'+
                             '<div class="form-group">'+
                                 '<label for="jaw">Jawapan</label>'+
-                                '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
-                                '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                '<div class="form-check">'+
+                                    '<input type="radio" class="form-check-input" name="'+radio+'" id="pilihradio" value="A">'+
+                                        '<div class="form-group">'+
+                                            '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                        '</div>'+
+                                '</div>'+
+                                '<div class="form-check">'+
+                                    '<input type="radio" class="form-check-input" name="'+radio+'" id="pilihradio" value="B">'+
+                                        '<div class="form-group">'+
+                                            '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                        '</div>'+
+                                '</div>'+
+                                '<div class="form-check">'+
+                                    '<input type="radio" class="form-check-input" name="'+radio+'" id="pilihradio" value="C">'+
+                                        '<div class="form-group">'+
+                                            '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                        '</div>'+
+                                '</div>'+
+                                '<div class="form-check">'+
+                                    '<input type="radio" class="form-check-input" name="'+radio+'" id="pilihradio" value="D">'+
+                                        '<div class="form-group">'+
+                                            '<input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>'+
+                                        '</div>'+
+                                '</div>'+
                             '</div>'+
                         '</div>'
                         ); 
@@ -147,10 +174,10 @@
                         index--;
                         $(this).closest('.soalan').remove();
                         var index2 = 1;
-                        var newelement = $('#container');
+                        var newelement = $('.soalan');
                         $(newelement).each(function() {
                             $(this).find('.nosoal').text(index2);
-                            index++;
+                            index2++;
                         });
                     });
                     </script>
