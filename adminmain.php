@@ -12,14 +12,32 @@ if (!isset($_SESSION['nop'])) {
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <div id="navbar" class="header">
+    <script src="changepage.js"></script>
+    <!-- <div id="navbar" class="header">
         <button style="font-family: 'Galada';font-size: 40px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</button>
         <button type="text" class="top-title text-center navbar-btn-logout" onclick="destroysession()">Log Out</button>
-        <a class="text-center account-status">Akaun <?php echo $_SESSION['peranan'];?></a>
+        <p class="text-center account-status">Akaun <?php echo $_SESSION['peranan'];?></p>
         <button class="top-title text-center navbar-btn" onclick="quizpage()">Kuiz</button>
         <button class="top-title text-center navbar-btn" onclick="resultpage()">Keputusan</button>
         <button class="top-title text-center navbar-btn active" onclick="homepage()">Home</button>
+    </div> -->
+    <nav id="navbar" class="navbar navigation">
+    <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</p>
+    <p class="account-status">Akaun Admin</p>
+    <div class="float-right">
+    <button class="navbar-btn btn btn-secondary btn-lg" onclick="homepage(); hometitle()">Home</button>
+    <button class="navbar-btn btn btn-secondary btn-lg" onclick="resultpage()">Keputusan</button>
+    <div class="dropdown dropmenu">
+    <button type="button" data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle">Quiz</button>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <button class="dropdown-item" onclick="quizlistpage()">Senarai Kuiz</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" onclick="quizpage(); kuiztitle()">Tambah Kuiz Baharu</button>
     </div>
+    </div>
+    <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
+    </div>
+    </nav>
     <!-- errors alert box -->
     <?php if(count($errors) > 0): ?>
         <div class="alertmessage">
@@ -41,38 +59,9 @@ if (!isset($_SESSION['nop'])) {
     crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
-        // set default page
-        quizpage();
-        var btnContainer = document.getElementById("navbar");
-
-        // Get all buttons with class="btn" inside the container
-        var btns = btnContainer.getElementsByClassName("navbar-btn");
-
-        // Loop through the buttons and add the active class to the current/clicked button
-        for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-}
-    })
-    function homepage() {
         $("#main-content").load("adminhome.php");
-    }
-    function quizpage() {
-        $("#main-content").load("adminkuiz.php");
-    }
-    function resultpage() {
-        $("#main-content").load("studentresult.php");
-    }
-    function kuiztitle() {
-        $("#title").load("kuiztitle.php");
-    }
-    function destroysession() {
-        window.location.href = "./logKeluar.php";
-    }
-    </script>   
+    })
+    </script> 
 </head>
 <body style="overflow: hidden;">
     <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
