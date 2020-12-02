@@ -23,11 +23,12 @@
       }
     })
   });
-  $(document).on('click', '.delete-soal', function() {
+  $(document).on('click', '.delete-soal-btn', function() {
       var id = this.id
       $clicked_btn = $(this);
-      $(this).closest('.row').remove();
-      $.ajax({
+      // $(this).closest('.row').remove();
+      $(document).on('click', '.delete-soal', function() {
+        $.ajax({
         url: 'authController.php',
         type: 'GET',
         data: {
@@ -38,8 +39,47 @@
           $('#results').append(result);
         }
       });
+      });
     });
 </script>
+<div class='modal fade' id='edit-soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h5 class='modal-title' id='exampleModalLabel'>Warning</h5>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        <div class='modal-body'>
+          Edit
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
+          <button type='button' class='btn btn-primary edit-soal' data-dismiss='modal' id='".$nosoal."'>Ya, teruskan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class='modal fade' id='confirmationmodal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h5 class='modal-title' id='exampleModalLabel'>Warning</h5>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        <div class='modal-body'>
+          Hapuskan Soalan Ini?
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
+          <button type='button' class='btn btn-primary delete-soal' data-dismiss='modal' id='".$nosoal."'>Ya, teruskan</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <div id="responsecontainer">
 </div>
 <div id="results"></div>

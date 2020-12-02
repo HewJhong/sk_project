@@ -43,7 +43,7 @@ while ($row1 = mysqli_fetch_array($sql1)){
     $nosoal = $soalresult['nosoal'];
     echo "<div class='row'>";
     echo "<h5 class='contenttext col-sm'>".$value."</h5>";
-    echo "<a class='col-sm-1 btn btn-primary edit-btn id='".$nosoal."'>Ubah</a>";
+    echo "<a class='col-sm-1 btn btn-primary edit-btn' id='".$nosoal."' data-toggle='modal' data-target='#edit-soal'>Ubah</a>";
     echo "<a class='col-sm-1 btn btn-danger delete-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#confirmationmodal'>X</a>";
     echo "</div>";
       }
@@ -67,25 +67,7 @@ while ($row1 = mysqli_fetch_array($sql1)){
       });
     }
     </script>
-    <div class='modal fade' id='confirmationmodal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-    <div class='modal-dialog' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <h5 class='modal-title' id='exampleModalLabel'>Warning</h5>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body'>
-          Adakah anda mahu menghapuskan soalan ini?
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
-          <button type='button' class='btn btn-primary delete-soal' data-dismiss='modal' id='".$nosoal."'>Ya, teruskan</button>
-        </div>
-      </div>
-    </div>
-  </div>";
+    ";
 $conn->close();
 
 ?>
