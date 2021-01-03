@@ -18,109 +18,33 @@ h1 {
     font-size: .89em;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-  
-.navbar-list {
-  float: left;
+.navigation {
+  background-color: rgb(230, 230, 230);
+  margin-top: 0px;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
+.navbar-home {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: black;
+}
+
+.navbar-btn-logout {
+  margin-left: 50px;
 }
 
 .navbar-btn {
-  width: 150px;
-  height: 50px;
-  border:none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255,0);
-  font-size: 15px;
-  color: white;
-}
-
-.header {
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
-  align-items: center;
-}
-
-.header h1 {
-  margin-top: 8px;
-  margin-left: 6px;
-}
-
-.header .navbar-btn {
-  float: right;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 25px;
-  border-radius: 20px;
-}
-
-.navbar-btn:hover {
-  background-color: lightgray;
-  color: black;
-}
-
-.active {
-  background-color: #1386FC;
-  color: white;
-}
-
-.navbar-btn:focus {
-  outline: none;
-}
-
-
-.header .navbar-btn-logout {
-  float: right;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 25px;
-  border: none;
-  border-radius: 20px;
-}
-.navbar-btn-logout:hover {
-  background-color: orange;
-  color: black;
-}
-
-.navbar-btn-logout:focus {
-  outline: none;
-} 
-
-.navbar-home {
-  outline: none;
-  border: none;
-  color: black;
-}
-
-.navbar-home:focus {
-  outline: none;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .account-status {
-  position: absolute;
-  top: 68px;
-  left: 20px;
-  font-weight: bold;
-  color: black;
+  position: fixed;
+  margin-top: 70px;
+}
+
+.dropmenu {
+  display: inline-block;
 }
 
 .collapsible_container {
@@ -143,11 +67,16 @@ li a:hover {
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 20px;
+}
+
+.collapsible:focus{
+  outline: none;
 }
 
 .active, .collapsible:hover {
   background-color: #1386FC;
+  color: white;
 }
 
 .content {
@@ -156,6 +85,37 @@ li a:hover {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
+}
+
+.contenttext{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.edit-soal-btn {
+  width: 20px;
+  height: 40px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #1386FC;
+  color: white;
+  border: gray;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-soal-btn {
+  width: 20px;
+  height: 40px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  border: gray;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .quiz-form-div {

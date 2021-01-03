@@ -71,7 +71,11 @@ require_once 'authController.php';
                     <div id="container">
                     <div class="form-group">
                         <label for="topik">Topik</label>
-                        <input type="text" name="topik" id="autoComplete" class="form-control form-control-lg" required>
+                        <input list="topik" type="text" name="topik" class="form-control form-control-lg" required>
+                        <datalist id="topik">
+                            <option value="Tambah"></option>
+                            <option value="Tolak"></option>
+                        </datalist>
                     </div>
                     <div class="soalan">
                     <div class="row">
@@ -119,7 +123,7 @@ require_once 'authController.php';
                     <!-- click to add question button here -->
                     <div class="form-group">
                         <div class="col-19"></div>
-                        <button id="add-btn" onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
+                        <button title="Tambah soalan" id="add-btn" onclick="addques()" type="button" name="addQuestion" class="btn btn-primary btn-lg col-1"> + </button>
                     </div>
                     <script>
                     var index = 1;
@@ -182,20 +186,6 @@ require_once 'authController.php';
                             $(this).find('.form-check-input').attr('name', radio);
                             index2++;
                         });
-                    });
-                    </script>
-                    <script>
-                    var src = {
-                        "jQuery": 1, 
-                        "Script": 2, 
-                        "HTML5": 3, 
-                        "CSS3": 4, 
-                        "Angular": 5, 
-                        "React": 6, 
-                        "VueJS": 7
-                    }
-                    $('#autoComplete').autocomplete({
-                        source: src
                     });
                     </script>
                     <div class="form-group">

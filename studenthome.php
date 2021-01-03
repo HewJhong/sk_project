@@ -20,7 +20,7 @@
     </div>
     <button class="collapsible">Check Name</button>
     <div class="content">
-    <p><?php echo $_SESSION['name']?></p>
+    <p><?php echo $_SESSION['nama']?></p>
     </div>
     <script>
     var btn = document.createElement("BUTTON");

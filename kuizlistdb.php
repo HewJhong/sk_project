@@ -43,8 +43,9 @@ while ($row1 = mysqli_fetch_array($sql1)){
     $nosoal = $soalresult['nosoal'];
     echo "<div class='row'>";
     echo "<h5 class='contenttext col-sm'>".$value."</h5>";
-    echo "<a class='col-sm-1 btn btn-primary edit-btn' id='".$nosoal."' data-toggle='modal' data-target='#edit-soal'>Ubah</a>";
-    echo "<a class='col-sm-1 btn btn-danger delete-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#confirmationmodal'>X</a>";
+    echo "<a class='col-sm-1 btn btn-primary edit-soal-btn' id='".$nosoal."'>Ubah</a>";
+    // echo "<a class='col-sm-1 btn btn-primary edit-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#edit-soal'>Ubah</a>";
+    echo "<a title='Hapuskan' class='col-sm-1 btn btn-danger delete-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#confirmationmodal'>X</a>";
     echo "</div>";
       }
       echo "</div>";

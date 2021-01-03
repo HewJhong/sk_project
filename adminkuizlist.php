@@ -26,7 +26,7 @@
   $(document).on('click', '.delete-soal-btn', function() {
       var id = this.id
       $clicked_btn = $(this);
-      // $(this).closest('.row').remove();
+
       $(document).on('click', '.delete-soal', function() {
         $.ajax({
         url: 'authController.php',
@@ -37,10 +37,24 @@
         },          
         success: function(result){
           $('#results').append(result);
+          $clicked_btn.closest('.row').remove();
         }
       });
       });
     });
+  $(document).on('click', '.edit-soal-btn', function() {
+    var nosoal = this.id
+    $.ajax({
+      url: 'authController.php',
+      method: 'POST',
+      data: {nosoal:nosoal},
+      dataType:'json',
+      success: function(data){
+        $('#soalan').val(data.soal);
+        $('#edit-soal').modal('show');
+      }
+    });
+  });
 </script>
 <div class='modal fade' id='edit-soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog' role='document'>
@@ -52,8 +66,38 @@
           </button>
         </div>
         <div class='modal-body'>
-          Edit
-        </div>
+          <div class="form-group">
+              <label for="soal">Soalan</label>
+              <input type="text" id='soalan' name="psoal[]" class="form-control form-control-lg" autocomplete="off" required >
+          </div>
+          <div class="form-group">
+              <label for="jaw">Jawapan</label>
+              <div class="form-check">
+                  <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A">
+                      <div class="form-group">
+                          <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                      </div>
+              </div>
+              <div class="form-check">
+                  <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="B">
+                      <div class="form-group">
+                          <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                      </div>
+              </div>
+              <div class="form-check">
+                  <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="C">
+                      <div class="form-group">
+                          <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                      </div>
+              </div>
+              <div class="form-check">
+                  <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="D">
+                      <div class="form-group">
+                          <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
+                      </div>
+              </div>
+          </div>
+          </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
           <button type='button' class='btn btn-primary edit-soal' data-dismiss='modal' id='".$nosoal."'>Ya, teruskan</button>

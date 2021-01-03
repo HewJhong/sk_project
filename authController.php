@@ -107,12 +107,21 @@ if (isset($_POST['login-btn'])) {
 if (isset($_GET['delete'])) {
     $nosoal = $_GET['id'];
     $sqldelete = mysqli_query($conn, "DELETE FROM testsoal WHERE (nosoal='$nosoal')");
-    echo "Success";
     // echo '<script type="text/javascript">',
     // 'quizlistpage();',
     // '</script>';
     exit();
 }
+
+/// For adminkuizlist.php edit button
+if (isset($_POST['nosoal'])) {
+    $nosoal = $_POST['nosoal'];
+    $query = "SELECT * FROM testsoal WHERE nosoal=$nosoal";
+    $results = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($results);
+    echo json_encode($row);
+}
+
 
 ?>
 </body>
