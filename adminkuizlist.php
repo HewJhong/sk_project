@@ -9,7 +9,10 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" 
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
   crossorigin="anonymous"></script>
-  <script src="changefile.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+  crossorigin="anonymous"></script>
+  <script src="changepage.js"></script>
   </head>
 <body>
 <script>
@@ -21,10 +24,10 @@
       success: function(response){
         $("#responsecontainer").html(response);
       }
-    })
+    });
   });
   $(document).on('click', '.delete-soal-btn', function() {
-      var id = this.id
+      var id = this.id;
       $clicked_btn = $(this);
 
       $(document).on('click', '.delete-soal', function() {
@@ -42,19 +45,20 @@
       });
       });
     });
-  $(document).on('click', '.edit-soal-btn', function() {
-    var nosoal = this.id
-    $.ajax({
-      url: 'authController.php',
-      method: 'POST',
-      data: {nosoal:nosoal},
-      dataType:'json',
-      success: function(data){
-        $('#soalan').val(data.soal);
-        $('#edit-soal').modal('show');
-      }
+    $(document).on('click', '.edit-soal-btn', function() {
+      var nosoal = this.id;
+      $.ajax({
+        url: 'authController.php',
+        method: 'POST',
+        data: {'nosoal':nosoal},
+        dataType: 'json',
+        success: function(data){
+          console.log(data.nosoal);
+          $('#soalan').val(data.soal);
+          $('#edit-soal').modal('show');
+        }
+      });
     });
-  });
 </script>
 <div class='modal fade' id='edit-soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog' role='document'>

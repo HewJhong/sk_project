@@ -1,4 +1,6 @@
 <html>
+<head>
+</head>
 <body>
 <script src="changepage.js"></script>
 <?php
@@ -107,19 +109,19 @@ if (isset($_POST['login-btn'])) {
 if (isset($_GET['delete'])) {
     $nosoal = $_GET['id'];
     $sqldelete = mysqli_query($conn, "DELETE FROM testsoal WHERE (nosoal='$nosoal')");
-    // echo '<script type="text/javascript">',
-    // 'quizlistpage();',
-    // '</script>';
+    echo '<script type="text/javascript">',
+    'quizlistpage();',
+    '</script>';
     exit();
 }
 
 /// For adminkuizlist.php edit button
-if (isset($_POST['nosoal'])) {
+if(isset($_POST["nosoal"])) {
     $nosoal = $_POST['nosoal'];
-    $query = "SELECT * FROM testsoal WHERE nosoal=$nosoal";
-    $results = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($results);
-    echo json_encode($row);
+    $result = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
+    $row = mysqli_fetch_array($result);
+    $jsonresult = json_encode($row);
+    echo $jsonresult;
 }
 
 
