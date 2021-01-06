@@ -66,7 +66,7 @@
           $('#edit-soal').modal('show');
         }
       });
-        $(document).on('click', '.edit-soal', function() {
+        $(document).off().on('click', '.edit-soal', function() {
         var soal = $("#soalan").val();
         var pilih1 = $("#pilih1").val();
         var pilih2 = $("#pilih2").val();
