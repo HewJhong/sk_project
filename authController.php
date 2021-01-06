@@ -1,6 +1,4 @@
 <html>
-<head>
-</head>
 <body>
 <script src="changepage.js"></script>
 <?php
@@ -109,9 +107,9 @@ if (isset($_POST['login-btn'])) {
 if (isset($_GET['delete'])) {
     $nosoal = $_GET['id'];
     $sqldelete = mysqli_query($conn, "DELETE FROM testsoal WHERE (nosoal='$nosoal')");
-    echo '<script type="text/javascript">',
-    'quizlistpage();',
-    '</script>';
+    // echo '<script type="text/javascript">',
+    // 'quizlistpage();',
+    // '</script>';
     exit();
 }
 
@@ -119,7 +117,8 @@ if (isset($_GET['delete'])) {
 if(isset($_POST["nosoal"])) {
     $nosoal = $_POST['nosoal'];
     $result = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_assoc($result);
+    header('Content-Type: application/json');
     $jsonresult = json_encode($row);
     echo $jsonresult;
 }

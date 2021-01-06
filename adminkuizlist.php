@@ -64,7 +64,7 @@
           $("#checkbox3").prop("checked", data.checkbox3);
           $("#checkbox4").prop("checked", data.checkbox4);
           $('#edit-soal').modal('show');
-        }
+        },
       });
         $(document).on('click', '.edit-soal', function() {
         var soal = $("#soalan").val();
@@ -94,7 +94,7 @@
             success:function(data){
               console.log(data);
               alert("Success");
-            }
+            },
         });
       });
     });

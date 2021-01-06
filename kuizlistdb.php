@@ -1,3 +1,7 @@
+<html>
+<head>
+</head>
+</html>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -15,8 +19,6 @@ $soalprefix = "S";
 $counter = 0;
 $sql1 = mysqli_query($conn, "select * from topik");
 $soallist = array();
-
-echo "<div class='quiz-form-div'>";
 
 while ($row1 = mysqli_fetch_array($sql1)){
   $counter++;
@@ -51,7 +53,6 @@ while ($row1 = mysqli_fetch_array($sql1)){
       }
       echo "</div>";
     }
-    echo "</div>";
     echo " 
     <script>
     var coll = document.getElementsByClassName('collapsible');

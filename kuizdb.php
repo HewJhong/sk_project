@@ -120,21 +120,21 @@ if (count($errors) === 0) {
       $sqlsoal = mysqli_query($conn, "SELECT * FROM testsoal");
       $soalrows = mysqli_num_rows($sqlsoal);
       if ($soalrows === 0){
-        $idsoal1 = $soalprefix. "1";
-        $idsoal2 = $soalprefix. "2";
-        $idsoal3 = $soalprefix. "3";
-        $idsoal4 = $soalprefix. "4";
-        $nosoal = 1;
+        $idsoal1 = $soalprefix. "001";
+        $idsoal2 = $soalprefix. "002";
+        $idsoal3 = $soalprefix. "003";
+        $idsoal4 = $soalprefix. "004";
+        $intnosoal = 1;
       } else {
         $getlastidsoal = mysqli_query($conn, "SELECT * FROM testsoal ORDER BY LENGTH (idsoal) DESC, idsoal DESC LIMIT 1");
         $existingidsoal = mysqli_fetch_array($getlastidsoal);
         $stridsoal = ltrim($existingidsoal['idsoal'], $soalprefix);
         $intsoal = (int)$stridsoal;
         $intsoal++;
-        $int1 = $intsoal;
-        $int2 = $intsoal + 1;
-        $int3 = $intsoal + 2;
-        $int4 = $intsoal + 3;
+        $int1 = sprintf('%03d',$intsoal);
+        $int2 = sprintf('%03d',$intsoal+1);
+        $int3 = sprintf('%03d',$intsoal+2);
+        $int4 = sprintf('%03d',$intsoal+3);
         $idsoal1 = $soalprefix.$int1;
         $idsoal2 = $soalprefix.$int2;
         $idsoal3 = $soalprefix.$int3;
