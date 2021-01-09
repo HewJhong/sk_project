@@ -17,9 +17,9 @@ if(isset($_POST["nosoal"])) {
     $checkbox = array();
     $array = array();
     $nosoal = $_POST['nosoal'];
-    $pilihsql = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
-    $soalsql = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
-    $jawsql = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
+    $pilihsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
+    $soalsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
+    $jawsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
     while ($pilihrow = mysqli_fetch_assoc($pilihsql)) {
         $pilih = $pilihrow['pilih'];
         array_push($piliharray, $pilih);

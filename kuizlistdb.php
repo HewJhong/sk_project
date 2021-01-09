@@ -25,7 +25,7 @@ while ($row1 = mysqli_fetch_array($sql1)){
   $soal = [];
   $soallist = [];
   $idtopik = $row1['idtopik'];
-  $sql2 = mysqli_query($conn, "SELECT * FROM testsoal WHERE (idtopik = '$idtopik') ORDER BY LENGTH (idsoal) ASC, idsoal ASC");
+  $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik') ORDER BY LENGTH (idsoal) ASC, idsoal ASC");
   $nosoal = mysqli_num_rows($sql2);
   $nosoal = $nosoal / 4;
   if ($nosoal >= 1){
@@ -40,7 +40,7 @@ while ($row1 = mysqli_fetch_array($sql1)){
   $soal = array_unique($soallist);
   $soalcount = count($soal);
   foreach ($soal as $value){
-    $sql3 = mysqli_query($conn, "SELECT * FROM testsoal WHERE (soal = '$value')");
+    $sql3 = mysqli_query($conn, "SELECT * FROM soalan WHERE (soal = '$value')");
     $soalresult = mysqli_fetch_array($sql3);
     $nosoal = $soalresult['nosoal'];
     echo "<div class='row'>";

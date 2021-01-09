@@ -103,10 +103,10 @@ if (count($errors) === 0) {
     $pilih3 = $ppilih[$x2];
     $pilih4 = $ppilih[$x3];
     $soal = $psoal[$i];
-    $search1 = mysqli_query($conn, "select * from testsoal where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')");
-    $search2 = mysqli_query($conn, "select * from testsoal where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')");
-    $search3 = mysqli_query($conn, "select * from testsoal where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')");
-    $search4 = mysqli_query($conn, "select * from testsoal where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')");
+    $search1 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')");
+    $search2 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')");
+    $search3 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')");
+    $search4 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')");
     $result1 = mysqli_fetch_array($search1);
     $result2 = mysqli_fetch_array($search2);
     $result3 = mysqli_fetch_array($search3);
@@ -117,7 +117,7 @@ if (count($errors) === 0) {
     } else if ($ppilihradio != "A" && $ppilihradio != "B" && $ppilihradio != "C" && $ppilihradio != "D"){
       echo "Jawapan betul tidak dipilih";
     }else {
-      $sqlsoal = mysqli_query($conn, "SELECT * FROM testsoal");
+      $sqlsoal = mysqli_query($conn, "SELECT * FROM soalan");
       $soalrows = mysqli_num_rows($sqlsoal);
       if ($soalrows === 0){
         $idsoal1 = $soalprefix. "001";
@@ -126,7 +126,7 @@ if (count($errors) === 0) {
         $idsoal4 = $soalprefix. "004";
         $intnosoal = 1;
       } else {
-        $getlastidsoal = mysqli_query($conn, "SELECT * FROM testsoal ORDER BY LENGTH (idsoal) DESC, idsoal DESC LIMIT 1");
+        $getlastidsoal = mysqli_query($conn, "SELECT * FROM soalan ORDER BY LENGTH (idsoal) DESC, idsoal DESC LIMIT 1");
         $existingidsoal = mysqli_fetch_array($getlastidsoal);
         $stridsoal = ltrim($existingidsoal['idsoal'], $soalprefix);
         $intsoal = (int)$stridsoal;
@@ -139,15 +139,15 @@ if (count($errors) === 0) {
         $idsoal2 = $soalprefix.$int2;
         $idsoal3 = $soalprefix.$int3;
         $idsoal4 = $soalprefix.$int4;
-        $getlastnosoal = mysqli_query($conn, "SELECT * FROM testsoal ORDER BY nosoal DESC LIMIT 1");
+        $getlastnosoal = mysqli_query($conn, "SELECT * FROM soalan ORDER BY nosoal DESC LIMIT 1");
         $existingnosoal = mysqli_fetch_array($getlastnosoal);
         $intnosoal = (int)$existingnosoal['nosoal'];
         $intnosoal++;
       }
-      $sql1 = "INSERT INTO testsoal(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal1', '$idtopik', '$soal', '$pilih1','0')";
-      $sql2 = "INSERT INTO testsoal(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal2', '$idtopik', '$soal', '$pilih2','0')";
-      $sql3 = "INSERT INTO testsoal(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal3', '$idtopik', '$soal', '$pilih3','0')";
-      $sql4 = "INSERT INTO testsoal(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal4', '$idtopik', '$soal', '$pilih4','0')";
+      $sql1 = "INSERT INTO soalan(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal1', '$idtopik', '$soal', '$pilih1','0')";
+      $sql2 = "INSERT INTO soalan(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal2', '$idtopik', '$soal', '$pilih2','0')";
+      $sql3 = "INSERT INTO soalan(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal3', '$idtopik', '$soal', '$pilih3','0')";
+      $sql4 = "INSERT INTO soalan(nosoal, idsoal, idtopik, soal, pilih, jaw) VALUES('$intnosoal', '$idsoal4', '$idtopik', '$soal', '$pilih4','0')";
       $conn->query($sql1);
       $conn->query($sql2);
       $conn->query($sql3);
@@ -159,19 +159,19 @@ if (count($errors) === 0) {
      
       $_SESSION['questionset'] = "Question Set";
       if ($ppilihradio == "A") {
-        $update1 = "UPDATE testsoal SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')";
+        $update1 = "UPDATE soalan SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')";
         $conn->query($update1);
       }
       else if ($ppilihradio == "B") {
-        $update2 = "UPDATE testsoal SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')";
+        $update2 = "UPDATE soalan SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')";
         $conn->query($update2);
       }
       else if ($ppilihradio == "C") {
-        $update3 = "UPDATE testsoal SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')";
+        $update3 = "UPDATE soalan SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')";
         $conn->query($update3);
       }
       else if ($ppilihradio == "D") {
-        $update4 = "UPDATE testsoal SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')";
+        $update4 = "UPDATE soalan SET jaw='1' WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')";
         $conn->query($update4);
       }
     }

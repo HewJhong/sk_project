@@ -106,7 +106,7 @@ if (isset($_POST['login-btn'])) {
 /// For adminkuizlist.php delete button
 if (isset($_GET['delete'])) {
     $nosoal = $_GET['id'];
-    $sqldelete = mysqli_query($conn, "DELETE FROM testsoal WHERE (nosoal='$nosoal')");
+    $sqldelete = mysqli_query($conn, "DELETE FROM soalan WHERE (nosoal='$nosoal')");
     // echo '<script type="text/javascript">',
     // 'quizlistpage();',
     // '</script>';
@@ -116,7 +116,7 @@ if (isset($_GET['delete'])) {
 /// For adminkuizlist.php edit button
 if(isset($_POST["nosoal"])) {
     $nosoal = $_POST['nosoal'];
-    $result = mysqli_query($conn, "SELECT * FROM testsoal WHERE (nosoal='$nosoal')");
+    $result = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
     $row = mysqli_fetch_assoc($result);
     header('Content-Type: application/json');
     $jsonresult = json_encode($row);

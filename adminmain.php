@@ -28,14 +28,14 @@ if (!isset($_SESSION['nop'])) {
     <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</p>
     <p class="account-status">Akaun Admin</p>
     <div class="float-right">
-    <button class="navbar-btn btn btn-secondary btn-lg" onclick="homepage(); hometitle()">Home</button>
-    <button class="navbar-btn btn btn-secondary btn-lg" onclick="resultpage()">Keputusan</button>
+    <button class="navbar-btn btn btn-secondary btn-lg" id="home-btn" onclick="homepage(); hometitle()">Home</button>
+    <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="resultpage()">Keputusan</button>
     <div class="dropdown dropmenu">
-    <button type="button" data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle">Quiz</button>
+    <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle">Kuiz</button>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <button class="dropdown-item" onclick="quizlistpage()">Senarai Kuiz</button>
+          <button class="dropdown-item" id="dropdown-btn" onclick="quizlistpage()">Senarai Kuiz</button>
           <div class="dropdown-divider"></div>
-          <button class="dropdown-item" onclick="quizpage(); kuiztitle()">Tambah Kuiz Baharu</button>
+          <button class="dropdown-item" id="dropdown-btn" onclick="quizpage(); kuiztitle()">Tambah Kuiz Baharu</button>
     </div>
     </div>
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
@@ -60,7 +60,13 @@ if (!isset($_SESSION['nop'])) {
     <script>
     $(document).ready(function(){
         $("#main-content").load("adminhome.php");
+    });
+    $(document).on('click', '#dropdown-btn', function() {
+        $('#kuizdropdownbtn').dropdown('toggle');
     })
+    // $('#dropdown-btn').click(function() {
+    //     $('#kuizdropdownbtn').dropdown('toggle');
+    // });
     </script> 
 </head>
 <body style="overflow: hidden;">

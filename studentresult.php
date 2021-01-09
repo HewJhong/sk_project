@@ -1,1 +1,1 @@
-<h1>Laman Keputusan</h1>
+<h1>Laman Keputusan Murid</h1>

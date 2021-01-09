@@ -8,7 +8,7 @@ function quizpage() {
     $("#main-content").load("adminkuiz.php");
 }
 function resultpage() {
-    $("#main-content").load("studentresult.php");
+    $("#main-content").load("adminrekodlist.php");
 }
 function hometitle() {
     $("#title").load("hometitle.txt");

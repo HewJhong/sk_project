@@ -68,6 +68,7 @@ h1 {
   text-align: left;
   outline: none;
   font-size: 20px;
+  margin-top: 5px;
 }
 
 .collapsible:focus{
@@ -79,6 +80,27 @@ h1 {
   color: white;
 }
 
+.collapsible1 {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+}
+
+.collapsible1:focus{
+  outline: none;
+}
+
+.active, .collapsible1:hover {
+  background-color: #1386FC;
+  color: white;
+}
+
 .content {
   padding: 0 18px;
   max-height: 0;
@@ -86,6 +108,7 @@ h1 {
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
+
 
 .contenttext{
   margin-top: 15px;
@@ -119,6 +142,18 @@ h1 {
 }
 
 .quiz-form-div {
+  width: 70%;
+  height: auto;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 15px 10px 15px;
+  border: 1px solid #80ced7;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+.rekod-list-div {
   width: 70%;
   margin-top: 50px;
   margin-left: auto;
@@ -168,4 +203,8 @@ h1 {
 
 .delete-btn {
   margin-top: 20px;
+}
+
+.user-rekod-btn {
+  margin-top: 5px;
 }
