@@ -123,6 +123,10 @@ if(isset($_POST["nosoal"])) {
     echo $jsonresult;
 }
 
+/// for studentjawabkuiz.php jawab kuiz button
+if(isset($_POST["id"])) {
+    $_SESSION["kuizidtopik"] = $_POST["id"];
+}
 
 ?>
 </body>
