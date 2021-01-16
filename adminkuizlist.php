@@ -25,10 +25,10 @@
         $("#responsecontainer").html(response);
       }
     });
-  });
-  $(document).on('click', '.delete-soal-btn', function() {
+    $(document).on('click', '.delete-soal-btn', function() {
       var id = this.id;
       $clicked_btn = $(this);
+      $('#confimationmodel').modal('show');
 
       $(document).on('click', '.delete-soal', function() {
         $.ajax({
@@ -45,6 +45,8 @@
       });
       });
     });
+  });
+ 
     $(document).off().on('click', '.edit-soal-btn', function() {
       var nosoal = this.id;
       $.ajax({
@@ -52,8 +54,7 @@
         method: 'POST',
         data: {'nosoal':nosoal},
         dataType: 'json',
-        success: function(data){
-          console.log(data);
+        success: function(data){  
           $('#soalan').val(data.soal);
           $('#pilih1').val(data.pilih1);
           $('#pilih2').val(data.pilih2);
@@ -92,8 +93,8 @@
             'checkbox4':checkbox4,
             },
             success:function(data){
-              console.log(data);
               alert("Success");
+              refreshpage();
             },
         });
       });
@@ -165,13 +166,12 @@
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
-          <button type='button' class='btn btn-primary delete-soal' data-dismiss='modal' id='".$nosoal."'>Ya, teruskan</button>
+          <button type='button' class='btn btn-primary delete-soal' data-dismiss='modal'>Ya, teruskan</button>
         </div>
       </div>
     </div>
   </div>
-<div class="quiz-form-div" id="responsecontainer">
-</div>
+<div class="quiz-form-div" id="responsecontainer"></div>
 <div id="results"></div>
 </body>
 </html>
