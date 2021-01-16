@@ -107,10 +107,6 @@ if (isset($_POST['login-btn'])) {
 if (isset($_GET['delete'])) {
     $nosoal = $_GET['id'];
     $sqldelete = mysqli_query($conn, "DELETE FROM soalan WHERE (nosoal='$nosoal')");
-    // echo '<script type="text/javascript">',
-    // 'quizlistpage();',
-    // '</script>';
-    exit();
 }
 
 /// For adminkuizlist.php edit button
