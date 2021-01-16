@@ -64,9 +64,6 @@ if (!isset($_SESSION['nop'])) {
     $(document).on('click', '#dropdown-btn', function() {
         $('#kuizdropdownbtn').dropdown('toggle');
     })
-    // $('#dropdown-btn').click(function() {
-    //     $('#kuizdropdownbtn').dropdown('toggle');
-    // });
     </script> 
 </head>
 <body style="overflow: hidden;">
