@@ -54,10 +54,20 @@ echo "
     coll[i].addEventListener('click', function() {
       this.classList.toggle('active');
       var content = this.nextElementSibling;
+      var btn = jQuery(content).children('button');
+      var cell = jQuery(content).children('#cell-content');
+      var cellcount = cell.length;
+      var btncount = btn.length;
       if (content.style.maxHeight){
         content.style.maxHeight = null;
+        for (i=0; i<btncount; i++) {
+          btn[i].classList.remove('active');
+          cell[i].style.maxHeight = null;
+        }
       } else {
         content.style.maxHeight = content.scrollHeight + 'px';
+        console.log(btn);
+        console.log(cellcount);
       } 
     });
   }
