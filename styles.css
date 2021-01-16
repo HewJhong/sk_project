@@ -152,6 +152,21 @@ h1 {
   border-radius: 5px;
   font-size: 1.1em;
 }
+.soal-form-div {
+  width: 90%;
+  height: auto;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 15px 10px 15px;
+  border: 1px solid #80ced7;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+#responsecontainer {
+  padding-bottom: 30px;
+}
 
 .rekod-list-div {
   width: 70%;
@@ -207,4 +222,69 @@ h1 {
 
 .user-rekod-btn {
   margin-top: 5px;
+}
+
+.collapsible-content {
+  padding-top: 10px;
+}
+
+
+
+.radiocontainer {
+  margin: 16px 0;
+  display: block;
+  cursor: pointer;
+}
+.radiocontainer input {
+  display: none;
+}
+.radiocontainer input + span {
+  line-height: 22px;
+  height: 22px;
+  padding-left: 22px;
+  display: block;
+  position: relative;
+}
+.radiocontainer input + span:not(:empty) {
+  padding-left: 30px;
+}
+.radiocontainer input + span:before, .radiocontainer input + span:after {
+  content: '';
+  width: 22px;
+  height: 22px;
+  display: block;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.radiocontainer input + span:before {
+  background: #d1d7e3;
+  transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+}
+.radiocontainer input + span:after {
+  background: #fff;
+  transform: scale(0.78);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+.radiocontainer input:checked + span:before {
+  transform: scale(1.04);
+  background: #5d9bfb;
+}
+.radiocontainer input:checked + span:after {
+  transform: scale(0.4);
+  transition: transform 0.3s ease;
+}
+.radiocontainer:hover input + span:before {
+  transform: scale(0.92);
+}
+.radiocontainer:hover input + span:after {
+  transform: scale(0.74);
+}
+.radiocontainer:hover input:checked + span:after {
+  transform: scale(0.4);
+}
+
+.jawab-kuiz-submit-btn {
+  margin-top: 30px;
 }
