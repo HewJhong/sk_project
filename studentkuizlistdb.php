@@ -4,6 +4,8 @@ $username = "root";
 $password = "";
 $dbname = "spkm";
 
+session_start();
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -14,6 +16,7 @@ if ($conn->connect_error) {
 $sql1 = mysqli_query($conn, "SELECT * FROM topik");
 $nosoallist = array();
 $gotsoal = array();
+$nop = $_SESSION['nop'];
 
 while ($row1 = mysqli_fetch_assoc($sql1)) {
     $nosoallist = [];
@@ -21,12 +24,17 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
     $sql3 = mysqli_query($conn, "SELECT topik FROM topik WHERE (idtopik = '$idtopik')");
     $row3 = mysqli_fetch_assoc($sql3);
     $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik')");
+    $sql3 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (idtopik = '$idtopik' AND nop = '$nop')");
+    $rekodnum = mysqli_num_rows($sql3);
     while ($row2 = mysqli_fetch_assoc($sql2)) {
         $nosoal = $row2['nosoal'];
         array_push($nosoallist, $nosoal);
     }
     $nosoalarray = array_unique($nosoallist);
     $numsoal = count($nosoalarray);
+    if ($rekodnum > 0) {
+      $numsoal = 0;
+    }
     if ($numsoal >= 1) {
         array_push($gotsoal, "1");
         echo "<button class='collapsible btn'>".$row3['topik']."</button>";
