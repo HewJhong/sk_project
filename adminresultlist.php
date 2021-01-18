@@ -18,7 +18,7 @@
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url: "rekodlistdb.php",
+            url: "resultlistdb.php",
             dataType: "html",
             success: function(response) {
                 $("#responsecontainer").html(response);
