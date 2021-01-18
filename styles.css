@@ -288,3 +288,9 @@ h1 {
 .jawab-kuiz-submit-btn {
   margin-top: 30px;
 }
+
+/* Show Bootstrap Grid grid lines  */
+/* div[class^="col-"] {
+  background-color: rgba(255, 0, 0, 0.2);
+  outline: 1px dotted rgba(0, 0, 0, 0.5);
+} */
