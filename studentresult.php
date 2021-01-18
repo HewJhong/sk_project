@@ -13,6 +13,7 @@
   integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
   crossorigin="anonymous"></script>
   <script src="changepage.js"></script>
+  <script src="functions.js"></script>
 </head>
 <script>
     $(document).ready(function() {
@@ -24,6 +25,21 @@
                 $("#responsecontainer").html(response);
             }
         });
+    });
+    $(document).on('click', '.review-kuiz-btn', function() {
+        var id = this.id;
+        $.ajax({
+            url: 'studentkuizreview.php',
+            type: 'POST',
+            data: {'id':id},
+            success: function(result){
+                $("#responsecontainer").html(result);
+                console.log("Success");
+            }
+        });
+    });
+    $(document).on('click', '#balik-btn', function() {
+        studentresult();
     });
 </script>
 <body>
