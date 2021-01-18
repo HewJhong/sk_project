@@ -36,25 +36,25 @@ while ($row2 = mysqli_fetch_assoc($sql2)) {
     $nosoal = $row2['nosoal'];
     $soal = $row2['soal'];
     array_push($soallist, $soal);
-    array_push($nosoallist, $soal);
+    array_push($nosoallist, $nosoal);
 }
 
 $soallistcount = count($soallist) / 4;
 
 for ($i=0; $i < $soallistcount; $i++) {
-    $radioname = "pilihradio" . $questionnum ;
+    $radioname = "pilihradio" . $questionnum ;  
     $soal = $soallist[$soalskipper];
     $nosoal = $nosoallist[$soalskipper];
     $valueindex = 0;
     echo "<div class='soal-form-div'>";
     echo "<h5 name='soalnum[]'>Soalan ".$questionnum."</h5>";
-    echo "<div style='padding-top: 10px; padding-bottom: 10px'><h4>".$soal."</h4></div>";
+    echo "<div class='soalcontainer' id='".$nosoal."' style='padding-top: 10px; padding-bottom: 10px'><h4>".$soal."</h4></div>";
     $pilihsql = mysqli_query($conn, "SELECT pilih FROM soalan WHERE (nosoal = '$nosoal')");
     while ($pilihrow = mysqli_fetch_assoc($pilihsql)) {
         $value = $valuelist[$valueindex];
         $pilih = $pilihrow['pilih'];
         echo "<label class='radiocontainer'>";
-        echo "<input type='radio' name='".$radioname."' id='pilihradio' value='".$value."'>";
+        echo "<input type='radio' name='".$nosoal."' id='".$radioname."' value='".$value."'>";
         echo "<span class='checkmark'>".$pilih."</span>";
         echo "</label>";
         $valueindex += 1;
