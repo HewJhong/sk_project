@@ -67,7 +67,7 @@ $soalprefix = "S";
 $counter = 0;
 if (count($errors) === 0) {
   for ($i = 0; $i < $nosoal; $i++) {
-    $sql = mysqli_query($conn, "select * from topik");
+    $sql = mysqli_query($conn, "SELECT * FROM topik");
     $topikrow = mysqli_num_rows($sql);
     if ($topikrow === 0){
       $idtopik = $topikprefix. '1';
@@ -103,10 +103,10 @@ if (count($errors) === 0) {
     $pilih3 = $ppilih[$x2];
     $pilih4 = $ppilih[$x3];
     $soal = $psoal[$i];
-    $search1 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')");
-    $search2 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')");
-    $search3 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')");
-    $search4 = mysqli_query($conn, "select * from soalan where (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')");
+    $search1 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih1')");
+    $search2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih2')");
+    $search3 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih3')");
+    $search4 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik ='$idtopik' AND soal ='$soal' AND pilih = '$pilih4')");
     $result1 = mysqli_fetch_array($search1);
     $result2 = mysqli_fetch_array($search2);
     $result3 = mysqli_fetch_array($search3);
