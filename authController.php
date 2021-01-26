@@ -96,7 +96,6 @@ if (isset($_POST['login-btn'])) {
             $_SESSION['peranan'] = $row['peranan'];
             $_SESSION['notel'] = $row['notel'];
             $_SESSION['nama'] = $namerow['nama'];
-            header("Location: main.php");
         }  else {
             $errors['loginfail'] = "Login Failed";
         }         
