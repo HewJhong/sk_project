@@ -3,6 +3,18 @@ if (!isset($_SESSION['nop'])) {
     header ("Location: login.php");
     exit();
 }
+else if ($_GET['page'] == "adminhome"){
+    echo "<script>homepage();</script>";
+}
+else if ($_GET['page'] == "adminkeputusan"){
+    echo "<script>resultpage();</script>";
+}
+else if ($_GET['page'] == "adminkuizlist"){
+    echo "<script>quizlistpage();</script>";
+}
+else if ($_GET['page'] == "adminkuiz"){
+    echo "<script>quizpage();</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
