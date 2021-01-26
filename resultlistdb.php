@@ -25,9 +25,14 @@ foreach ($idtopikarray as $value) {
   $sql4 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$value')");
   $row4 = mysqli_fetch_assoc($sql4);
   $topik = $row4['topik'];
-  echo "<button class='collapsible btn'>".$topik."</button>";
-  echo "<div class='content' id='content'>";
   $sql5 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (idtopik = '$value')");
+  $perekodancount = mysqli_num_rows($sql5);
+  $usersql = mysqli_query($conn, "SELECT * FROM pengguna WHERE (peranan = 'murid')");
+  $usercount = mysqli_num_rows($usersql);
+  $tally = $usercount - $perekodancount;
+  $usersubmitcount = $usercount - $tally;
+  echo "<button class='collapsible btn'><h4>".$topik."</h4><div class='text-right submitcount-btn'>".$usersubmitcount."/".$usercount." hantar</div></button>";
+  echo "<div class='content' id='content'>";
   while ($row5 = mysqli_fetch_assoc($sql5)) {
     $nop = $row5['nop'];
     $mar = $row5['mar'];
@@ -43,6 +48,11 @@ foreach ($idtopikarray as $value) {
     echo "<h3>".$mar."</h3>";
     echo "</div>";
   }
+  echo "<div class='row infolanjut-row'>
+  <div class='col-10'></div>
+  <button class='col-2 btn btn-primary infolanjut-btn'>Info Lanjut</button>
+  </div>
+  ";
   echo "</div>";
 }
 echo " 
