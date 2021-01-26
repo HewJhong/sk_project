@@ -294,3 +294,24 @@ h1 {
   background-color: rgba(255, 0, 0, 0.2);
   outline: 1px dotted rgba(0, 0, 0, 0.5);
 } */
+
+.usersubmitcount-btn {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.infolanjut-btn {
+  margin-top: 5px;
+}
+
+.infolanjut-row {
+  margin-right: 1px;
+}
