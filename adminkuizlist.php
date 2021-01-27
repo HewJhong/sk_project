@@ -47,7 +47,7 @@
     });
   });
  
-    $(document).off().on('click', '.edit-soal-btn', function() {
+    $('.edit-soal-btn').off().on('click', function() {
       var nosoal = this.id;
       $.ajax({
         url: 'editkuiz.php',
