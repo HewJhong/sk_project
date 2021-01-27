@@ -22,8 +22,8 @@
     <button class="navbar-btn btn btn-secondary btn-lg" id="home-btn" onclick="homepage(); hometitle()">Home</button>
     <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="resultpage()">Keputusan</button>
     <div class="dropdown dropmenu">
-    <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle">Kuiz</button>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kuiz</button>
+    <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
           <button class="dropdown-item" id="dropdown-btn" onclick="quizlistpage()">Senarai Kuiz</button>
           <div class="dropdown-divider"></div>
           <button class="dropdown-item" id="dropdown-btn" onclick="quizpage(); kuiztitle()">Tambah Kuiz Baharu</button>
