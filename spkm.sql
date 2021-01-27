@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 04:32 AM
+-- Generation Time: Jan 27, 2021 at 04:09 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -47,18 +47,68 @@ INSERT INTO `pengguna` (`nop`, `notel`, `peranan`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `perekodan`
+--
+
+CREATE TABLE `perekodan` (
+  `idrekod` varchar(50) NOT NULL,
+  `mar` varchar(50) NOT NULL,
+  `gred` varchar(50) NOT NULL,
+  `tar` varchar(50) NOT NULL,
+  `nop` varchar(50) NOT NULL,
+  `idtopik` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `perekodan`
+--
+
+INSERT INTO `perekodan` (`idrekod`, `mar`, `gred`, `tar`, `nop`, `idtopik`) VALUES
+('R001', '100', 'A', '17/01/2021', 'adf', 'T1'),
+('R002', '100', 'A', '17/01/2021', 'adf', 'T6'),
+('R003', '100', 'A', '17/01/2021', 'ok', 'T1'),
+('R004', '100', 'A', '18/01/2021', 'adf', 'T7');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `soalan`
 --
 
 CREATE TABLE `soalan` (
-  `idsoal` varchar(50) NOT NULL,
-  `nosoal` int(10) NOT NULL,
-  `soal` varchar(100) NOT NULL,
-  `idpilih` varchar(50) NOT NULL,
-  `jaw` int(11) NOT NULL,
-  `pilih` int(11) NOT NULL,
-  `idtopik` varchar(50) NOT NULL
+  `idsoal` varchar(20) NOT NULL,
+  `nosoal` int(20) NOT NULL,
+  `soal` text NOT NULL,
+  `pilih` text NOT NULL,
+  `jaw` varchar(10) NOT NULL,
+  `idtopik` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `soalan`
+--
+
+INSERT INTO `soalan` (`idsoal`, `nosoal`, `soal`, `pilih`, `jaw`, `idtopik`) VALUES
+('S001', 1, '1+0=', '1', '1', 'T1'),
+('S002', 1, '1+0=', '3', '0', 'T1'),
+('S003', 1, '1+0=', '5', '0', 'T1'),
+('S004', 1, '1+0=', '7', '0', 'T1'),
+('S005', 2, '1+1=', '1', '0', 'T1'),
+('S006', 2, '1+1=', '4', '0', 'T1'),
+('S007', 2, '1+1=', '6', '0', 'T1'),
+('S008', 2, '1+1=', '2', '1', 'T1'),
+('S009', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Utara', '0', 'T6'),
+('S010', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Selatan', '0', 'T6'),
+('S011', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Timur Laut', '1', 'T6'),
+('S012', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Timur', '0', 'T6'),
+('S013', 4, 'x+5=7', '3', '0', 'T7'),
+('S014', 4, 'x+5=7', '1', '0', 'T7'),
+('S015', 4, 'x+5=7', '2', '1', 'T7'),
+('S016', 4, 'x+5=7', '4', '0', 'T7'),
+('S017', 5, 'a=b+2 a=2c b? ', '2c+2', '1', 'T7'),
+('S018', 5, 'a=b+2 a=2c b? ', '1', '0', 'T7'),
+('S019', 5, 'a=b+2 a=2c b? ', '2c+1', '0', 'T7'),
+('S020', 5, 'a=b+2 a=2c b? ', '3', '0', 'T7');
 
 -- --------------------------------------------------------
 
@@ -83,35 +133,6 @@ INSERT INTO `telefon` (`notel`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `testsoal`
---
-
-CREATE TABLE `testsoal` (
-  `idsoal` varchar(20) NOT NULL,
-  `nosoal` int(20) NOT NULL,
-  `soal` text NOT NULL,
-  `pilih` text NOT NULL,
-  `jaw` varchar(10) NOT NULL,
-  `idtopik` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `testsoal`
---
-
-INSERT INTO `testsoal` (`idsoal`, `nosoal`, `soal`, `pilih`, `jaw`, `idtopik`) VALUES
-('S1', 0, '5+3', '5', '0', 'T3'),
-('S2', 0, '5+3', '6', '0', 'T3'),
-('S3', 0, '5+3', '7', '0', 'T3'),
-('S4', 0, '5+3', '8', '1', 'T3'),
-('S5', 1, '4+7', '10', '0', 'T3'),
-('S6', 1, '4+7', '9', '0', 'T3'),
-('S7', 1, '4+7', '8', '0', 'T3'),
-('S8', 1, '4+7', '11', '1', 'T3');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `topik`
 --
 
@@ -125,9 +146,13 @@ CREATE TABLE `topik` (
 --
 
 INSERT INTO `topik` (`idtopik`, `topik`) VALUES
-('T1', 'tambah'),
-('T2', 'tolak'),
-('T3', 'Haiya');
+('T1', 'Tambah'),
+('T2', 'Tolak'),
+('T3', 'Revisi'),
+('T4', 'Tambah / Tolak'),
+('T5', 's1'),
+('T6', 'Geografi'),
+('T7', 'Algebra');
 
 --
 -- Indexes for dumped tables
@@ -141,10 +166,19 @@ ALTER TABLE `pengguna`
   ADD KEY `notel` (`notel`);
 
 --
+-- Indexes for table `perekodan`
+--
+ALTER TABLE `perekodan`
+  ADD PRIMARY KEY (`idrekod`),
+  ADD KEY `idtopik` (`idtopik`),
+  ADD KEY `nop` (`nop`);
+
+--
 -- Indexes for table `soalan`
 --
 ALTER TABLE `soalan`
-  ADD PRIMARY KEY (`idsoal`,`idpilih`);
+  ADD PRIMARY KEY (`idsoal`),
+  ADD KEY `idtopik` (`idtopik`);
 
 --
 -- Indexes for table `telefon`
@@ -152,13 +186,6 @@ ALTER TABLE `soalan`
 ALTER TABLE `telefon`
   ADD PRIMARY KEY (`notel`),
   ADD KEY `notel` (`notel`);
-
---
--- Indexes for table `testsoal`
---
-ALTER TABLE `testsoal`
-  ADD PRIMARY KEY (`idsoal`),
-  ADD KEY `idtopik` (`idtopik`);
 
 --
 -- Indexes for table `topik`
@@ -177,10 +204,17 @@ ALTER TABLE `pengguna`
   ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`notel`) REFERENCES `telefon` (`notel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `testsoal`
+-- Constraints for table `perekodan`
 --
-ALTER TABLE `testsoal`
-  ADD CONSTRAINT `testsoal_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `perekodan`
+  ADD CONSTRAINT `perekodan_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`),
+  ADD CONSTRAINT `perekodan_ibfk_2` FOREIGN KEY (`nop`) REFERENCES `pengguna` (`nop`);
+
+--
+-- Constraints for table `soalan`
+--
+ALTER TABLE `soalan`
+  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
