@@ -1,10 +1,10 @@
 <?php require_once 'authController.php';
 if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
     if ($_SESSION['peranan'] == "murid") {
-        header("Location: studentmain.php?page=adminhome&role=murid");
+        header("Location: studentmain.php?page=studenthome");
         exit();
     } else {
-        header ("Location: adminmain.php?page=adminhome&role=murid");
+        header ("Location: adminmain.php?page=adminhome");
         exit();     
     }
 }
