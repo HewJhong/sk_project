@@ -2,11 +2,11 @@ function homepage() {
     window.history.pushState("string", "home", "adminmain.php?page=adminhome");
     $("#main-content").load("adminhome.php");
 }
-function quizlistpage() {
+function kuizlistpage() {
     window.history.pushState("string", "kuizlist", "adminmain.php?page=adminkuizlist");
     $("#main-content").load("adminkuizlist.php");
 }
-function quizpage() {
+function kuizpage() {
     window.history.pushState("string", "kuiz", "adminmain.php?page=adminkuiz");
     $("#main-content").load("adminkuiz.php");
 }
@@ -18,12 +18,23 @@ function studentlistpage() {
     window.history.pushState("string", "result", "adminmain.php?page=adminstudentlist");
     $("#main-content").load("adminstudentlist.php");
 }
+// TITLES
 function hometitle() {
-    $("#title").load("hometitle.txt");
+    $("#title").load("titles/hometitle.php");
 }
 function kuiztitle() {
-    $("#title").load("kuiztitle.php");
+    $("#title").load("titles/kuiztitle.php");
 }
+function senaraimuridtitle() {
+    $("#title").load("titles/senaraimuridtitle.php");
+}
+function senaraikuiztitle() {
+    $("#title").load("titles/senaraikuiztitle.php");
+}
+function keputusanmuridtitle() {
+    $("#title").load("titles/keputusanmuridtitle.php");
+}
+//TITLES
 
 function studenthome() {
     window.history.pushState("string", "result", "studentmain.php?page=studenthome");
@@ -47,5 +58,5 @@ function refreshpage() {
 
 }
 function destroysession() {
-    window.location.href = "./logKeluar.php";
+    window.location.href = "logKeluar.php";
 }
