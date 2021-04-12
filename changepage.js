@@ -19,6 +19,7 @@ function studentlistpage() {
     $("#main-content").load("adminstudentlist.php");
 }
 // TITLES
+// ADMIN
 function hometitle() {
     $("#title").load("titles/hometitle.php");
 }
@@ -34,6 +35,16 @@ function senaraikuiztitle() {
 function keputusanmuridtitle() {
     $("#title").load("titles/keputusanmuridtitle.php");
 }
+// MURID
+function studentkuiztitle() {
+    $("#title").load("titles/studentkuiztitle.php");
+}
+function keputusankuiztitle() {
+    $("#title").load("titles/keputusankuiztitle.php");
+}
+function kadlaporantitle() {
+    $("#title").load("titles/kadlaporantitle.php");
+}
 //TITLES
 
 function studenthome() {
@@ -43,6 +54,10 @@ function studenthome() {
 function studentresult() {
     window.history.pushState("string", "result", "studentmain.php?page=studentresult");
     $("#main-content").load("studentresult.php");
+}
+function studentreportcard() {
+    window.history.pushState("string", "result", "studentmain.php?page=studentreportcard");
+    $("#main-content").load("studentreportcard.php");
 }
 function studentkuizlist() {
     window.history.pushState("string", "result", "studentmain.php?page=studentkuizlist");

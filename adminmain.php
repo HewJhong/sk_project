@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<!-- scripts -->
     <meta charset="UTF-8">
     <title id="title">Home</title>
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
@@ -15,18 +15,30 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
     crossorigin="anonymous"></script>
     <script src="changepage.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" 
+    crossorigin="anonymous">
+    <script src="auto-tables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- scripts -->
     <nav id="navbar" class="navbar navigation">
     <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="homepage();">Sistem Penilaian Kuiz Matematik</p>
     <p class="account-status">Akaun Admin</p>
     <div class="float-right">
     <button class="navbar-btn btn btn-secondary btn-lg" id="home-btn" onclick="homepage(); hometitle();">Home</button>
-    <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="resultpage();">Keputusan</button>
+    <div class="dropdown dropmenu">
+    <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Murid</button>
+    <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
+          <button class="dropdown-item" id="dropdown-btn" onclick="resultpage(); keputusanmuridtitle()">Keputusan Murid</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" id="dropdown-btn" onclick="studentlistpage(); senaraimuridtitle();">Senarai Murid</button>
+    </div>
     <div class="dropdown dropmenu">
     <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kuiz</button>
     <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
-          <button class="dropdown-item" id="dropdown-btn" onclick="quizlistpage(); hide();">Senarai Kuiz</button>
+          <button class="dropdown-item" id="dropdown-btn" onclick="kuizlistpage(); senaraikuiztitle();">Senarai Kuiz</button>
           <div class="dropdown-divider"></div>
-          <button class="dropdown-item" id="dropdown-btn" onclick="quizpage(); kuiztitle(); hide();">Tambah Kuiz Baharu</button>
+          <button class="dropdown-item" id="dropdown-btn" onclick="kuizpage(); kuiztitle();">Tambah Kuiz Baharu</button>
     </div>
     </div>
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession();">Log Out</button>
@@ -48,28 +60,34 @@
 
 </head>
 <body style="overflow: hidden;">
-    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
+
     <script>
-    $(document).ready(function(){
-        // $("#main-content").load("adminhome.php");
-    });
-    </script> 
+        window.history.pushState('', null, './');
+        $(window).on('popstate', function() {
+            window.location.reload();
+        });
+    </script>
+
+    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
     <?php 
         if (!isset($_SESSION['nop'])) {
-            header ("Location: login.php");
+            header ("Location: ../login.php");
             exit();
         }
         else if ($_GET['page'] == "adminhome"){
-            echo "<script>homepage();</script>";
+            echo "<script>homepage(); hometitle();</script>";
         }
         else if ($_GET['page'] == "adminkeputusan"){
-            echo "<script>resultpage();</script>";
+            echo "<script>resultpage(); keputusanmuridtitle();</script>";
         }
         else if ($_GET['page'] == "adminkuizlist"){
-            echo "<script>quizlistpage();</script>";
+            echo "<script>kuizlistpage(); senaraikuiztitle();</script>";
         }
         else if ($_GET['page'] == "adminkuiz"){
-            echo "<script>quizpage();</script>";
+            echo "<script>kuizpage(); kuiztitle();</script>";
+        }
+        else if ($_GET['page'] == "adminstudentlist"){
+            echo "<script>studentlistpage(); senaraimuridtitle();</script>";
         }
     ?>
 </body>

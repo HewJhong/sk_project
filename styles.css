@@ -109,7 +109,6 @@ h1 {
   background-color: #f1f1f1;
 }
 
-
 .contenttext{
   margin-top: 15px;
   margin-bottom: 15px;
@@ -137,6 +136,11 @@ h1 {
   border: gray;
   border-radius: 5px;
   margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-kuiz-btn {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -310,8 +314,78 @@ h1 {
 
 .infolanjut-btn {
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.infolanjut-row {
-  margin-right: 1px;
+.namecard {
+  width: 95%;
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 15px;
+  border: 1px;
+  border-style: solid;
+  border-color: lightskyblue;
+  border-radius: 5px;
+}
+
+.card-content {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.studentlisttitle {
+  width: 95%;
+  margin-left: 20px;
+}
+
+.info-btn {
+  height: 35px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.info-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.item td{
+  border: 1px solid lightskyblue;
+  border-radius: 25px;
+}
+
+.item {
+  text-align:center;
+}
+
+table { 
+  table-layout: fixed; 
+}
+
+.tablelist {
+  font-size: 18px;
+}
+
+.center {
+  display: block;
+  width:200px;
+  height:200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userinfotext {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back-btn {
+  position: absolute;
+  margin-left: 15%;
+
+}
+
+.header {
+  margin-bottom: 20px;
 }

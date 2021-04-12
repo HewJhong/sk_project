@@ -2,16 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-  crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" 
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
-  crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
-  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
-  crossorigin="anonymous"></script> -->
   <script src="changepage.js"></script>
   </head>
 <body>
@@ -19,7 +9,7 @@
   $(document).ready(function() {
     $.ajax({
       type: "GET",
-      url: "kuizlistdb.php",
+      url: "adminkuizlistdb.php",
       dataType: "html",
       success: function(response){
         $("#responsecontainer").html(response);
@@ -28,7 +18,7 @@
     $(document).on('click', '.delete-soal-btn', function() {
       var id = this.id;
       $clicked_btn = $(this);
-      $('#confimationmodel').modal('show');
+      $('#confimationmodal').modal('show');
 
       $(document).on('click', '.delete-soal', function() {
         $.ajax({
@@ -45,12 +35,34 @@
       });
       });
     });
-  });
- 
-    $('.edit-soal-btn').off().on('click', function() {
+
+    $(document).on('click', '.delete-kuiz-btn', function() {
+      var idtopik = this.id;
+      var button = this.closest('.collapsible');
+      $delete_kuiz_btn = $(this);
+      $('#kuizconfirmationmodal').modal('show');
+
+      $(document).on('click', '.delete-kuiz', function() {
+        $.ajax({
+          url: 'authController.php',
+          type: 'GET',
+          data: {
+            'deletekuiz': 1,
+            'idtopik':idtopik,
+          },
+          success: function(result){
+            console.log('Kuiz deleted');
+            $delete_kuiz_btn.parent().parent().remove();
+            button.remove();
+          }
+        });
+      });
+    });
+
+    $(document).on('click', '.edit-soal-btn', function() {
       var nosoal = this.id;
       $.ajax({
-        url: 'editkuiz.php',
+        url: 'admineditkuiz.php',
         method: 'POST',
         data: {'nosoal':nosoal},
         dataType: 'json',
@@ -67,7 +79,7 @@
           $('#edit-soal').modal('show');
         },
       });
-        $(document).off().on('click', '.edit-soal', function() {
+        $(document).on('click', '.edit-soal', function() {
         var soal = $("#soalan").val();
         var pilih1 = $("#pilih1").val();
         var pilih2 = $("#pilih2").val();
@@ -79,7 +91,7 @@
         var checkbox4 = $("#checkbox4").prop("checked")
         $.ajax ({
           method: "POST",
-          url: "updatekuiz.php",
+          url: "adminupdatekuiz.php",
           data: {
             'nosoal':nosoal,
             'soal':soal,
@@ -99,6 +111,16 @@
         });
       });
     });
+  });
+  
+  $(document).on('click','.delete-soal', function() {
+      window.location.reload();
+  });
+
+  $(document).on('click','.delete-kuiz', function() {
+      window.location.reload();
+  });
+
     
 </script>
 <div class='modal fade' id='edit-soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -171,6 +193,26 @@
       </div>
     </div>
   </div>
+<div class='modal fade' id='kuizconfirmationmodal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h5 class='modal-title' id='exampleModalLabel'>Warning</h5>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        <div class='modal-body'>
+          Hapuskan Kuiz Ini?
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
+          <button type='button' class='btn btn-primary delete-kuiz' data-dismiss='modal'>Ya, teruskan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class='text-center' style='margin-top: 20px;'><h2>Senarai Kuiz</h2></div>
 <div class="quiz-form-div" id="responsecontainer"></div>
 <div id="results"></div>
 </body>

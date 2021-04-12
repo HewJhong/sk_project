@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title id="title">Home</title>
+    <!-- scripts -->
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -14,13 +15,26 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
     crossorigin="anonymous"></script>
     <script src="changepage.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" 
+    crossorigin="anonymous">
+    <script src="auto-tables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- scripts -->
     <nav id="navbar" class="navbar navigation">
     <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="studenthome()">Sistem Penilaian Kuiz Matematik</p>
     <p class="account-status">Akaun Murid</p>
     <div class="float-right">
     <button class="navbar-btn btn btn-secondary btn-lg" id="home-btn" onclick="studenthome(); hometitle()">Home</button>
-    <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="studentresult()">Keputusan</button>
-    <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="studentkuizlist()">Kuiz</button>
+    <div class="dropdown dropmenu">
+    <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Keputusan</button>
+    <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
+          <button class="dropdown-item" id="dropdown-btn" onclick="studentresult(); keputusankuiztitle();">Keputusan Kuiz</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" id="dropdown-btn" onclick="studentreportcard(); kadlaporantitle();">Report Card</button>
+    </div>
+    </div>
+    <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="studentkuizlist(); studentkuiztitle();">Kuiz</button>
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
     </div>
     </nav>
@@ -37,15 +51,7 @@
             </div>
             </div>
     <?php endif ?>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
-    crossorigin="anonymous">
     </script>
-    <script>
-    $(document).on('click', '#dropdown-btn', function() {
-        $('#kuizdropdownbtn').dropdown('toggle');
-    });
-    </script> 
 </head>
 <body style="overflow: hidden;">
 
@@ -63,16 +69,19 @@
         exit();
     }
     else if ($_GET['page'] == "studenthome"){
-        echo "<script>studenthome();</script>";
+        echo "<script>studenthome(); hometitle();</script>";
     }
     else if ($_GET['page'] == "studentresult"){
-        echo "<script>studentresult();</script>";
+        echo "<script>studentresult(); keputusankuiztitle();</script>";
     }
     else if ($_GET['page'] == "studentkuizlist"){
-        echo "<script>studentkuizlist();</script>";
+        echo "<script>studentkuizlist(); studentkuiztitle();</script>";
     }
     else if ($_GET['page'] == "studentjawabkuiz"){
         echo "<script>studentjawabkuiz();</script>";
+    }
+    else if ($_GET['page'] == "studentreportcard"){
+        echo "<script>studentreportcard(); kadlaporantitle();</script>";
     }
 ?>
 </body>

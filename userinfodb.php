@@ -18,11 +18,22 @@ $date = date("d/m/Y");
 
 echo '
 <script type="text/javascript">
+var suffix = "AM";
 function checkTime(i) {
   if (i < 10) {
     i = "0" + i;
   }
   return i;
+}
+
+function hrformat(x) {
+  if (x > 12) {
+    x = x - 12;
+    suffix = "PM";
+  } else {
+    suffix = "AM";
+  }
+  return x;
 }
 
 function startTime() {
@@ -33,7 +44,9 @@ function startTime() {
   // add a zero in front of numbers<10
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+  // 12 hour format 
+  h = hrformat(h);
+  document.getElementById("time").innerHTML = h + ":" + m + ":" + s + " " + suffix;
   t = setTimeout(function() {
     startTime()
   }, 500);

@@ -39,7 +39,6 @@
         if (result == "errorNoAns") {
           $('#warningModel').modal('show');
         } else {
-          alert(result);
           studentresult();
         }
       }

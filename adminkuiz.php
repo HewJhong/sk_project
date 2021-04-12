@@ -13,11 +13,12 @@ require_once 'authController.php';
     <script src="changepage.js"></script>
     </head>
     <body>
+    <div class='text-center' style='margin-top: 20px;'><h2>Tambah Kuiz Baharu</h2></div>
     <div class="newquiz-container">
         <div class="row"></div>
             <div id="quiz-form-div "class="quiz-form-div" method="post">
                 <!-- <form action="adminmain.php" method="post"> -->
-                <form method="post" id="addquizform" action="kuizdb.php">
+                <form method="post" id="addquizform" action="adminkuizdb.php">
                 <script>
                     $(document).ready(function(){
                         kuiztitle();
@@ -36,26 +37,20 @@ require_once 'authController.php';
                                         if($.inArray(el, unique) === -1) unique.push(el);
                                     });
                                     $('#result').html(result);
-                                    // if (result.includes('Success')) {
-                                    //     $('#result').html("<div class='alert alert-success'>"+"Success"+"</div>");
-                                    // } else if (result.includes('Question existed')) {
-                                    //     $('#result').html("<div class='alert alert-danger'>"+"Question existed"+"</div>");
-                                    // } else if (result.includes('Undefined index') && result.includes("soalan") && result.includes("pilihan")) {
-                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua soalan"+"<br>"+"Sila masukkan semua pilihan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
-                                    // } else if (result.includes('Undefined index') && result.includes("soalan")) {
-                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua soalan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
-                                    // } else if (result.includes('Undefined index') && result.includes("pilihan")) {
-                                    //     $('#result').html("<div class='alert alert-danger'>"+"Sila masukkan semua pilihan"+"<br>"+"Sila pilih jawapan yang betul"+"</div>");
-                                    // } else {
-                                    //     $('#result').html("<div class='alert alert-danger'>"+unique[0]+"<br>"+unique[1]+"</div>");
-
-                                    // }
+                                    if (result.includes("Question existed")) {
+                                        $('#result').html("<div class='alert alert-danger'>Soalan sudah dalam database!</div>")
+                                    } else if (result.includes("Sila masukkan topik")) {
+                                        $('#result').html("<div></div>")
+                                    } else if (result.includes("Undefined index") || result.includes("Sila masukkan jawapan betul")) {
+                                        $('#result').html("<div></div>")
+                                    } else {
+                                        $('#result').html(result);
+                                    }
                                 }
                             )
                         })
                     });
                 </script>
-                    <h3 class="text-center">Tambah Kuiz Baharu</h3>
 
                     <!-- errors alert box -->
                     <?php if(count($errors) > 0): ?>
@@ -94,25 +89,25 @@ require_once 'authController.php';
                     <div class="form-group">
                         <label for="jaw">Jawapan</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A">
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A" required>
                                 <div class="form-group">
                                     <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
                                 </div>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="B">
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="B" required>
                                 <div class="form-group">
                                     <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
                                 </div>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="C">
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="C" required>
                                 <div class="form-group">
                                     <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
                                 </div>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="D">
+                            <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="D" required>
                                 <div class="form-group">
                                     <input type="text" name="ppilih[]" class="form-control form-control-lg" autocomplete="off" required>
                                 </div>

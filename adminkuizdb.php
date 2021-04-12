@@ -154,7 +154,7 @@ if (count($errors) === 0) {
       $conn->query($sql4);
       echo " Success";
       echo '<script type="text/javascript">',
-     'quizlistpage();',
+     'kuizlistpage();',
      '</script>';
      
       $_SESSION['questionset'] = "Question Set";

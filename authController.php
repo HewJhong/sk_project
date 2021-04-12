@@ -108,6 +108,12 @@ if (isset($_GET['delete'])) {
     $sqldelete = mysqli_query($conn, "DELETE FROM soalan WHERE (nosoal='$nosoal')");
 }
 
+/// For adminkuizlist.php kuiz delete button
+if (isset($_GET['deletekuiz'])) {
+    $idtopik = $_GET['idtopik'];
+    $sqldelete = mysqli_query($conn, "DELETE FROM soalan WHERE (idtopik='$idtopik')");
+}
+
 /// For adminkuizlist.php edit button
 if(isset($_POST["nosoal"])) {
     $nosoal = $_POST['nosoal'];

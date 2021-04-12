@@ -11,21 +11,24 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+session_start();
+
 $totalmarkah = 0;
 $markahlist = array();
 $topiklist = array();
 $counter = 1;
 $donecounter = 0;
 
-echo "<div class='back-btn'><button class='btn btn-primary' onclick='studentlistpage();'>Balik</button></div>";
-echo "<div class='text-center' style='margin-top: 20px;'><h2>Info Murid</h2></div>";
+echo "<div class='text-center' style='margin-top: 20px;'><h2>Kad Laporan</h2></div>";
 echo "<div  class='quiz-form-div'>";
 echo "";
+
+
 
 $idtopiklist = array();
 $doneidtopiklist = array();
 
-$nop = $_POST['id'];
+$nop = $_SESSION['nop'];
 echo "<div><h5>Nombor Pengguna: ".$nop."</h5></div>";
 $sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nop')");
 $row1 = mysqli_fetch_assoc($sql1);
@@ -51,7 +54,7 @@ echo "<br>";
 echo "<div><h5>Kerja Rumah: </h5></div>";
 echo "<table style='width: 100%' class='tablesort'>
 <thead>
-<tr class='text-center' style='height:40px;'>
+<tr>
   <th style='width:50px'>No.</th>
   <th style='width:150px'>Topik</th>
   <th>Markah</th>
@@ -122,30 +125,21 @@ echo "<script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'bar',
+    type: 'line',
 
     // The data for our dataset
     data: {
         labels: $topikdata,
         datasets: [{
             label: 'Markah',
-            backgroundColor: 'rgb(0, 107, 247)',
-            borderColor: 'rgb(79, 195,245)',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
             data: $markahdata
         }]
     },
 
     // Configuration options go here
-    options: {
-      scales: {
-        yAxes: [{
-            ticks: {
-                suggestedMin: 0,
-                suggestedMax: 100
-            }
-        }]
-      }
-    }
+    options: {}
 });
 </script>
 ";

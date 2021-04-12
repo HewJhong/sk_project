@@ -16,6 +16,9 @@ $sql1 = mysqli_query($conn, "SELECT * FROM soalan");
 $idtopiklist = array();
 $namalist = array();
 
+echo "<div class='text-center' style='margin-top: 20px;'><h2>Keputusan Murid</h2></div>";
+echo "<div class='rekod-list-div'>";
+
 while ($row1 = mysqli_fetch_assoc($sql1)) {
   $idtopik = $row1['idtopik'];
   array_push($idtopiklist, $idtopik);
@@ -34,28 +37,25 @@ foreach ($idtopikarray as $value) {
   $usercount = mysqli_num_rows($usersql);
   $tally = $usercount - $perekodancount;
   $usersubmitcount = $usercount - $tally;
-  echo "<button class='collapsible btn'><h4>".$topik."</h4><div class='text-right submitcount-btn'>".$usersubmitcount."/".$usercount." hantar</div></button>";
+  echo "<button class='collapsible btn'>".$topik."<div class='text-right submitcount-btn'>".$usersubmitcount."/".$usercount." hantar</div></button>";
   echo "<div class='content' id='content'>";
   while ($row5 = mysqli_fetch_assoc($sql5)) {
     $nop = $row5['nop'];
     $mar = $row5['mar'];
     $gred = $row5['gred'];
+    $tar = $row5['tar'];
     $sql2 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nop')");
     $row2 = mysqli_fetch_assoc($sql2);
     $notel = $row2['notel'];
     $sql3 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
     $row3 = mysqli_fetch_assoc($sql3);
     $nama = $row3['nama'];
-    echo "<button class='collapsible1 btn user-rekod-btn' id='collapsible-cell'>".$nama."</button>";
-    echo "<div class='content' id='cell-content'>";
-    echo "<h3>".$mar."</h3>";
+    echo "<button class='collapsible1 btn user-rekod-btn resultcontent' id='collapsible-cell'>".$nama."</button>";
+    echo "<div class='content' id='cell-content' style='margin-top: 5px;'>";
+    echo "<h5>Markah: ".$mar."  (".$gred.")</h5><h5>Tarikh Siap: ".$tar."</h5>";
     echo "</div>";
+    echo "<button class='btn btn-primary infolanjut-btn float-right' id='".$value."'>Info Lanjut</button>";
   }
-  echo "<div class='row infolanjut-row'>
-  <div class='col-10'></div>
-  <button class='col-2 btn btn-primary infolanjut-btn' style='margin-bottom: 5px'>Info Lanjut</button>
-  </div>
-  ";
   echo "</div>";
 }
 echo " 
@@ -105,4 +105,5 @@ echo "
   }
   </script>
   ";
+  echo "</div>";
 ?>

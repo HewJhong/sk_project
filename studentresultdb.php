@@ -24,6 +24,9 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
     array_push($idtopiklist, $idtopik);
 }
 $idtopikarray = array_unique($idtopiklist);
+if (count($idtopikarray) == 0){
+  echo "<h3 class='text-center'>Tiada Keputusan untuk dipaparkan...<h3>";
+}
 foreach ($idtopikarray as $value) {
     $sql2 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$value')");
     $row2 = mysqli_fetch_assoc($sql2);
