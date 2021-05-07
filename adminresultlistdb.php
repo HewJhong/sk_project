@@ -37,7 +37,7 @@ foreach ($idtopikarray as $value) {
   $usercount = mysqli_num_rows($usersql);
   $tally = $usercount - $perekodancount;
   $usersubmitcount = $usercount - $tally;
-  echo "<button class='collapsible btn'>".$topik."<div class='text-right submitcount-btn'>".$usersubmitcount."/".$usercount." hantar</div></button>";
+  echo "<button class='collapsible btn'><h5>".$topik."</h5><div class='text-right submitcount-btn'>".$usersubmitcount."/".$usercount." hantar</div></button>";
   echo "<div class='content' id='content'>";
   while ($row5 = mysqli_fetch_assoc($sql5)) {
     $nop = $row5['nop'];
@@ -53,8 +53,8 @@ foreach ($idtopikarray as $value) {
     echo "<button class='collapsible1 btn user-rekod-btn resultcontent' id='collapsible-cell'>".$nama."</button>";
     echo "<div class='content' id='cell-content' style='margin-top: 5px;'>";
     echo "<h5>Markah: ".$mar."  (".$gred.")</h5><h5>Tarikh Siap: ".$tar."</h5>";
-    echo "</div>";
     echo "<button class='btn btn-primary infolanjut-btn float-right' id='".$value."'>Info Lanjut</button>";
+    echo "</div>";
   }
   echo "</div>";
 }

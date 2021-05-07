@@ -389,3 +389,13 @@ table {
 .header {
   margin-bottom: 20px;
 }
+
+@media print {
+  .noprint {
+    visibility: hidden;
+  }
+}
+
+.fontsizectrl {
+  width: 50px;
+}

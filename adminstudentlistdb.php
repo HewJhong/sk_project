@@ -17,7 +17,7 @@ echo "<div class='text-center' style='margin-top: 20px;'><h2>Senarai Murid</h2><
 echo "<div  class='quiz-form-div'>";
 $no = 1; 
 echo "
-<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for names..' class='form-control'>
+<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for names...' class='form-control noprint'>
 <table class='tablesort tablelist' style='width:100%; white-space:nowrap;' id='myTable'>
   <thead>
   <tr style='text-align:center;'>
@@ -26,7 +26,7 @@ echo "
     <th>No. Telefon</th>
     <th data-tablesort-type='int' style='width:220px'>Purata Markah</th>
     <th data-tablesort-type='string' style='width:90px'>Gred</th>
-    <th style='width:80px'></th>
+    <th class='noprint' style='width:80px'></th>
   </tr>
   </thead>
 ";
@@ -79,10 +79,11 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
       <td>".$notel."</td>
       <td>".$avgmar."</td>
       <td>".$gred."</td>
-      <td style='text-align:center;'><button class='info-btn btn btn-primary' style='margin-top: 5px; margin-bottom: 5px;' id='$nop'>Info</button></td>
+      <td class='noprint' style='text-align:center;'><button class='info-btn btn btn-primary' style='margin-top: 5px; margin-bottom: 5px;' id='$nop'>Info</button></td>
     </tr>
     ";
     $no ++;
 }
+echo "<div id='noresults' class='text-center' style='display: none;'>No matching results found...</div>";  
 echo "</tbody>";
 echo "</div>";

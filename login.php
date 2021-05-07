@@ -10,6 +10,9 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
 }
 ?>
 <!DOCTYPE html>
+<script>
+    document.cookie = "currentZoom = 100";
+</script>
 <head>
     <title>Login</title>
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>

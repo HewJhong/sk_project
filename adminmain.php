@@ -20,6 +20,15 @@
     crossorigin="anonymous">
     <script src="auto-tables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+    <script src='functions.js'></script>
+    <script src='fontSizeChanger.js'></script>
 <!-- scripts -->
     <nav id="navbar" class="navbar navigation">
     <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="homepage();">Sistem Penilaian Kuiz Matematik</p>
@@ -41,6 +50,8 @@
           <button class="dropdown-item" id="dropdown-btn" onclick="kuizpage(); kuiztitle();">Tambah Kuiz Baharu</button>
     </div>
     </div>
+    <button id='fontSizeMinus' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=decreaseFontSize();>-</button>
+    <button id='fontSizeAdd' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=increaseFontSize();>+</button>
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession();">Log Out</button>
     </div>
     </nav>
@@ -59,12 +70,22 @@
     <?php endif ?>
 
 </head>
-<body style="overflow: hidden;">
+<body style="overflow: hidden;" onload="reloadToCurrentZoom();">
 
     <script>
         window.history.pushState('', null, './');
         $(window).on('popstate', function() {
             window.location.reload();
+        });
+
+        $(document).ready(function(){
+            $.ajax({
+                method: "GET",
+                url: "fontSize.php",
+                success:function(results){
+                    console.log(results);
+                }
+            });
         });
     </script>
 
@@ -75,19 +96,19 @@
             exit();
         }
         else if ($_GET['page'] == "adminhome"){
-            echo "<script>homepage(); hometitle();</script>";
+            echo "<script>homepage(); hometitle(); setFontSize();</script>";
         }
         else if ($_GET['page'] == "adminkeputusan"){
-            echo "<script>resultpage(); keputusanmuridtitle();</script>";
+            echo "<script>resultpage(); keputusanmuridtitle(); setFontSize();</script>";
         }
         else if ($_GET['page'] == "adminkuizlist"){
-            echo "<script>kuizlistpage(); senaraikuiztitle();</script>";
+            echo "<script>kuizlistpage(); senaraikuiztitle(); setFontSize();</script>";
         }
         else if ($_GET['page'] == "adminkuiz"){
-            echo "<script>kuizpage(); kuiztitle();</script>";
+            echo "<script>kuizpage(); kuiztitle(); setFontSize();</script>";
         }
         else if ($_GET['page'] == "adminstudentlist"){
-            echo "<script>studentlistpage(); senaraimuridtitle();</script>";
+            echo "<script>studentlistpage(); senaraimuridtitle(); setFontSize();</script>";
         }
     ?>
 </body>
