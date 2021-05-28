@@ -38,16 +38,16 @@
     <div class="dropdown dropmenu">
     <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Murid</button>
     <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
-          <button class="dropdown-item" id="dropdown-btn" onclick="resultpage(); keputusanmuridtitle()">Keputusan Murid</button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" id="dropdown-btn" onclick="studentlistpage(); senaraimuridtitle();">Senarai Murid</button>
+        <button class="dropdown-item" id="dropdown-btn" onclick="resultpage(); keputusanmuridtitle()">Keputusan Murid</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="dropdown-btn" onclick="studentlistpage(); senaraimuridtitle();">Senarai Murid</button>
     </div>
     <div class="dropdown dropmenu">
     <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kuiz</button>
     <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
-          <button class="dropdown-item" id="dropdown-btn" onclick="kuizlistpage(); senaraikuiztitle();">Senarai Kuiz</button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" id="dropdown-btn" onclick="kuizpage(); kuiztitle();">Tambah Kuiz Baharu</button>
+        <button class="dropdown-item" id="dropdown-btn" onclick="kuizlistpage(); senaraikuiztitle();">Senarai Kuiz</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="dropdown-btn" onclick="kuizpage(); kuiztitle();">Tambah Kuiz Baharu</button>
     </div>
     </div>
     <button id='fontSizeMinus' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=decreaseFontSize();>-</button>
@@ -76,16 +76,6 @@
         window.history.pushState('', null, './');
         $(window).on('popstate', function() {
             window.location.reload();
-        });
-
-        $(document).ready(function(){
-            $.ajax({
-                method: "GET",
-                url: "fontSize.php",
-                success:function(results){
-                    console.log(results);
-                }
-            });
         });
     </script>
 
