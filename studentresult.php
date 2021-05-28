@@ -22,7 +22,6 @@
             data: {'id':id},
             success: function(result){
                 $("#responsecontainer").html(result);
-                console.log("Success");
             }
         });
     });
