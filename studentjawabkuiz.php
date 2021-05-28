@@ -36,6 +36,8 @@
       type: 'POST',
       data: {data: obj, count: count},
       success: function(result){
+        console.log(count);
+        console.log(result);
         if (result == "errorNoAns") {
           $('#warningModel').modal('show');
         } else {

@@ -25,7 +25,7 @@
       }
     });
   });
-  $(document).on('click', '.edit-Soal-btn', function() {
+  $(document).on('click', '.edit-soal-btn', function() {
     var id = this.id;
     $.ajax({
       type: "POST",

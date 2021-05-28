@@ -22,10 +22,10 @@ $valuelist = ["A", "B", "C", "D"];
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connectionz
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-$IdTopik = $_SESSION['kuizidtopik'];
+$IdTopik = $_SESSION["kuizidtopik"];
 
 $sql1 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$IdTopik')");
 $row1 = mysqli_fetch_assoc($sql1);

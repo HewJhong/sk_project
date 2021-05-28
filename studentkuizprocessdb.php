@@ -29,6 +29,7 @@ if (isset($_POST['data'])) {
   $count = $_POST['count'];
   $result = $data[0]['name'];
   if (count($data) < $count){
+    echo count($data);
     echo "errorNoAns";
   }
   else {
@@ -82,7 +83,6 @@ if (isset($_POST['data'])) {
       $conn->query($insertIdRekod);
     }
   }
-  unset($_SESSION['kuizidtopik']);
 }
 else {
   echo "errorNoAns";
