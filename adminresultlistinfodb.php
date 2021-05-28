@@ -31,8 +31,7 @@ echo "<br>";
 $sql2 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (Peranan = 'murid')");
 $muridcount = mysqli_num_rows($sql2);
 $sql3 =  mysqli_query($conn, "SELECT * FROM perekodan WHERE (IdTopik = '$IdTopik')");
-$undonemuridcount = mysqli_num_rows($sql3);
-$donemuridcount = $muridcount - $undonemuridcount;
+$donemuridcount = mysqli_num_rows($sql3);
 
 while ($row2 = mysqli_fetch_assoc($sql2)) {
   $NoP = $row2['NoP'];
@@ -113,7 +112,6 @@ echo "</table>";
 //Conversion
 $muriddata = json_encode($muridlist);
 $markahdata = json_encode($markahlist);
-print_r ($markahdata);
 // Chart
 echo "<canvas id='myChart'></canvas>";
 echo "<script>
