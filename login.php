@@ -1,6 +1,6 @@
 <?php require_once 'authController.php';
-if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
-    if ($_SESSION['peranan'] == "murid") {
+if (isset($_SESSION['NoP']) || isset($_SESSION['NoTel'])) {
+    if ($_SESSION['Peranan'] == "murid") {
         header("Location: studentmain.php?page=studenthome");
         exit();
     } else {
@@ -40,11 +40,11 @@ if (isset($_SESSION['nop']) || isset($_SESSION['notel'])) {
 
                     <div class="form-group">
                         <label for="username">No. Pengguna atau No. Telefon</label>
-                        <input type="text" name="nop" value="<?php echo $nop; ?>" class="form-control form-control-lg" autocomplete="off";>
+                        <input type="text" name="NoP" value="<?php echo $NoP; ?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
-                        <label for="password">Kata Laluan</label>
-                        <input type="password" name="password" class="form-control form-control-lg" autocomplete="off";>
+                        <label for="KataLaluan">Kata Laluan</label>
+                        <input type="password" name="KataLaluan" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="login-btn" class="btn btn-primary btn-block btn-lg">Log Masuk</button>

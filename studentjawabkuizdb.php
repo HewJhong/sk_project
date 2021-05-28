@@ -25,37 +25,37 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$idtopik = $_SESSION['kuizidtopik'];
+$IdTopik = $_SESSION['kuizidtopik'];
 
-$sql1 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$idtopik')");
+$sql1 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$IdTopik')");
 $row1 = mysqli_fetch_assoc($sql1);
-$topik = $row1['topik'];
-echo "<h3 class='text-center'>".$topik."</h3>";
-$sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik')");
+$Topik = $row1['Topik'];
+echo "<h3 class='text-center'>".$Topik."</h3>";
+$sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (IdTopik = '$IdTopik')");
 while ($row2 = mysqli_fetch_assoc($sql2)) {
-    $nosoal = $row2['nosoal'];
-    $soal = $row2['soal'];
-    array_push($soallist, $soal);
-    array_push($nosoallist, $nosoal);
+    $NoSoal = $row2['NoSoal'];
+    $Soal = $row2['Soal'];
+    array_push($soallist, $Soal);
+    array_push($nosoallist, $NoSoal);
 }
 
 $soallistcount = count($soallist) / 4;
 
 for ($i=0; $i < $soallistcount; $i++) {
     $radioname = "pilihradio" . $questionnum ;  
-    $soal = $soallist[$soalskipper];
-    $nosoal = $nosoallist[$soalskipper];
+    $Soal = $soallist[$soalskipper];
+    $NoSoal = $nosoallist[$soalskipper];
     $valueindex = 0;
-    echo "<div class='soal-form-div'>";
+    echo "<div class='Soal-form-div'>";
     echo "<h5 name='soalnum[]'>Soalan ".$questionnum."</h5>";
-    echo "<div class='soalcontainer' id='".$nosoal."' style='padding-top: 10px; padding-bottom: 10px'><h4>".$soal."</h4></div>";
-    $pilihsql = mysqli_query($conn, "SELECT pilih FROM soalan WHERE (nosoal = '$nosoal')");
+    echo "<div class='soalcontainer' id='".$NoSoal."' style='padding-top: 10px; padding-bottom: 10px'><h4>".$Soal."</h4></div>";
+    $pilihsql = mysqli_query($conn, "SELECT Pilih FROM soalan WHERE (NoSoal = '$NoSoal')");
     while ($pilihrow = mysqli_fetch_assoc($pilihsql)) {
         $value = $valuelist[$valueindex];
-        $pilih = $pilihrow['pilih'];
+        $Pilih = $pilihrow['Pilih'];
         echo "<label class='radiocontainer'>";
-        echo "<input type='radio' name='".$nosoal."' id='".$radioname."' value='".$value."'>";
-        echo "<span class='checkmark'>".$pilih."</span>";
+        echo "<input type='radio' name='".$NoSoal."' id='".$radioname."' value='".$value."'>";
+        echo "<span class='checkmark'>".$Pilih."</span>";
         echo "</label>";
         $valueindex += 1;
     }

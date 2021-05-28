@@ -1,5 +1,5 @@
 <?php require_once 'authController.php';
-if (isset($_SESSION['nop'])) {
+if (isset($_SESSION['NoP'])) {
     if ($_SESSION['role'] == "murid") {
         header("Location: studentmain.php");
         exit();
@@ -38,23 +38,23 @@ if (isset($_SESSION['nop'])) {
 
                     <div class="form-group">
                         <label for="username">No. Pengguna</label>
-                        <input type="text" name="nop" value="<?php echo $nop;?>" class="form-control form-control-lg" autocomplete="off";>
+                        <input type="text" name="NoP" value="<?php echo $NoP;?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="nama" value="<?php echo $nama;?>" class="form-control form-control-lg" autocomplete="off";>
+                        <input type="text" name="Nama" value="<?php echo $Nama;?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
-                        <label for="notel">Nombor Telefon</label>
-                        <input type="text" name="notel" value="<?php echo $notel;?>" class="form-control form-control-lg" autocomplete="off";>
+                        <label for="NoTel">Nombor Telefon</label>
+                        <input type="text" name="NoTel" value="<?php echo $NoTel;?>" class="form-control form-control-lg" autocomplete="off";>
                     </div>
                     <div class="form-group">
-                        <label for="password">Kata Laluan</label>
-                        <input type="password" name="password" class="form-control form-control-lg">
+                        <label for="KataLaluan">Kata Laluan</label>
+                        <input type="password" name="KataLaluan" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
-                        <label for="passwordConf">Sahkan Kata Laluan</label>
-                        <input type="password" name="passwordConf" class="form-control form-control-lg">
+                        <label for="KataLaluanConf">Sahkan Kata Laluan</label>
+                        <input type="password" name="KataLaluanConf" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
                         <button type="submit" name="signup-btn" class="btn btn-primary btn-block btn-lg">Sign Up</button>

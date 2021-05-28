@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `pengguna` (
   `nop` varchar(100) NOT NULL,
-  `notel` varchar(50) NOT NULL,
+  `NoTel` varchar(50) NOT NULL,
   `peranan` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`nop`, `notel`, `peranan`, `password`) VALUES
+INSERT INTO `pengguna` (`nop`, `NoTel`, `peranan`, `password`) VALUES
 ('adf', '013-1234123', 'murid', 'test'),
 ('ok', '013-9999999', 'murid', 'test'),
 ('root', '012-2222222', 'admin', 'root');
@@ -52,18 +52,18 @@ INSERT INTO `pengguna` (`nop`, `notel`, `peranan`, `password`) VALUES
 
 CREATE TABLE `perekodan` (
   `idrekod` varchar(50) NOT NULL,
-  `mar` varchar(50) NOT NULL,
-  `gred` varchar(50) NOT NULL,
-  `tar` varchar(50) NOT NULL,
+  `Mar` varchar(50) NOT NULL,
+  `Gred` varchar(50) NOT NULL,
+  `Tar` varchar(50) NOT NULL,
   `nop` varchar(50) NOT NULL,
-  `idtopik` varchar(50) NOT NULL
+  `IdTopik` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `perekodan`
 --
 
-INSERT INTO `perekodan` (`idrekod`, `mar`, `gred`, `tar`, `nop`, `idtopik`) VALUES
+INSERT INTO `perekodan` (`idrekod`, `Mar`, `Gred`, `Tar`, `nop`, `IdTopik`) VALUES
 ('R001', '100', 'A', '17/01/2021', 'adf', 'T1'),
 ('R002', '100', 'A', '17/01/2021', 'adf', 'T6'),
 ('R003', '100', 'A', '17/01/2021', 'ok', 'T1'),
@@ -77,18 +77,18 @@ INSERT INTO `perekodan` (`idrekod`, `mar`, `gred`, `tar`, `nop`, `idtopik`) VALU
 
 CREATE TABLE `soalan` (
   `idsoal` varchar(20) NOT NULL,
-  `nosoal` int(20) NOT NULL,
-  `soal` text NOT NULL,
-  `pilih` text NOT NULL,
-  `jaw` varchar(10) NOT NULL,
-  `idtopik` varchar(100) NOT NULL
+  `NoSoal` int(20) NOT NULL,
+  `Soal` text NOT NULL,
+  `Pilih` text NOT NULL,
+  `Jaw` varchar(10) NOT NULL,
+  `IdTopik` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `soalan`
 --
 
-INSERT INTO `soalan` (`idsoal`, `nosoal`, `soal`, `pilih`, `jaw`, `idtopik`) VALUES
+INSERT INTO `soalan` (`idsoal`, `NoSoal`, `Soal`, `Pilih`, `Jaw`, `IdTopik`) VALUES
 ('S001', 1, '1+0=', '1', '1', 'T1'),
 ('S002', 1, '1+0=', '3', '0', 'T1'),
 ('S003', 1, '1+0=', '5', '0', 'T1'),
@@ -117,7 +117,7 @@ INSERT INTO `soalan` (`idsoal`, `nosoal`, `soal`, `pilih`, `jaw`, `idtopik`) VAL
 --
 
 CREATE TABLE `telefon` (
-  `notel` varchar(50) NOT NULL,
+  `NoTel` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -125,7 +125,7 @@ CREATE TABLE `telefon` (
 -- Dumping data for table `telefon`
 --
 
-INSERT INTO `telefon` (`notel`, `nama`) VALUES
+INSERT INTO `telefon` (`NoTel`, `nama`) VALUES
 ('012-2222222', 'Cikgu'),
 ('013-1234123', 'adf'),
 ('013-9999999', 'ok');
@@ -133,19 +133,19 @@ INSERT INTO `telefon` (`notel`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `topik`
+-- Table structure for table `Topik`
 --
 
-CREATE TABLE `topik` (
-  `idtopik` varchar(100) NOT NULL,
-  `topik` varchar(500) NOT NULL
+CREATE TABLE `Topik` (
+  `IdTopik` varchar(100) NOT NULL,
+  `Topik` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `topik`
+-- Dumping data for table `Topik`
 --
 
-INSERT INTO `topik` (`idtopik`, `topik`) VALUES
+INSERT INTO `Topik` (`IdTopik`, `Topik`) VALUES
 ('T1', 'Tambah'),
 ('T2', 'Tolak'),
 ('T3', 'Revisi'),
@@ -162,15 +162,15 @@ INSERT INTO `topik` (`idtopik`, `topik`) VALUES
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`nop`,`notel`),
-  ADD KEY `notel` (`notel`);
+  ADD PRIMARY KEY (`nop`,`NoTel`),
+  ADD KEY `NoTel` (`NoTel`);
 
 --
 -- Indexes for table `perekodan`
 --
 ALTER TABLE `perekodan`
   ADD PRIMARY KEY (`idrekod`),
-  ADD KEY `idtopik` (`idtopik`),
+  ADD KEY `IdTopik` (`IdTopik`),
   ADD KEY `nop` (`nop`);
 
 --
@@ -178,20 +178,20 @@ ALTER TABLE `perekodan`
 --
 ALTER TABLE `soalan`
   ADD PRIMARY KEY (`idsoal`),
-  ADD KEY `idtopik` (`idtopik`);
+  ADD KEY `IdTopik` (`IdTopik`);
 
 --
 -- Indexes for table `telefon`
 --
 ALTER TABLE `telefon`
-  ADD PRIMARY KEY (`notel`),
-  ADD KEY `notel` (`notel`);
+  ADD PRIMARY KEY (`NoTel`),
+  ADD KEY `NoTel` (`NoTel`);
 
 --
--- Indexes for table `topik`
+-- Indexes for table `Topik`
 --
-ALTER TABLE `topik`
-  ADD PRIMARY KEY (`idtopik`);
+ALTER TABLE `Topik`
+  ADD PRIMARY KEY (`IdTopik`);
 
 --
 -- Constraints for dumped tables
@@ -201,20 +201,20 @@ ALTER TABLE `topik`
 -- Constraints for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`notel`) REFERENCES `telefon` (`notel`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`NoTel`) REFERENCES `telefon` (`NoTel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `perekodan`
 --
 ALTER TABLE `perekodan`
-  ADD CONSTRAINT `perekodan_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`),
+  ADD CONSTRAINT `perekodan_ibfk_1` FOREIGN KEY (`IdTopik`) REFERENCES `Topik` (`IdTopik`),
   ADD CONSTRAINT `perekodan_ibfk_2` FOREIGN KEY (`nop`) REFERENCES `pengguna` (`nop`);
 
 --
 -- Constraints for table `soalan`
 --
 ALTER TABLE `soalan`
-  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`IdTopik`) REFERENCES `Topik` (`IdTopik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,22 +13,22 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql1 = mysqli_query($conn, "SELECT * FROM topik");
+$sql1 = mysqli_query($conn, "SELECT * FROM Topik");
 $nosoallist = array();
 $gotsoal = array();
-$nop = $_SESSION['nop'];
+$NoP = $_SESSION['NoP'];
 
 while ($row1 = mysqli_fetch_assoc($sql1)) {
     $nosoallist = [];
-    $idtopik = $row1['idtopik'];
-    $sql3 = mysqli_query($conn, "SELECT topik FROM topik WHERE (idtopik = '$idtopik')");
+    $IdTopik = $row1['IdTopik'];
+    $sql3 = mysqli_query($conn, "SELECT Topik FROM Topik WHERE (IdTopik = '$IdTopik')");
     $row3 = mysqli_fetch_assoc($sql3);
-    $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik')");
-    $sql3 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (idtopik = '$idtopik' AND nop = '$nop')");
+    $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (IdTopik = '$IdTopik')");
+    $sql3 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (IdTopik = '$IdTopik' AND NoP = '$NoP')");
     $rekodnum = mysqli_num_rows($sql3);
     while ($row2 = mysqli_fetch_assoc($sql2)) {
-        $nosoal = $row2['nosoal'];
-        array_push($nosoallist, $nosoal);
+        $NoSoal = $row2['NoSoal'];
+        array_push($nosoallist, $NoSoal);
     }
     $nosoalarray = array_unique($nosoallist);
     $numsoal = count($nosoalarray);
@@ -37,11 +37,11 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
     }
     if ($numsoal >= 1) {
         array_push($gotsoal, "1");
-        echo "<button class='collapsible btn'>".$row3['topik']."</button>";
+        echo "<button class='collapsible btn'>".$row3['Topik']."</button>";
             echo "<div class='content'>";
                 echo "<div class='row'>";
                     echo "<h4 class='col-sm collapsible-content'> Bilangan Soalan dalam kuiz ini: ".$numsoal."</h4>";
-                    echo "<a style='color: black;' class='col-sm-3 btn btn-primary edit-soal-btn' id='".$idtopik."'>Jawab Kuiz</a>";
+                    echo "<a style='color: black;' class='col-sm-3 btn btn-primary edit-Soal-btn' id='".$IdTopik."'>Jawab Kuiz</a>";
                 echo "</div>";
             echo "</div>";
     }

@@ -15,12 +15,12 @@
         $("#responsecontainer").html(response);
       }
     });
-    $(document).on('click', '.delete-soal-btn', function() {
+    $(document).on('click', '.delete-Soal-btn', function() {
       var id = this.id;
       $clicked_btn = $(this);
       $('#confimationmodal').modal('show');
 
-      $(document).on('click', '.delete-soal', function() {
+      $(document).on('click', '.delete-Soal', function() {
         $.ajax({
         url: 'authController.php',
         type: 'GET',
@@ -37,7 +37,7 @@
     });
 
     $(document).on('click', '.delete-kuiz-btn', function() {
-      var idtopik = this.id;
+      var IdTopik = this.id;
       var button = this.closest('.collapsible');
       $delete_kuiz_btn = $(this);
       $('#kuizconfirmationmodal').modal('show');
@@ -48,7 +48,7 @@
           type: 'GET',
           data: {
             'deletekuiz': 1,
-            'idtopik':idtopik,
+            'IdTopik':IdTopik,
           },
           success: function(result){
             console.log('Kuiz deleted');
@@ -59,15 +59,15 @@
       });
     });
 
-    $(document).on('click', '.edit-soal-btn', function() {
-      var nosoal = this.id;
+    $(document).on('click', '.edit-Soal-btn', function() {
+      var NoSoal = this.id;
       $.ajax({
         url: 'admineditkuiz.php',
         method: 'POST',
-        data: {'nosoal':nosoal},
+        data: {'NoSoal':NoSoal},
         dataType: 'json',
         success: function(data){  
-          $('#soalan').val(data.soal);
+          $('#soalan').val(data.Soal);
           $('#pilih1').val(data.pilih1);
           $('#pilih2').val(data.pilih2);
           $('#pilih3').val(data.pilih3);
@@ -76,11 +76,11 @@
           $("#checkbox2").prop("checked", data.checkbox2);
           $("#checkbox3").prop("checked", data.checkbox3);
           $("#checkbox4").prop("checked", data.checkbox4);
-          $('#edit-soal').modal('show');
+          $('#edit-Soal').modal('show');
         },
       });
-        $(document).on('click', '.edit-soal', function() {
-        var soal = $("#soalan").val();
+        $(document).on('click', '.edit-Soal', function() {
+        var Soal = $("#soalan").val();
         var pilih1 = $("#pilih1").val();
         var pilih2 = $("#pilih2").val();
         var pilih3 = $("#pilih3").val();
@@ -93,8 +93,8 @@
           method: "POST",
           url: "adminupdatekuiz.php",
           data: {
-            'nosoal':nosoal,
-            'soal':soal,
+            'NoSoal':NoSoal,
+            'Soal':Soal,
             'pilih1':pilih1,
             'pilih2':pilih2,
             'pilih3':pilih3,
@@ -113,7 +113,7 @@
     });
   });
   
-  $(document).on('click','.delete-soal', function() {
+  $(document).on('click','.delete-Soal', function() {
       window.location.reload();
   });
 
@@ -123,7 +123,7 @@
 
     
 </script>
-<div class='modal fade' id='edit-soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal fade' id='edit-Soal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog' role='document'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -135,11 +135,11 @@
         <div class='modal-body'>
         <form method="post" id="addquizform" action="kuizdb.php">
         <div class="form-group">
-              <label for="soal">Soalan</label>
+              <label for="Soal">Soalan</label>
               <input type="text" id='soalan' name="psoal[]" class="form-control form-control-lg" autocomplete="off" required >
         </div>
           <div class="form-group">
-              <label for="jaw">Jawapan</label>
+              <label for="Jaw">Jawapan</label>
               <div class="form-check">
                   <input id="checkbox1" type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A">
                       <div class="form-group">
@@ -169,7 +169,7 @@
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
-          <button type='button' class='btn btn-primary edit-soal' data-dismiss='modal' id='confirm-btn'>Ya, teruskan</button>
+          <button type='button' class='btn btn-primary edit-Soal' data-dismiss='modal' id='confirm-btn'>Ya, teruskan</button>
         </div>
       </div>
     </div>
@@ -188,7 +188,7 @@
         </div>
         <div class='modal-footer'>
           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Tidak</button>
-          <button type='button' class='btn btn-primary delete-soal' data-dismiss='modal'>Ya, teruskan</button>
+          <button type='button' class='btn btn-primary delete-Soal' data-dismiss='modal'>Ya, teruskan</button>
         </div>
       </div>
     </div>

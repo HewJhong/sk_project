@@ -26,8 +26,8 @@
 </script>
 <body>
     <form action="db.php" id="myForm" method="post">
-    Username: <input id="nop" type="text" name="nop"/><br>
-    Role: <input id="peranan" type="text" name="peranan"/><br>
+    Username: <input id="NoP" type="text" name="NoP"/><br>
+    Role: <input id="Peranan" type="text" name="Peranan"/><br>
     <button id="submit">Save</button>
     </form>
 

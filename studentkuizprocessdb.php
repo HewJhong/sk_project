@@ -19,9 +19,9 @@ $pilihlist = array();
 $valuelist = ["A", "B", "C", "D"];
 $score = 0;
 $rekodprefix = "R";
-$nop = $_SESSION['nop'];
+$NoP = $_SESSION['NoP'];
 $date = date("d/m/Y");
-$idtopik = $_SESSION["kuizidtopik"];
+$IdTopik = $_SESSION["kuizidtopik"];
 
 
 if (isset($_POST['data'])) {
@@ -33,16 +33,16 @@ if (isset($_POST['data'])) {
   }
   else {
     for ($i=0; $i<$count; $i++) {
-      $nosoal = $data[$i]['name'];
+      $NoSoal = $data[$i]['name'];
       $studentjaw = $data[$i]['value'];
-      $sql1 = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal = '$nosoal')");
+      $sql1 = mysqli_query($conn, "SELECT * FROM soalan WHERE (NoSoal = '$NoSoal')");
       while ($row1 = mysqli_fetch_assoc($sql1)) {
-        $pilih = $row1['jaw'];
-        array_push($pilihlist, $pilih);
+        $Pilih = $row1['Jaw'];
+        array_push($pilihlist, $Pilih);
       }
       $jawindex = array_search(1, $pilihlist);
-      $jaw = $valuelist[$jawindex];
-      if ($studentjaw == $jaw) {
+      $Jaw = $valuelist[$jawindex];
+      if ($studentjaw == $Jaw) {
         $score += 1;
       }
       $pilihlist = array();
@@ -50,36 +50,36 @@ if (isset($_POST['data'])) {
     echo $score;
     $markah = $score / $count * 100;
     if ($markah >= 80) {
-      $gred = "A";
+      $Gred = "A";
     }
     else if ($markah >=70 && $markah <80) {
-      $gred = "B";
+      $Gred = "B";
     } 
     else if ($markah >=60 && $markah <70) {
-      $gred = "C";
+      $Gred = "C";
     }
     else if ($markah >=50 && $markah <60) {
-      $gred = "D";
+      $Gred = "D";
     }
     else {
-      $gred = "F";
+      $Gred = "F";
     }
-    $idrekodsql = mysqli_query($conn, "SELECT * FROM perekodan");
-    $idrekodnumrows = mysqli_num_rows($idrekodsql);
-    if ($idrekodnumrows === 0) {
-      $idrekod = $rekodprefix.'001';
-      $insertidrekod = "INSERT INTO perekodan(idrekod, mar, gred, tar, nop, idtopik) VALUES('$idrekod', '$markah', '$gred', '$date', '$nop', '$idtopik')";
-      $conn->query($insertidrekod);
+    $IdRekodsql = mysqli_query($conn, "SELECT * FROM perekodan");
+    $IdRekodnumrows = mysqli_num_rows($IdRekodsql);
+    if ($IdRekodnumrows === 0) {
+      $IdRekod = $rekodprefix.'001';
+      $insertIdRekod = "INSERT INTO perekodan(IdRekod, Mar, Gred, Tar, NoP, IdTopik) VALUES('$IdRekod', '$markah', '$Gred', '$date', '$NoP', '$IdTopik')";
+      $conn->query($insertIdRekod);
     } else {
-      $getlastidrekod = mysqli_query($conn, "SELECT * FROM perekodan ORDER BY LENGTH (idrekod) DESC, idrekod DESC LIMIT 1");
-      $existingidrekod = mysqli_fetch_assoc($getlastidrekod);
-      $stridrekod = ltrim($existingidrekod['idrekod'], $rekodprefix);
-      $intrekod = (int)$stridrekod;
+      $getlastIdRekod = mysqli_query($conn, "SELECT * FROM perekodan ORDER BY LENGTH (IdRekod) DESC, IdRekod DESC LIMIT 1");
+      $existingIdRekod = mysqli_fetch_assoc($getlastIdRekod);
+      $strIdRekod = ltrim($existingIdRekod['IdRekod'], $rekodprefix);
+      $intrekod = (int)$strIdRekod;
       $intrekod++;
       $int = sprintf('%03d', $intrekod);
-      $idrekod = $rekodprefix.$int;
-      $insertidrekod = "INSERT INTO perekodan(idrekod, mar, gred, tar, nop, idtopik) VALUES('$idrekod', '$markah', '$gred', '$date', '$nop', '$idtopik')";
-      $conn->query($insertidrekod);
+      $IdRekod = $rekodprefix.$int;
+      $insertIdRekod = "INSERT INTO perekodan(IdRekod, Mar, Gred, Tar, NoP, IdTopik) VALUES('$IdRekod', '$markah', '$Gred', '$date', '$NoP', '$IdTopik')";
+      $conn->query($insertIdRekod);
     }
   }
   unset($_SESSION['kuizidtopik']);

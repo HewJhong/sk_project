@@ -27,18 +27,18 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$idtopik = $_POST['id'];
+$IdTopik = $_POST['id'];
 
-$sql1 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$idtopik')");
+$sql1 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$IdTopik')");
 $row1 = mysqli_fetch_assoc($sql1);
-$topik = $row1['topik'];
-echo "<h3 class='text-center'>".$topik."</h3>";
-$sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik')");
+$Topik = $row1['Topik'];
+echo "<h3 class='text-center'>".$Topik."</h3>";
+$sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (IdTopik = '$IdTopik')");
 while ($row2 = mysqli_fetch_assoc($sql2)) {
-    $nosoal = $row2['nosoal'];
-    $soal = $row2['soal'];
-    array_push($soallist, $soal);
-    array_push($nosoallist, $nosoal);
+    $NoSoal = $row2['NoSoal'];
+    $Soal = $row2['Soal'];
+    array_push($soallist, $Soal);
+    array_push($nosoallist, $NoSoal);
 }
 
 $counter = 0;
@@ -46,11 +46,11 @@ $soallistcount = count($soallist) / 4;
 
 
 for ($i=0; $i < $soallistcount; $i++) {
-    $nosoal = $nosoallist[$soalskipper];
-    $jawsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal = '$nosoal') ORDER BY nosoal ASC");
+    $NoSoal = $nosoallist[$soalskipper];
+    $jawsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (NoSoal = '$NoSoal') ORDER BY NoSoal ASC");
     while ($jawsqlrow = mysqli_fetch_assoc($jawsql)){
-        $jaw = $jawsqlrow['jaw'];
-        array_push($jawlist, $jaw);
+        $Jaw = $jawsqlrow['Jaw'];
+        array_push($jawlist, $Jaw);
     }
     $soalskipper += 4;
 }
@@ -62,23 +62,23 @@ $soalskipper = 0;
 for ($i=0; $i < $soallistcount; $i++) {
     $index = $spanclasslist[$i];
     $radioname = "pilihradio" . $questionnum ;  
-    $soal = $soallist[$soalskipper];
-    $nosoal = $nosoallist[$soalskipper];
-    echo "<div class='soal-form-div'>";
+    $Soal = $soallist[$soalskipper];
+    $NoSoal = $nosoallist[$soalskipper];
+    echo "<div class='Soal-form-div'>";
     echo "<h5 name='soalnum[]'>Soalan ".$questionnum."</h5>";
-    echo "<div class='soalcontainer' id='".$nosoal."' style='padding-top: 10px; padding-bottom: 10px'><h4>".$soal."</h4></div>";
-    $pilihsql = mysqli_query($conn, "SELECT pilih FROM soalan WHERE (nosoal = '$nosoal')");
+    echo "<div class='soalcontainer' id='".$NoSoal."' style='padding-top: 10px; padding-bottom: 10px'><h4>".$Soal."</h4></div>";
+    $pilihsql = mysqli_query($conn, "SELECT Pilih FROM soalan WHERE (NoSoal = '$NoSoal')");
     $valueindex = 0;
     while ($pilihrow = mysqli_fetch_assoc($pilihsql)) {
         $value = $valuelist[$valueindex];
-        $pilih = $pilihrow['pilih'];
+        $Pilih = $pilihrow['Pilih'];
         echo "<label class='radiocontainer'>";
-        echo "<a name='".$nosoal."' id='".$radioname."' value='".$value."'>";
+        echo "<a name='".$NoSoal."' id='".$radioname."' value='".$value."'>";
         if ($counter === $index) {
-            echo "<span class='checkmark bg-warning' id='".$valueindex."'>".$pilih."</span>";
+            echo "<span class='checkmark bg-warning' id='".$valueindex."'>".$Pilih."</span>";
         }
         else {
-            echo "<span class='checkmark' id='".$valueindex."'>".$pilih."</span>";
+            echo "<span class='checkmark' id='".$valueindex."'>".$Pilih."</span>";
         }
         echo "</label>";
         $valueindex += 1;

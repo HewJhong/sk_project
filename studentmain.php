@@ -64,7 +64,7 @@
 
     <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
     <?php 
-    if (!isset($_SESSION['nop'])) {
+    if (!isset($_SESSION['NoP'])) {
         header ("Location: login.php");
         exit();
     }

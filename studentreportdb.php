@@ -28,25 +28,25 @@ echo "";
 $idtopiklist = array();
 $doneidtopiklist = array();
 
-$nop = $_SESSION['nop'];
-echo "<div><h5>Nombor Pengguna: ".$nop."</h5></div>";
-$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nop')");
+$NoP = $_SESSION['NoP'];
+echo "<div><h5>Nombor Pengguna: ".$NoP."</h5></div>";
+$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (NoP = '$NoP')");
 $row1 = mysqli_fetch_assoc($sql1);
-$notel = $row1['notel'];
-$sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
+$NoTel = $row1['NoTel'];
+$sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
 $row2 = mysqli_fetch_assoc($sql2);
-$nama = $row2['nama']; 
-echo "<div><h5>Nama: ".$nama."</h5></div>";
+$Nama = $row2['Nama']; 
+echo "<div><h5>Nama: ".$Nama."</h5></div>";
 $sql3 = mysqli_query($conn, "SELECT * FROM soalan");
 while ($row3 = mysqli_fetch_assoc($sql3)) {
-    $idtopik = $row3['idtopik'];
-    array_push($idtopiklist, $idtopik);
+    $IdTopik = $row3['IdTopik'];
+    array_push($idtopiklist, $IdTopik);
 }
 $idtopikarray = array_unique($idtopiklist);
-$sql4 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (nop = '$nop')");
+$sql4 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (NoP = '$NoP')");
 while ($row4 = mysqli_fetch_assoc($sql4)) {
-    $idtopik = $row4['idtopik'];
-    array_push($doneidtopiklist, $idtopik);
+    $IdTopik = $row4['IdTopik'];
+    array_push($doneidtopiklist, $IdTopik);
 }
 $doneidtopikarray = array_unique($doneidtopiklist);
 $missingidtopikarray = array_diff($idtopikarray, $doneidtopikarray);
@@ -66,22 +66,22 @@ echo "<table style='width: 100%' class='tablesort'>
 ";
 echo "<tbody>";
 foreach ($doneidtopikarray as $value) {
-  $sql5 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (idtopik = '$value')");
+  $sql5 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (IdTopik = '$value')");
   $row5 = mysqli_fetch_assoc($sql5);
-  $markah = $row5['mar'];
-  $tarikh =$row5['tar'];
+  $markah = $row5['Mar'];
+  $tarikh =$row5['Tar'];
   $totalmarkah += $markah;
   array_push($markahlist, $markah);
-  $gred = $row5['gred'];
-  $sql6 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$value')");
+  $Gred = $row5['Gred'];
+  $sql6 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$value')");
   $row6 = mysqli_fetch_assoc($sql6);
-  $topik = $row6['topik'];
-  array_push($topiklist, $topik);
+  $Topik = $row6['Topik'];
+  array_push($topiklist, $Topik);
   echo "<tr class='item'>";
   echo "<td>".$counter."</td>";
-  echo "<td>".$topik."</td>";
+  echo "<td>".$Topik."</td>";
   echo "<td>".$markah."</td>";
-  echo "<td>".$gred."</td>";
+  echo "<td>".$Gred."</td>";
   echo "<td>".$tarikh."</td>";
   echo "<td><i style='margin-top: 5px; margin-bottom: 5px;' class='fas fa-check-circle'></i></td>";
   echo "</tr>";
@@ -92,12 +92,12 @@ foreach ($doneidtopikarray as $value) {
 $topikdata = json_encode($topiklist);
 $markahdata = json_encode($markahlist);
 foreach ($missingidtopikarray as $value) {
-  $sql7 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$value')");
+  $sql7 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$value')");
   $row7 = mysqli_fetch_assoc($sql7);
-  $topik = $row7['topik'];
+  $Topik = $row7['Topik'];
   echo "<tr class='item'>";
   echo "<td>".$counter."</td>";
-  echo "<td>".$topik."</td>";
+  echo "<td>".$Topik."</td>";
   echo "<td>N/A</td>";
   echo "<td>N/A</td>";
   echo "<td>N/A</td>";

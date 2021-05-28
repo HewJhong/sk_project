@@ -13,8 +13,8 @@ if ($conn->connect_error) {
 
 $counter = 1;
 $donecounter = 0;
-$noplist = array();
-$donenoplist = array();
+$NoPlist = array();
+$doneNoPlist = array();
 $markahlist = array();
 $muridlist = array();
 
@@ -22,27 +22,27 @@ echo "<div class='back-btn'><button class='btn btn-primary' onclick='resultpage(
 echo "<div class='text-center' style='margin-top: 20px;'><h2>Senarai Keputusan Murid</h2></div>";
 echo "<div class='quiz-form-div'>";
 
-$idtopik = $_POST['id'];
-$sql1 = mysqli_query($conn, "SELECT * FROM topik WHERE (idtopik = '$idtopik')");
+$IdTopik = $_POST['id'];
+$sql1 = mysqli_query($conn, "SELECT * FROM Topik WHERE (IdTopik = '$IdTopik')");
 $row1 = mysqli_fetch_assoc($sql1);
-$topik = $row1['topik'];
-echo "<h4 class='text-center'>".$topik."</h4>";
+$Topik = $row1['Topik'];
+echo "<h4 class='text-center'>".$Topik."</h4>";
 echo "<br>";
-$sql2 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (peranan = 'murid')");
+$sql2 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (Peranan = 'murid')");
 $muridcount = mysqli_num_rows($sql2);
-$sql3 =  mysqli_query($conn, "SELECT * FROM perekodan WHERE (idtopik = '$idtopik')");
+$sql3 =  mysqli_query($conn, "SELECT * FROM perekodan WHERE (IdTopik = '$IdTopik')");
 $undonemuridcount = mysqli_num_rows($sql3);
 $donemuridcount = $muridcount - $undonemuridcount;
 
 while ($row2 = mysqli_fetch_assoc($sql2)) {
-  $nop = $row2['nop'];
-  array_push($noplist, $nop);
+  $NoP = $row2['NoP'];
+  array_push($NoPlist, $NoP);
 }
 while ($row3 = mysqli_fetch_assoc($sql3)) {
-  $donenop = $row3['nop'];
-  array_push($donenoplist, $donenop);
+  $doneNoP = $row3['NoP'];
+  array_push($doneNoPlist, $doneNoP);
 }
-$missingnoplist = array_diff($noplist, $donenoplist);
+$missingNoPlist = array_diff($NoPlist, $doneNoPlist);
 
 echo "<h5>Bilangan murid yang siap: ".$donemuridcount."/".$muridcount."</h5>";
 echo "<br>";
@@ -61,26 +61,26 @@ echo "<table style='width: 100%' class='tablesort'>
 
 echo "<tbody>";
 // Done students
-foreach ($donenoplist as $nopvalue) {
-  $sql4 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nopvalue')");
+foreach ($doneNoPlist as $NoPvalue) {
+  $sql4 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (NoP = '$NoPvalue')");
   $row4 = mysqli_fetch_assoc($sql4);
-  $notel = $row4['notel'];
-  $sql5 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
+  $NoTel = $row4['NoTel'];
+  $sql5 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
   $row5 = mysqli_fetch_assoc($sql5);
-  $nama = $row5['nama'];
-  $sql6 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (nop = '$nopvalue')");
+  $Nama = $row5['Nama'];
+  $sql6 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (NoP = '$NoPvalue')");
   $row6 = mysqli_fetch_assoc($sql6);
-  $markah = $row6['mar'];
-  $gred = $row6['gred'];
-  $tarikh = $row6['tar'];
+  $markah = $row6['Mar'];
+  $Gred = $row6['Gred'];
+  $tarikh = $row6['Tar'];
   array_push($markahlist, $markah);
-  array_push($muridlist, $nama);
+  array_push($muridlist, $Nama);
   echo "
     <tr class='item'>
     <td>".$counter."</td>
-    <td>".$nama."</td>
+    <td>".$Nama."</td>
     <td>".$markah."</td>
-    <td>".$gred."</td>
+    <td>".$Gred."</td>
     <td>".$tarikh."</td>
     <td><i style='margin-top: 5px; margin-bottom: 5px;' class='fas fa-check-circle'></i></td>
     </tr>
@@ -88,17 +88,17 @@ foreach ($donenoplist as $nopvalue) {
   $counter ++;
 }
 // Undone students
-foreach ($missingnoplist as $nopvalue) {
-  $sql4 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nopvalue')");
+foreach ($missingNoPlist as $NoPvalue) {
+  $sql4 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (NoP = '$NoPvalue')");
   $row4 = mysqli_fetch_assoc($sql4);
-  $notel = $row4['notel'];
-  $sql5 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
+  $NoTel = $row4['NoTel'];
+  $sql5 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
   $row5 = mysqli_fetch_assoc($sql5);
-  $nama = $row5['nama'];
+  $Nama = $row5['Nama'];
   echo "
     <tr class='item'>
     <td>".$counter."</td>
-    <td>".$nama."</td>
+    <td>".$Nama."</td>
     <td> - </td>
     <td> - </td>
     <td> - </td>

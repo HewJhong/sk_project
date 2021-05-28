@@ -31,20 +31,20 @@ echo "
   </thead>
 ";
 
-$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (peranan = 'murid')");
+$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (Peranan = 'murid')");
 echo "<tbody>";
 while ($row1 = mysqli_fetch_assoc($sql1)) {
     $jumlahmar = 0;
     $jumlahtopik = 0;
-    $nop = $row1['nop'];
-    $notel = $row1['notel'];
-    $sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
+    $NoP = $row1['NoP'];
+    $NoTel = $row1['NoTel'];
+    $sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
     $row2 = mysqli_fetch_assoc($sql2);
-    $sql3 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (nop = '$nop')");
+    $sql3 = mysqli_query($conn, "SELECT * FROM perekodan WHERE (NoP = '$NoP')");
     while ($row3 = mysqli_fetch_assoc($sql3)){
         $jumlahtopik ++;
-        $mar = $row3['mar'];
-        $jumlahmar += $mar;
+        $Mar = $row3['Mar'];
+        $jumlahmar += $Mar;
     }
     if ($jumlahtopik >= 1) {
       $avgmar = $jumlahmar / $jumlahtopik;
@@ -54,32 +54,32 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
     }
     
     if ($avgmar == "-"){
-      $gred = "-";
+      $Gred = "-";
     }else if ($avgmar >= 80) {
-      $gred = "A";
+      $Gred = "A";
     }
     else if ($avgmar >=70 && $avgmar <80) {
-      $gred = "B";
+      $Gred = "B";
     } 
     else if ($avgmar >=60 && $avgmar <70) {
-      $gred = "C";
+      $Gred = "C";
     }
     else if ($avgmar >=50 && $avgmar <60) {
-      $gred = "D";
+      $Gred = "D";
     }
     else if ($avgmar <50) {
-      $gred = "F";
+      $Gred = "F";
     }
-    $nama = $row2['nama'];
-    $notel = $row2['notel'];
+    $Nama = $row2['Nama'];
+    $NoTel = $row2['NoTel'];
     echo "
     <tr class='item'>
       <td>".$no."</td>
-      <td>".$nama."</td>
-      <td>".$notel."</td>
+      <td>".$Nama."</td>
+      <td>".$NoTel."</td>
       <td>".$avgmar."</td>
-      <td>".$gred."</td>
-      <td class='noprint' style='text-align:center;'><button class='info-btn btn btn-primary' style='margin-top: 5px; margin-bottom: 5px;' id='$nop'>Info</button></td>
+      <td>".$Gred."</td>
+      <td class='noprint' style='text-align:center;'><button class='info-btn btn btn-primary' style='margin-top: 5px; margin-bottom: 5px;' id='$NoP'>Info</button></td>
     </tr>
     ";
     $no ++;

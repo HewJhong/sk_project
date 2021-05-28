@@ -114,7 +114,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.edit-soal-btn {
+.edit-Soal-btn {
   width: 20px;
   height: 40px;
   text-decoration: none;
@@ -127,7 +127,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.delete-soal-btn {
+.delete-Soal-btn {
   width: 20px;
   height: 40px;
   text-decoration: none;
@@ -156,7 +156,7 @@ h1 {
   border-radius: 5px;
   font-size: 1.1em;
 }
-.soal-form-div {
+.Soal-form-div {
   width: 90%;
   height: auto;
   margin-top: 50px;
@@ -207,7 +207,7 @@ h1 {
   -webkit-border-radius: 100px;
 }
 
-.nosoal {
+.NoSoal {
   font-size: 30px;
   align-items: center;
 }

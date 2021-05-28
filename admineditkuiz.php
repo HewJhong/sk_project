@@ -11,22 +11,22 @@ if ($conn->connect_error) {
 }
 
 /// For adminkuizlist.php edit button
-if(isset($_POST["nosoal"])) {
+if(isset($_POST["NoSoal"])) {
     $piliharray = array();
     $jawarray = array();
     $checkbox = array();
     $array = array();
-    $nosoal = $_POST['nosoal'];
-    $pilihsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
-    $soalsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
-    $jawsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (nosoal='$nosoal')");
+    $NoSoal = $_POST['NoSoal'];
+    $pilihsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (NoSoal='$NoSoal')");
+    $soalsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (NoSoal='$NoSoal')");
+    $jawsql = mysqli_query($conn, "SELECT * FROM soalan WHERE (NoSoal='$NoSoal')");
     while ($pilihrow = mysqli_fetch_assoc($pilihsql)) {
-        $pilih = $pilihrow['pilih'];
-        array_push($piliharray, $pilih);
+        $Pilih = $pilihrow['Pilih'];
+        array_push($piliharray, $Pilih);
     }
     while ($jawrow = mysqli_fetch_assoc($jawsql)) {
-        $jaw = $jawrow['jaw'];
-        array_push($jawarray, $jaw);
+        $Jaw = $jawrow['Jaw'];
+        array_push($jawarray, $Jaw);
     }
 
     if ($jawarray[0] == 1) {
@@ -42,8 +42,8 @@ if(isset($_POST["nosoal"])) {
         $checkbox = array("checkbox1"=> false, "checkbox2"=> false, "checkbox3"=> false, "checkbox4"=> true);
     }
     $row = mysqli_fetch_array($soalsql);
-    $soal = $row['soal'];
-    $array = array("soal"=>$soal, "pilih1"=> $piliharray[0], "pilih2"=> $piliharray[1], "pilih3"=> $piliharray[2], "pilih4"=> $piliharray[3]);
+    $Soal = $row['Soal'];
+    $array = array("Soal"=>$Soal, "pilih1"=> $piliharray[0], "pilih2"=> $piliharray[1], "pilih3"=> $piliharray[2], "pilih4"=> $piliharray[3]);
     $array = array_merge($array, $checkbox);
     header('Content-Type: application/json');
     $jsonresult = json_encode($array);

@@ -13,44 +13,44 @@ if ($conn->connect_error) {
 
 $soalprefix = "S";
 $counter = 0;
-$sql1 = mysqli_query($conn, "SELECT * FROM topik");
+$sql1 = mysqli_query($conn, "SELECT * FROM Topik");
 $soallist = array();
 $gotsoal = array();
 
 while ($row1 = mysqli_fetch_assoc($sql1)){
   $counter++;
-  $soal = [];
+  $Soal = [];
   $soallist = [];
-  $idtopik = $row1['idtopik'];
-  $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (idtopik = '$idtopik') ORDER BY LENGTH (idsoal) ASC, idsoal ASC");
+  $IdTopik = $row1['IdTopik'];
+  $sql2 = mysqli_query($conn, "SELECT * FROM soalan WHERE (IdTopik = '$IdTopik') ORDER BY LENGTH (IdSoal) ASC, IdSoal ASC");
   $numsoal = mysqli_num_rows($sql2);
   $numsoal = $numsoal / 4;
   if ($numsoal >= 1){
-    echo "<button class='collapsible btn'>".$row1['topik']."</button>";
+    echo "<button class='collapsible btn'>".$row1['Topik']."</button>";
     echo "<div class='content'>";
     array_push($gotsoal, "1");
 
     while ($fetchsoal = mysqli_fetch_array($sql2)){
-      $resultsoal = $fetchsoal['soal'];
-      $resultidsoal = $fetchsoal['idsoal'];
+      $resultsoal = $fetchsoal['Soal'];
+      $resultidsoal = $fetchsoal['IdSoal'];
       array_push($soallist, $resultsoal);
     }
-    $soal = array_unique($soallist);
-    $soalcount = count($soal);
+    $Soal = array_unique($soallist);
+    $soalcount = count($Soal);
     echo "<div class='row'>";
     echo "<div class=col-sm-8></div>";
-    echo "<a class='col-sm-4 btn btn-danger delete-kuiz-btn' id='".$idtopik."'>Hapuskan Kuiz</a>";
+    echo "<a class='col-sm-4 btn btn-danger delete-kuiz-btn' id='".$IdTopik."'>Hapuskan Kuiz</a>";
     echo "</div>";
-    foreach ($soal as $value){
-      $sql3 = mysqli_query($conn, "SELECT * FROM soalan WHERE (soal = '$value')");
+    foreach ($Soal as $value){
+      $sql3 = mysqli_query($conn, "SELECT * FROM soalan WHERE (Soal = '$value')");
       $soalresult = mysqli_fetch_array($sql3);
-      $nosoal = $soalresult['nosoal'];
+      $NoSoal = $soalresult['NoSoal'];
       echo "<div class='row'>";
       echo "<h5 class='contenttext col-sm'>".$value."</h5>";
-      echo "<a class='col-sm-1 btn btn-primary edit-soal-btn' id='".$nosoal."'>Ubah</a>";
-      // echo "<a class='col-sm-1 btn btn-primary edit-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#edit-soal'>Ubah</a>";
-      echo "<a title='Hapuskan' class='col-sm-1 btn btn-danger delete-soal-btn' id='".$nosoal."' data-toggle='modal' data-target='#confirmationmodal'>X</a>";
-      // echo "<a title='Hapuskan' class='col-sm-1 btn btn-danger delete-soal-btn' id='".$nosoal."'>X</a>";
+      echo "<a class='col-sm-1 btn btn-primary edit-Soal-btn' id='".$NoSoal."'>Ubah</a>";
+      // echo "<a class='col-sm-1 btn btn-primary edit-Soal-btn' id='".$NoSoal."' data-toggle='modal' data-target='#edit-Soal'>Ubah</a>";
+      echo "<a title='Hapuskan' class='col-sm-1 btn btn-danger delete-Soal-btn' id='".$NoSoal."' data-toggle='modal' data-target='#confirmationmodal'>X</a>";
+      // echo "<a title='Hapuskan' class='col-sm-1 btn btn-danger delete-Soal-btn' id='".$NoSoal."'>X</a>";
       echo "</div>";
     }
   } 

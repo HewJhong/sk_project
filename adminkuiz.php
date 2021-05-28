@@ -39,7 +39,7 @@ require_once 'authController.php';
                                     $('#result').html(result);
                                     if (result.includes("Question existed")) {
                                         $('#result').html("<div class='alert alert-danger'>Soalan sudah dalam database!</div>")
-                                    } else if (result.includes("Sila masukkan topik")) {
+                                    } else if (result.includes("Sila masukkan Topik")) {
                                         $('#result').html("<div></div>")
                                     } else if (result.includes("Undefined index") || result.includes("Sila masukkan jawapan betul")) {
                                         $('#result').html("<div></div>")
@@ -65,9 +65,9 @@ require_once 'authController.php';
 
                     <div id="container">
                     <div class="form-group">
-                        <label for="topik">Topik</label>
-                        <input list="topik" type="text" name="topik" class="form-control form-control-lg" required>
-                        <datalist id="topik">
+                        <label for="Topik">Topik</label>
+                        <input list="Topik" type="text" name="Topik" class="form-control form-control-lg" required>
+                        <datalist id="Topik">
                             <option value="Tambah"></option>
                             <option value="Tolak"></option>
                         </datalist>
@@ -75,19 +75,19 @@ require_once 'authController.php';
                     <div class="soalan">
                     <div class="row">
                     <div class="form-group col-md-10">
-                        <label for="nosoal">No Soalan</label>
-                        <p class="nosoal">1</p>
+                        <label for="NoSoal">No Soalan</label>
+                        <p class="NoSoal">1</p>
                     </div>
                     <div class="form-group col-md-2 delete-btn">
                         <button id="delete" type="button" name="delete" class="btn btn-danger btn-block btn-lg">Delete</button>
                     </div>
                     </div>
                     <div class="form-group">
-                        <label for="soal">Soalan</label>
+                        <label for="Soal">Soalan</label>
                         <input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off" required >
                     </div>
                     <div class="form-group">
-                        <label for="jaw">Jawapan</label>
+                        <label for="Jaw">Jawapan</label>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pilihradio1" id="pilihradio" value="A" required>
                                 <div class="form-group">
@@ -129,19 +129,19 @@ require_once 'authController.php';
                         '<div class="soalan">'+
                             '<div class="row">'+
                                 '<div class="form-group col-md-10">'+
-                                    '<label for="nosoal">No Soalan</label>'+
-                                    '<p class="nosoal">'+index+'</p>'+
+                                    '<label for="NoSoal">No Soalan</label>'+
+                                    '<p class="NoSoal">'+index+'</p>'+
                                 '</div>'+
                                 '<div class="form-group col-md-2 delete-btn">'+
                                     '<button id ="delete" type="button" name="delete" class="btn btn-danger btn-block btn-lg">Delete</button>'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
-                                '<label for="soal">Soalan</label>'+
+                                '<label for="Soal">Soalan</label>'+
                                 '<input type="text" name="psoal[]" class="form-control form-control-lg" autocomplete="off" required>'+
                             '</div>'+
                             '<div class="form-group">'+
-                                '<label for="jaw">Jawapan</label>'+
+                                '<label for="Jaw">Jawapan</label>'+
                                 '<div class="form-check">'+
                                     '<input type="radio" class="form-check-input" name="'+radio+'" id="pilihradio" value="A">'+
                                         '<div class="form-group">'+
@@ -176,7 +176,7 @@ require_once 'authController.php';
                         var index2 = 1;
                         var newelement = $('.soalan');
                         $(newelement).each(function() {
-                            $(this).find('.nosoal').text(index2);
+                            $(this).find('.NoSoal').text(index2);
                             var radio = "pilihradio"+index2;
                             $(this).find('.form-check-input').attr('name', radio);
                             index2++;

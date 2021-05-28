@@ -13,7 +13,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$nop = $_SESSION['nop'];
+$NoP = $_SESSION['NoP'];
 $date = date("d/m/Y");
 
 echo '
@@ -56,17 +56,17 @@ startTime();
 ';
 echo "<div  class='quiz-form-div'>";
 
-$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (nop = '$nop')");
+$sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (NoP = '$NoP')");
 $row1 = mysqli_fetch_assoc($sql1);
-$notel = $row1['notel'];
-$sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (notel = '$notel')");
+$NoTel = $row1['NoTel'];
+$sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
 $row2 = mysqli_fetch_assoc($sql2);
-$nama = $row2['nama'];
+$Nama = $row2['Nama'];
 
 echo "<img src='Profile Pic.jpg' alt='Avatar' style='display: block;width:200px;height:200px;margin-left: auto;margin-right: auto;'>";
 echo "<br>";
-echo "<h4 class='text-center' style:'text-align: center;'>Nama: ".$nama."</h4>";
-echo "<h4 class='text-center' style:'text-align: center;'>Nombor Telefon: ".$notel."</h4>";
+echo "<h4 class='text-center' style:'text-align: center;'>Nama: ".$Nama."</h4>";
+echo "<h4 class='text-center' style:'text-align: center;'>Nombor Telefon: ".$NoTel."</h4>";
 echo "<h4 class='text-center' style:'text-align: center;'>".$date."</h4>";
 echo "<h4 class='text-center' id='time'></h4>";
 echo "</div>";
