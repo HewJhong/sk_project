@@ -20,6 +20,7 @@
     crossorigin="anonymous">
     <script src="auto-tables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src='fontSizeChanger.js'></script>
     <!-- scripts -->
     <nav id="navbar" class="navbar navigation">
     <p style="font-family: 'Galada';font-size: 40px;"class="navbar-home" onclick="studenthome()">Sistem Penilaian Kuiz Matematik</p>
@@ -29,12 +30,14 @@
     <div class="dropdown dropmenu">
     <button type="button" id='kuizdropdown-btn' data-toggle="dropdown" class="navbar-btn btn btn-secondary btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">Keputusan</button>
     <div class="dropdown-menu" aria-labelledby="kuizdropdown-btn">
-          <button class="dropdown-item" id="dropdown-btn" onclick="studentresult(); keputusankuiztitle();">Keputusan Kuiz</button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" id="dropdown-btn" onclick="studentreportcard(); kadlaporantitle();">Report Card</button>
+        <button class="dropdown-item" id="dropdown-btn" onclick="studentresult(); keputusankuiztitle();">Keputusan Kuiz</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="dropdown-btn" onclick="studentreportcard(); kadlaporantitle();">Kad Laporan</button>
     </div>
     </div>
     <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="studentkuizlist(); studentkuiztitle();">Kuiz</button>
+    <button id='fontSizeMinus' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=decreaseFontSize();>-</button>
+    <button id='fontSizeAdd' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=increaseFontSize();>+</button>
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
     </div>
     </nav>
@@ -60,6 +63,25 @@
         $(window).on('popstate', function() {
             window.location.reload();
         });
+
+        // student submit quiz button (placed here to prevent double echo'ing' the script)
+
+        $(document).on('click', '#jawab-kuiz-submit-btn', function() {
+        var count = $('.soalcontainer').length
+        var obj = $("#jawabkuizform").serializeArray();
+        $.ajax({
+        url: 'studentkuizprocessdb.php',
+        type: 'POST',
+        data: {data: obj, count: count},
+        success: function(result){
+            if (result == "errorNoAns") {
+            $('#warningModel').modal('show');
+            } else {
+            studentresult();
+            }
+        }
+        });
+    });
     </script>
 
     <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
