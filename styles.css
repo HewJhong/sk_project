@@ -293,6 +293,10 @@ h1 {
   margin-top: 30px;
 }
 
+.balik-btn {
+  margin-top: 30px;
+}
+
 /* Show Bootstrap Grid grid lines  */
 /* div[class^="col-"] {
   background-color: rgba(255, 0, 0, 0.2);
