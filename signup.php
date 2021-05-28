@@ -57,7 +57,7 @@ if (isset($_SESSION['NoP'])) {
                         <input type="password" name="KataLaluanConf" class="form-control form-control-lg">
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="signup-btn" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                        <button type="submit" name="signup-btn" class="btn btn-primary btn-block btn-lg">Daftar</button>
                     </div>
                     <p class="text-center">Sudah daftar? Log masuk di <a href="login.php">sini</a></p>
                 </form>
