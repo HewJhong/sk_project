@@ -29,7 +29,6 @@ if (isset($_POST['data'])) {
   $count = $_POST['count'];
   $result = $data[0]['name'];
   if (count($data) < $count){
-    echo count($data);
     echo "errorNoAns";
   }
   else {
@@ -48,7 +47,6 @@ if (isset($_POST['data'])) {
       }
       $pilihlist = array();
     }
-    echo $score;
     $markah = $score / $count * 100;
     if ($markah >= 80) {
       $Gred = "A";
