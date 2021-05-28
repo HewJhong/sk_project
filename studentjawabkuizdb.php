@@ -65,6 +65,6 @@ for ($i=0; $i < $soallistcount; $i++) {
 }
 
 echo "<div class='form-group'>
-    <button id='submit-jawab-kuiz-btn' type='submit' name='jawab-submit-btn' class='jawab-kuiz-submit-btn btn btn-primary btn-block btn-lg'>Submit</button>
+    <button id='jawab-kuiz-submit-btn' type='submit' name='jawab-submit-btn' class='jawab-kuiz-submit-btn btn btn-primary btn-block btn-lg'>Submit</button>
 </div>
 ";
