@@ -51,7 +51,7 @@ while ($row4 = mysqli_fetch_assoc($sql4)) {
     $IdTopik = $row4['IdTopik'];
     array_push($doneidtopiklist, $IdTopik);
 }
-echo "<div class='col-lg-6 text-right'><button id='createpdf-btn' class='btn btn-primary noprint' type='button' onclick='window.print();'>Cetak Senarai Murid</button></div>";
+echo "<div class='col-lg-6 text-right'><button id='createpdf-btn' class='btn btn-primary noprint' type='button' onclick='window.print();'>Cetak Kad Laporan</button></div>";
 echo "</div>";
 $doneidtopikarray = array_unique($doneidtopiklist);
 $missingidtopikarray = array_diff($idtopikarray, $doneidtopikarray);
