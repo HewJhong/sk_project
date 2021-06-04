@@ -1,9 +1,9 @@
-<?php require_once 'authController.php';?>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- icon -->
 <link rel="icon" type="image/jpg" href="logo.jpg">
+<?php require_once 'authController.php';?>
 <!-- icon -->
 <!-- scripts -->
     <meta charset="UTF-8">
