@@ -14,10 +14,7 @@ if (isset($_POST['NoSoal'])) {
     $array = array();
     $idsoalarray = array();
     $NoSoal = $_POST['NoSoal'];
-    $jaw1 = 0;
-    $jaw2 = 0;
-    $jaw3 = 0;
-    $jaw4 = 0;
+    $jaw1 = 0; $jaw2 = 0; $jaw3 = 0; $jaw4 = 0;
     $Soal = $_POST['Soal'];
     $pilih1 = $_POST['pilih1'];
     $pilih2 = $_POST['pilih2'];
