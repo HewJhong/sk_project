@@ -1,9 +1,8 @@
-<?php require_once 'authController.php';?>
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title id="title">Home</title>
+    <link rel="icon" type="image/png" href="Logov2.png">
     <!-- scripts -->
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
@@ -41,6 +40,7 @@
     <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
     </div>
     </nav>
+    <?php require_once 'authController.php';?>
     <!-- errors alert box -->
     <?php if(count($errors) > 0): ?>
         <div class="alertmessage">

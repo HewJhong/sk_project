@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- icon -->
-<link rel="icon" type="image/jpg" href="logo.jpg">
+<link rel="icon" type="image/png" href="Logov2.png">
 <?php require_once 'authController.php';?>
 <!-- icon -->
 <!-- scripts -->
