@@ -1,6 +1,4 @@
 <?php
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -12,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
+  
 echo "<div class='text-center' style='margin-top: 20px;'><h2>Senarai Murid</h2></div>";
 echo "<div  class='quiz-form-div'>";
 $no = 1; 
@@ -84,6 +82,7 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
     ";
     $no ++;
 }
-echo "<div id='noresults' class='text-center' style='display: none;'>No matching results found...</div>";  
 echo "</tbody>";
+echo "</table>";  
+echo "<div id='noresults' class='text-center' style='display: none'><br><h3>No matching results found...<h3></div>";  
 echo "</div>";
