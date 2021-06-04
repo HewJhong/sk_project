@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2021 at 04:09 AM
+-- Generation Time: Jun 04, 2021 at 09:36 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -29,19 +29,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pengguna` (
-  `nop` varchar(100) NOT NULL,
-  `NoTel` varchar(50) NOT NULL,
-  `peranan` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `NoP` varchar(40) NOT NULL,
+  `NoTel` varchar(13) NOT NULL,
+  `Peranan` varchar(25) NOT NULL,
+  `KataLaluan` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`nop`, `NoTel`, `peranan`, `password`) VALUES
-('adf', '013-1234123', 'murid', 'test'),
-('ok', '013-9999999', 'murid', 'test'),
+INSERT INTO `pengguna` (`NoP`, `NoTel`, `Peranan`, `KataLaluan`) VALUES
+('A01', '019-5533261', 'murid', '123'),
+('A02', '019-5522262', 'murid', '123'),
+('A03', '019-5533263', 'murid', '123'),
 ('root', '012-2222222', 'admin', 'root');
 
 -- --------------------------------------------------------
@@ -51,23 +52,24 @@ INSERT INTO `pengguna` (`nop`, `NoTel`, `peranan`, `password`) VALUES
 --
 
 CREATE TABLE `perekodan` (
-  `idrekod` varchar(50) NOT NULL,
-  `Mar` varchar(50) NOT NULL,
-  `Gred` varchar(50) NOT NULL,
-  `Tar` varchar(50) NOT NULL,
-  `nop` varchar(50) NOT NULL,
-  `IdTopik` varchar(50) NOT NULL
+  `IdRekod` varchar(50) NOT NULL,
+  `Mar` varchar(3) NOT NULL,
+  `Gred` varchar(2) NOT NULL,
+  `Tar` varchar(20) NOT NULL,
+  `NoP` varchar(50) NOT NULL,
+  `IdTopik` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `perekodan`
 --
 
-INSERT INTO `perekodan` (`idrekod`, `Mar`, `Gred`, `Tar`, `nop`, `IdTopik`) VALUES
-('R001', '100', 'A', '17/01/2021', 'adf', 'T1'),
-('R002', '100', 'A', '17/01/2021', 'adf', 'T6'),
-('R003', '100', 'A', '17/01/2021', 'ok', 'T1'),
-('R004', '100', 'A', '18/01/2021', 'adf', 'T7');
+INSERT INTO `perekodan` (`IdRekod`, `Mar`, `Gred`, `Tar`, `NoP`, `IdTopik`) VALUES
+('R001', '0', 'F', '28/05/2021', 'A01', 'T1'),
+('R002', '50', 'D', '28/05/2021', 'A01', 'T2'),
+('R003', '100', 'A', '28/05/2021', 'A02', 'T1'),
+('R004', '100', 'A', '28/05/2021', 'A02', 'T2'),
+('R005', '50', 'D', '28/05/2021', 'A03', 'T1');
 
 -- --------------------------------------------------------
 
@@ -76,11 +78,11 @@ INSERT INTO `perekodan` (`idrekod`, `Mar`, `Gred`, `Tar`, `nop`, `IdTopik`) VALU
 --
 
 CREATE TABLE `soalan` (
-  `idsoal` varchar(20) NOT NULL,
-  `NoSoal` int(20) NOT NULL,
+  `IdSoal` varchar(20) NOT NULL,
+  `NoSoal` int(3) NOT NULL,
   `Soal` text NOT NULL,
   `Pilih` text NOT NULL,
-  `Jaw` varchar(10) NOT NULL,
+  `Jaw` varchar(2) NOT NULL,
   `IdTopik` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -88,27 +90,23 @@ CREATE TABLE `soalan` (
 -- Dumping data for table `soalan`
 --
 
-INSERT INTO `soalan` (`idsoal`, `NoSoal`, `Soal`, `Pilih`, `Jaw`, `IdTopik`) VALUES
-('S001', 1, '1+0=', '1', '1', 'T1'),
-('S002', 1, '1+0=', '3', '0', 'T1'),
-('S003', 1, '1+0=', '5', '0', 'T1'),
-('S004', 1, '1+0=', '7', '0', 'T1'),
-('S005', 2, '1+1=', '1', '0', 'T1'),
-('S006', 2, '1+1=', '4', '0', 'T1'),
-('S007', 2, '1+1=', '6', '0', 'T1'),
-('S008', 2, '1+1=', '2', '1', 'T1'),
-('S009', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Utara', '0', 'T6'),
-('S010', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Selatan', '0', 'T6'),
-('S011', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Timur Laut', '1', 'T6'),
-('S012', 3, 'Berikut merupakan arah mata angin utama kecuali:', 'Timur', '0', 'T6'),
-('S013', 4, 'x+5=7', '3', '0', 'T7'),
-('S014', 4, 'x+5=7', '1', '0', 'T7'),
-('S015', 4, 'x+5=7', '2', '1', 'T7'),
-('S016', 4, 'x+5=7', '4', '0', 'T7'),
-('S017', 5, 'a=b+2 a=2c b? ', '2c+2', '1', 'T7'),
-('S018', 5, 'a=b+2 a=2c b? ', '1', '0', 'T7'),
-('S019', 5, 'a=b+2 a=2c b? ', '2c+1', '0', 'T7'),
-('S020', 5, 'a=b+2 a=2c b? ', '3', '0', 'T7');
+INSERT INTO `soalan` (`IdSoal`, `NoSoal`, `Soal`, `Pilih`, `Jaw`, `IdTopik`) VALUES
+('S001', 1, '1+1', '1', '0', 'T1'),
+('S002', 1, '1+1', '2', '1', 'T1'),
+('S003', 1, '1+1', '3', '0', 'T1'),
+('S004', 1, '1+1', '4', '0', 'T1'),
+('S005', 2, '2+5', '1', '0', 'T1'),
+('S006', 2, '2+5', '3', '0', 'T1'),
+('S007', 2, '2+5', '5', '0', 'T1'),
+('S008', 2, '2+5', '7', '1', 'T1'),
+('S009', 3, '1-1', '1', '0', 'T2'),
+('S010', 3, '1-1', '2', '0', 'T2'),
+('S011', 3, '1-1', '3', '0', 'T2'),
+('S012', 3, '1-1', '0', '1', 'T2'),
+('S013', 4, '10-1', '9', '1', 'T2'),
+('S014', 4, '10-1', '8', '0', 'T2'),
+('S015', 4, '10-1', '7', '0', 'T2'),
+('S016', 4, '10-1', '6', '0', 'T2');
 
 -- --------------------------------------------------------
 
@@ -118,41 +116,37 @@ INSERT INTO `soalan` (`idsoal`, `NoSoal`, `Soal`, `Pilih`, `Jaw`, `IdTopik`) VAL
 
 CREATE TABLE `telefon` (
   `NoTel` varchar(50) NOT NULL,
-  `nama` varchar(50) NOT NULL
+  `Nama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `telefon`
 --
 
-INSERT INTO `telefon` (`NoTel`, `nama`) VALUES
-('012-2222222', 'Cikgu'),
-('013-1234123', 'adf'),
-('013-9999999', 'ok');
+INSERT INTO `telefon` (`NoTel`, `Nama`) VALUES
+('012-2222222', 'Cikgu Firdaus'),
+('019-5522262', 'Sim Sze Yu'),
+('019-5533261', 'Teoh Zi Hong'),
+('019-5533263', 'Soo Qi Ren');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Topik`
+-- Table structure for table `topik`
 --
 
-CREATE TABLE `Topik` (
+CREATE TABLE `topik` (
   `IdTopik` varchar(100) NOT NULL,
   `Topik` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Topik`
+-- Dumping data for table `topik`
 --
 
-INSERT INTO `Topik` (`IdTopik`, `Topik`) VALUES
+INSERT INTO `topik` (`IdTopik`, `Topik`) VALUES
 ('T1', 'Tambah'),
-('T2', 'Tolak'),
-('T3', 'Revisi'),
-('T4', 'Tambah / Tolak'),
-('T5', 's1'),
-('T6', 'Geografi'),
-('T7', 'Algebra');
+('T2', 'Tolak');
 
 --
 -- Indexes for dumped tables
@@ -162,35 +156,38 @@ INSERT INTO `Topik` (`IdTopik`, `Topik`) VALUES
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`nop`,`NoTel`),
-  ADD KEY `NoTel` (`NoTel`);
+  ADD PRIMARY KEY (`NoP`,`NoTel`),
+  ADD KEY `peranan` (`Peranan`),
+  ADD KEY `katalaluan` (`KataLaluan`),
+  ADD KEY `pengguna_ibfk_1` (`NoTel`),
+  ADD KEY `NoP` (`NoP`);
 
 --
 -- Indexes for table `perekodan`
 --
 ALTER TABLE `perekodan`
-  ADD PRIMARY KEY (`idrekod`),
-  ADD KEY `IdTopik` (`IdTopik`),
-  ADD KEY `nop` (`nop`);
+  ADD PRIMARY KEY (`IdRekod`),
+  ADD KEY `idtopik` (`IdTopik`),
+  ADD KEY `nop` (`NoP`);
 
 --
 -- Indexes for table `soalan`
 --
 ALTER TABLE `soalan`
-  ADD PRIMARY KEY (`idsoal`),
-  ADD KEY `IdTopik` (`IdTopik`);
+  ADD PRIMARY KEY (`IdSoal`),
+  ADD KEY `idtopik` (`IdTopik`);
 
 --
 -- Indexes for table `telefon`
 --
 ALTER TABLE `telefon`
   ADD PRIMARY KEY (`NoTel`),
-  ADD KEY `NoTel` (`NoTel`);
+  ADD KEY `notel` (`NoTel`);
 
 --
--- Indexes for table `Topik`
+-- Indexes for table `topik`
 --
-ALTER TABLE `Topik`
+ALTER TABLE `topik`
   ADD PRIMARY KEY (`IdTopik`);
 
 --
@@ -201,20 +198,13 @@ ALTER TABLE `Topik`
 -- Constraints for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`NoTel`) REFERENCES `telefon` (`NoTel`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `perekodan`
---
-ALTER TABLE `perekodan`
-  ADD CONSTRAINT `perekodan_ibfk_1` FOREIGN KEY (`IdTopik`) REFERENCES `Topik` (`IdTopik`),
-  ADD CONSTRAINT `perekodan_ibfk_2` FOREIGN KEY (`nop`) REFERENCES `pengguna` (`nop`);
+  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`NoTel`) REFERENCES `telefon` (`notel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `soalan`
 --
 ALTER TABLE `soalan`
-  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`IdTopik`) REFERENCES `Topik` (`IdTopik`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`idtopik`) REFERENCES `topik` (`idtopik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
