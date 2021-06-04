@@ -31,26 +31,31 @@ $(document).ready(function() {
 });
 
 function myFunction() {
-  // Declare variables
+  // Isytihar pemboleh ubah 
   var input, filter, table, tr, td, i, txtValue, status;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
-  status = 0;
+  status = document.getElementById("noresults");
+  counter = 0;
 
-  // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
-        status++;
+        counter++;
       } else {
         tr[i].style.display = "none";
       }
     }
+  }
+  if (counter == 0) {
+    status.style.display = "";
+  } else {
+    status.style.display = "none";
   }
 }
 </script>
