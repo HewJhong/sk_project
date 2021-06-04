@@ -154,9 +154,8 @@ if (count($errors) === 0) {
       $conn->query($sql4);
       echo " Success";
       echo '<script type="text/javascript">',
-     'kuizlistpage();',
-     '</script>';
-     
+      'kuizlistpage();',
+      '</script>';
       $_SESSION['questionset'] = "Question Set";
       if ($ppilihradio == "A") {
         $update1 = "UPDATE soalan SET Jaw='1' WHERE (IdTopik ='$IdTopik' AND Soal ='$Soal' AND Pilih = '$pilih1')";
@@ -177,6 +176,4 @@ if (count($errors) === 0) {
     }
   }
 }
-    
-
 ?>
