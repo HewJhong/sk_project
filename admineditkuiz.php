@@ -4,13 +4,13 @@ $dbusername = "root";
 $dbpassword = "";
 $dbname = "spkm";
 
-// Create connection
+// Sambungan dengan database
 $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 if ($conn->connect_error) {
     die("Database error: " . $conn->connect_error);
 }
 
-/// For adminkuizlist.php edit button
+/// Papar antara muka untuk edit soalan kuiz
 if(isset($_POST["NoSoal"])) {
     $piliharray = array();
     $jawarray = array();
@@ -28,7 +28,6 @@ if(isset($_POST["NoSoal"])) {
         $Jaw = $jawrow['Jaw'];
         array_push($jawarray, $Jaw);
     }
-
     if ($jawarray[0] == 1) {
         $checkbox = array("checkbox1"=> true, "checkbox2"=> false, "checkbox3"=> false, "checkbox4"=> false);
     }
