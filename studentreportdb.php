@@ -29,7 +29,9 @@ $idtopiklist = array();
 $doneidtopiklist = array();
 
 $NoP = $_SESSION['NoP'];
-echo "<div><h5>Nombor Pengguna: ".$NoP."</h5></div>";
+echo "
+<div class='row'>
+<div class='col-lg-6'><h5>Nombor Pengguna: ".$NoP."</h5>";
 $sql1 = mysqli_query($conn, "SELECT * FROM pengguna WHERE (NoP = '$NoP')");
 $row1 = mysqli_fetch_assoc($sql1);
 $NoTel = $row1['NoTel'];
@@ -37,6 +39,7 @@ $sql2 = mysqli_query($conn, "SELECT * FROM telefon WHERE (NoTel = '$NoTel')");
 $row2 = mysqli_fetch_assoc($sql2);
 $Nama = $row2['Nama']; 
 echo "<div><h5>Nama: ".$Nama."</h5></div>";
+echo "</div>";
 $sql3 = mysqli_query($conn, "SELECT * FROM soalan");
 while ($row3 = mysqli_fetch_assoc($sql3)) {
     $IdTopik = $row3['IdTopik'];
@@ -48,6 +51,8 @@ while ($row4 = mysqli_fetch_assoc($sql4)) {
     $IdTopik = $row4['IdTopik'];
     array_push($doneidtopiklist, $IdTopik);
 }
+echo "<div class='col-lg-6 text-right'><button id='createpdf-btn' class='btn btn-primary noprint' type='button' onclick='window.print();'>Cetak Senarai Murid</button></div>";
+echo "</div>";
 $doneidtopikarray = array_unique($doneidtopiklist);
 $missingidtopikarray = array_diff($idtopikarray, $doneidtopikarray);
 echo "<br>";
@@ -139,7 +144,7 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {responsive: true}
 });
 </script>
 ";
