@@ -1,20 +1,7 @@
-<?php require_once 'authController.php';
-if (isset($_SESSION['NoP']) || isset($_SESSION['NoTel'])) {
-    if ($_SESSION['Peranan'] == "murid") {
-        header("Location: studentmain.php?page=studenthome");
-        exit();
-    } else {
-        header ("Location: adminmain.php?page=adminhome");
-        exit();     
-    }
-}
-?>
-<!DOCTYPE html>
-<script>
-    document.cookie = "currentZoom = 100";
-</script>
+<html>
 <head>
-    <title>Login</title>
+    <title>Log Masuk</title>
+    <link rel="icon" type="image/png" href="Logov2.png">
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -22,6 +9,20 @@ if (isset($_SESSION['NoP']) || isset($_SESSION['NoTel'])) {
     <h1 style="font-family: 'Galada';font-size: 40px;" class="text-center navbar-home">Selamat Datang ke</h1>
     <h1 style="font-family: 'Galada';font-size: 50px;"class="text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</h1>
     </div>
+    <?php require_once 'authController.php';
+    if (isset($_SESSION['NoP']) || isset($_SESSION['NoTel'])) {
+        if ($_SESSION['Peranan'] == "murid") {
+            header("Location: studentmain.php?page=studenthome");
+            exit();
+        } else {
+            header ("Location: adminmain.php?page=adminhome");
+            exit();     
+        }
+    }
+    ?>
+    <script>
+    document.cookie = "currentZoom = 100";
+    </script>
 </head>
 <body>
     <div class="container">

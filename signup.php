@@ -1,18 +1,8 @@
-<?php require_once 'authController.php';
-if (isset($_SESSION['NoP'])) {
-    if ($_SESSION['role'] == "murid") {
-        header("Location: studentmain.php");
-        exit();
-    } else {
-        header ("Location: adminmain.php");
-    }
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Pendaftaran</title>
+    <link rel="icon" type="image/png" href="Logov2.png">
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="styles.css">
@@ -20,6 +10,16 @@ if (isset($_SESSION['NoP'])) {
     <h1 style="font-family: 'Galada';font-size: 40px;" class="text-center navbar-home">Selamat Datang ke</h1>
     <h1 style="font-family: 'Galada';font-size: 50px;"class="top-title text-center navbar-home" onclick="homepage()">Sistem Penilaian Kuiz Matematik</h1>
     </div>
+    <?php require_once 'authController.php';
+    if (isset($_SESSION['NoP'])) {
+        if ($_SESSION['role'] == "murid") {
+            header("Location: studentmain.php");
+            exit();
+        } else {
+            header ("Location: adminmain.php");
+        }
+    }
+    ?>
 </head> 
 <body style="overflow: hidden;">
     <div class="container">
