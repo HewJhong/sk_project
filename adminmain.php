@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- icon -->
+<link rel="icon" type="image/jpg" href="logo.jpg">
+<!-- icon -->
 <!-- scripts -->
     <meta charset="UTF-8">
     <title id="title">Home</title>
@@ -68,7 +71,6 @@
             </div>
             </div>
     <?php endif ?>
-
 </head>
 <body style="overflow: hidden;" onload="reloadToCurrentZoom();">
 
@@ -82,7 +84,7 @@
     <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
     <?php 
         if (!isset($_SESSION['NoP'])) {
-            header ("Location: ../login.php");
+            header ("Location: login.php");
             exit();
         }
         else if ($_GET['page'] == "adminhome"){
