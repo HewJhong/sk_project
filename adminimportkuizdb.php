@@ -56,7 +56,7 @@ if(isset($_FILES['file']['name'])){
 			}
 
 
-			$sql1 = mysqli_query($conn, "INSERT INTO soalan(IdSoal, NoSoal, Soal, Pilih, Jaw, IdTopik, ) 
+			$sql1 = mysqli_query($conn, "INSERT INTO soalan(IdSoal, NoSoal, Soal, Pilih, Jaw, IdTopik) 
 			VALUES('$idsoal', '$intnosoal', '$soal', '$pilih','0','$idtopik')");
 
 			if ($counter == 4) {
