@@ -49,7 +49,7 @@ foreach ($idtopikarray as $value) {
                 echo "<h4 class='collapsible-content'> Tarikh: ".$Tar."</h4>";
             echo "</div>";
             echo "<div style = 'margin: auto;' class = 'col-md-2 text-right'>";
-                echo "<a style='color: black;' class='btn btn-primary review-kuiz-btn' id='".$value."'>Review</a>";
+                echo "<a style='color: black;' class='btn btn-primary review-kuiz-btn' id='".$value."'>Semak</a>";
             echo "</div>";
         echo "</div>";
     echo "</div>";

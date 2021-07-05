@@ -17,6 +17,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.info-btn', function() {
         var id = this.id;
+        document.getElementById('createpdf-btn').innerHTML = "Cetak Laporan";
         $.ajax({
             type: "POST",
             url: "adminstudentinfodb.php",
@@ -63,7 +64,7 @@ function myFunction() {
 <div id="responsecontainer">
 </div>
 <div class="text-center">
-<button id='createpdf-btn' class="btn btn-primary noprint" type='button' onclick='window.print();'>Cetak Senarai Murid</button>
+<button id='createpdf-btn' class="btn btn-primary noprint" type='button' onclick='window.print();' style='margin-bottom: 20px'>Cetak Senarai Murid</button>
 </div>
 </body>
 </html>

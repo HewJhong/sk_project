@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="changepage.js"></script>
+<script src="changepage.js"></script>
 </head>
 <script>
     $(document).ready(function() {

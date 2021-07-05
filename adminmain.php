@@ -6,6 +6,7 @@
 <?php require_once 'authController.php';?>
 <!-- icon -->
 <!-- scripts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title id="title">Home</title>
     <link href='https://fonts.googleapis.com/css?family=Galada' rel='stylesheet'>
@@ -51,11 +52,13 @@
         <button class="dropdown-item" id="dropdown-btn" onclick="kuizlistpage(); senaraikuiztitle();">Senarai Kuiz</button>
         <div class="dropdown-divider"></div>
         <button class="dropdown-item" id="dropdown-btn" onclick="kuizpage(); kuiztitle();">Tambah Kuiz Baharu</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" id="dropdown-btn" onclick="importkuizpage(); importkuiztitle();">Import Kuiz</button>
     </div>
     </div>
     <button id='fontSizeMinus' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=decreaseFontSize();>-</button>
     <button id='fontSizeAdd' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=increaseFontSize();>+</button>
-    <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession();">Log Out</button>
+    <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession();">Log Keluar</button>
     </div>
     </nav>
     <!-- errors alert box -->
@@ -73,6 +76,46 @@
     <?php endif ?>
 </head>
 <body style="overflow: hidden;" onload="reloadToCurrentZoom();">
+<!-- modal -->
+<div class='modal fade' id='importSuccessModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+        <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+    <div class='modal-body'>
+        Kuiz berjaya diimport.
+        </div>
+        <div class='modal-footer'>
+        <button type='button' class='btn btn-primary' data-dismiss='modal' onclick='kuizlistpage(); senaraikuiztitle();'>Ok</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class='modal fade' id='addedSuccessModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+        <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+    <div class='modal-body'>
+        Kuiz berjaya ditambah ke dalam database.
+        </div>
+        <div class='modal-footer'>
+        <button type='button' class='btn btn-primary' data-dismiss='modal' onclick='kuizlistpage(); senaraikuiztitle();'>Ok</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- modal -->
+<div id="main-content" style="overflow-x: hidden; overflow-y: scroll;"></div>
 
     <script>
         window.history.pushState('', null, './');
@@ -81,7 +124,6 @@
         });
     </script>
 
-    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
     <?php 
         if (!isset($_SESSION['NoP'])) {
             header ("Location: login.php");
@@ -98,6 +140,9 @@
         }
         else if ($_GET['page'] == "adminkuiz"){
             echo "<script>kuizpage(); kuiztitle(); setFontSize();</script>";
+        }
+        else if ($_GET['page'] == "adminimportkuiz"){
+            echo "<script>importkuizpage(); importkuiztitle(); setFontSize();</script>";
         }
         else if ($_GET['page'] == "adminstudentlist"){
             echo "<script>studentlistpage(); senaraimuridtitle(); setFontSize();</script>";

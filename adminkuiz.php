@@ -184,11 +184,12 @@ require_once 'authController.php';
                     });
                     </script>
                     <div class="form-group">
-                        <button id ="quizsubmit-btn" type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg">Submit</button>
+                        <button id ="quizsubmit-btn" type="submit" name="quiz-submit-btn" class="btn btn-primary btn-block btn-lg" data-toggle='modal' data-target='#addedSuccessModal'>Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <br>
 </body>
 </html>

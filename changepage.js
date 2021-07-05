@@ -18,6 +18,10 @@ function studentlistpage() {
     window.history.pushState("string", "result", "adminmain.php?page=adminstudentlist");
     $("#main-content").load("adminstudentlist.php");
 }
+function importkuizpage() {
+    window.history.pushState("string", "import", "adminmain.php?page=adminimportkuiz");
+    $("#main-content").load("adminimportkuiz.php");
+}
 // TITLES
 // ADMIN
 function hometitle() {
@@ -25,6 +29,9 @@ function hometitle() {
 }
 function kuiztitle() {
     $("#title").load("titles/kuiztitle.php");
+}
+function importkuiztitle() {
+    $("#title").load("titles/importkuiztitle.php");
 }
 function senaraimuridtitle() {
     $("#title").load("titles/senaraimuridtitle.php");

@@ -51,11 +51,11 @@ foreach ($idtopikarray as $value) {
     $row3 = mysqli_fetch_assoc($sql3);
     $Nama = $row3['Nama'];
     echo "<button class='collapsible1 btn user-rekod-btn resultcontent' id='collapsible-cell'>".$Nama."</button>";
-    echo "<div class='content' id='cell-content' style='margin-top: 5px;'>";
+    echo "<div class='content' id='cell-content'>";
     echo "<h5>Markah: ".$Mar."  (".$Gred.")</h5><h5>Tarikh Siap: ".$Tar."</h5>";
-    echo "<button class='btn btn-primary infolanjut-btn float-right' id='".$value."'>Info Lanjut</button>";
     echo "</div>";
   }
+  echo "<button class='btn btn-primary infolanjut-btn float-right' id='".$value."'>Info Lanjut</button>";
   echo "</div>";
 }
 echo " 
@@ -94,13 +94,14 @@ echo "
       this.classList.toggle('active');
       var content = this.nextElementSibling;
       var maincontent = this.closest('#content');
-      height = maincontent.scrollHeight + content.scrollHeight;
+      var height = maincontent.scrollHeight + content.scrollHeight;
+      console.log(maincontent);
       if (content.style.maxHeight){
         content.style.maxHeight = null;
       } else {
         content.style.maxHeight = content.scrollHeight + 'px';
       } 
-      maincontent.style.maxHeight = height;
+      maincontent.style.maxHeight = height + 'px';
     });
   }
   </script>

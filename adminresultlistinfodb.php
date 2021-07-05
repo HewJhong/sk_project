@@ -113,7 +113,7 @@ echo "</table>";
 $muriddata = json_encode($muridlist);
 $markahdata = json_encode($markahlist);
 // Chart
-echo "<canvas id='myChart'></canvas>";
+echo "<canvas id='myChart' height='100'></canvas>";
 echo "<script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -133,6 +133,7 @@ var chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {
+      responsive: true,
       scales: {
         yAxes: [{
             ticks: {

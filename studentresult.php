@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<div class='text-center' style='margin-top: 20px;'><h2>Keputusan Murid</h2></div>
 </head>
 <script>
     $(document).ready(function() {

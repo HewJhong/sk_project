@@ -41,7 +41,7 @@ while ($row1 = mysqli_fetch_assoc($sql1)) {
             echo "<div class='content'>";
                 echo "<div class='row'>";
                     echo "<h4 class='col-sm collapsible-content'> Bilangan Soalan dalam kuiz ini: ".$numsoal."</h4>";
-                    echo "<a style='color: black;' class='col-sm-3 btn btn-primary edit-soal-btn' id='".$IdTopik."'>Jawab Kuiz</a>";
+                    echo "<a style='color: white;' class='col-sm-3 btn btn-primary edit-soal-btn' id='".$IdTopik."'>Jawab Kuiz</a>";
                 echo "</div>";
             echo "</div>";
     }

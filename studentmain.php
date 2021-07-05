@@ -37,7 +37,7 @@
     <button class="navbar-btn btn btn-secondary btn-lg" id="score-btn" onclick="studentkuizlist(); studentkuiztitle();">Kuiz</button>
     <button id='fontSizeMinus' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=decreaseFontSize();>-</button>
     <button id='fontSizeAdd' type="button" class="btn btn-primary btn-lg fontsizectrl" onclick=increaseFontSize();>+</button>
-    <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Out</button>
+    <button type="text" class="btn btn-warning navbar-btn-logout" onclick="destroysession()">Log Keluar</button>
     </div>
     </nav>
     <?php require_once 'authController.php';?>
@@ -84,7 +84,7 @@
     });
     </script>
 
-    <div id="main-content"  style="overflow-x: hidden; overflow-y: scroll; height: 89%;"></div>
+    <div id="main-content" style="overflow-x: hidden; overflow-y: scroll;"></div>
     <?php 
     if (!isset($_SESSION['NoP'])) {
         header ("Location: login.php");
